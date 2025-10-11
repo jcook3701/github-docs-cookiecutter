@@ -1,14 +1,14 @@
-# just-the-docs-template Documentation
+# {{ cookiecutter.project_name }} Documentation
 ---
 
-title: just-the-docs-template
-description: just-the-docs-template documentation
-remote_theme: pmarsceill/just-the-docs
-ga_tracking: "G-C7PWLWSHB9"
+title: "{{ cookiecutter.project_name }}" 
+description: "{{ cookiecutter.description }}"
+remote_theme: "{{ cookiecutter.theme }}"
+ga_tracking: "{{ cookiecutter.ga_tracking }}"
 
-repo_name: just-the-docs-template
-baseurl: "/just-the-docs-template"
-repo_url: "https://github.com/jcook3701/just-the-docs-template"
+repo_name: "{{ cookiecutter.project_name }}"
+baseurl: "/{{ cookiecutter.project_name }}"
+repo_url: "https://github.com/{{ cookiecutter.github_user }}/{{ cookiecutter.project_name }}"
 
 # carousel_images:
 #  - /assets/images/
@@ -43,8 +43,8 @@ heading_anchors: true
 
 # Aux links for the upper right navigation
 aux_links:
-  "just-the-docs-template on GitHub":
-    - "//github.com/jcook3701/just-the-docs-template"
+  "{{ cookiecutter.project_name }} on GitHub":
+    - "//github.com/{{ cookiecutter.github_user }}/{{ cookiecutter.project_name }}"
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: false
@@ -55,14 +55,14 @@ nav_enabled: true
 
 # External navigation links
 nav_external_links:
-  - title: just-the-docs-template on GitHub
-    url: https://github.com/jcook3701/just-the-docs-template
+  - title: "{{ cookiecutter.project_name }} on GitHub"
+    url: "https://github.com/{{ cookiecutter.github_user }}/{{ cookiecutter.project_name }}"
 
 # Back to top link
 back_to_top: true
 back_to_top_text: "Back to top"
 
-footer_content: 'Copyright &copy; 2017-2020 jcook3701. Distributed by an <a href="https://github.com/jcook3701/just-the-docs-template/blob/master/LICENSE">MIT license.</a> <a href=""></a>'
+footer_content: 'Copyright &copy; 2017-2020 jcook3701. Distributed by an <a href="https://github.com/{{ cookiecutter.github_user }}/{{ cookiecutter.project_name }}/blob/master/LICENSE">MIT license.</a> <a href=""></a>'
 
 # Footer last edited timestamp
 last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
@@ -71,7 +71,7 @@ last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https:/
 # Footer "Edit this page on GitHub" link text
 gh_edit_link: true # show or hide edit this page link
 gh_edit_link_text: "Edit this page on GitHub"
-gh_edit_repository: "https://github.com/jcook3701/just-the-docs-template" # the github URL for your repo
+gh_edit_repository: "https://github.com/{{ cookiecutter.github_user }}/{{ cookiecutter.project_name }}" # the github URL for your repo
 gh_edit_branch: "master" # the branch that your docs is served from
 gh_edit_source: docs # the source that your files originate from
 gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
@@ -113,5 +113,5 @@ exclude:
 
 # Optional SEO metadata
 seo:
-  title: just-the-docs-template Documentation
-  description: Full code documentation for the just-the-docs-template project
+  title: "{{ cookiecutter.project_name }} Documentation"
+  description: "Full code documentation for the {{ cookiecutter.project_name }} project"

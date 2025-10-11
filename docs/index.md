@@ -1,8 +1,8 @@
 ---
 layout: default
-title: ClubPoker Chrome Extension
+title: "{{ cookiecutter.project_name }}"
 nav_order: 1
-description: "Welcome to the ClubPoker documentation"
+description: "{{ cookiecutter.description }}"
 ---
 
 <!-- {% include image-carousel.html %} -->
@@ -17,7 +17,7 @@ If you enjoy this project, consider buying me a coffee:
     type="text/javascript"
 	src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
 	data-name="bmc-button"
-	data-slug="jcook3701"
+	data-slug="{{ cookiecutter.buy_me_a_coffee }}"
 	data-color="#FFDD00"
 	data-emoji="☕"
 	data-font="Cookie"
