@@ -117,10 +117,15 @@
     color: #f4b400; /* coffee-like color by default */
   }
 
-  /* Hover effect with brand colors */
+  /* Hover effect: circle background changes, icon inside turns white */
   #social-bar .icon.circle:hover {
-    transform: translateY(-3px) scale(1.1);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    background-color: currentColor; /* optional if you want circle to match brand */
+  }
+
+  /* Make icons inside turn white on hover of parent circle */
+  #social-bar .icon.circle:hover i,
+  #social-bar .icon.circle:hover svg {
+    color: #fff !important;
   }
 
   #social-bar .icon.twitter:hover {
