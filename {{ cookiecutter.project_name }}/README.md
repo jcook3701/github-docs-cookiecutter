@@ -1,7 +1,7 @@
-# {{ cookiecutter.project_name }}
+# {{ site.title }}
 
-__Author:__ {{ cookiecutter.author }}  
-__Version:__ {{ cookiecutter.version }}  
+__Author:__ {{ site.author }}  
+__Version:__ {{ site.version }}  
 
 ## Overview
-{{ cookiecutter.description }}  
+{{ site.description }}  

@@ -30,7 +30,7 @@ jobs:
           echo "Linting all template files under {{ cookiecutter.project_name }}..."
           jq '{cookiecutter: .}' cookiecutter.json > /tmp/_cc_wrapped.json
           find '{{ cookiecutter.project_name }}' -type f \
-            ! -name "*.png" ! -name "*.jpg" ! -name "*.ico" ! -name "*.gif" \
+            ! -name "*.md" ! -name "*.html" ! -name "*.png" ! -name "*.jpg" ! -name "*.ico" ! -name "*.gif" \
             -print0 | while IFS= read -r -d '' f; do
              # Skip empty or binary files
              if file "$f" | grep -q text; then

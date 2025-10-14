@@ -2,6 +2,8 @@
 ---
 
 title: "{{ cookiecutter.project_name }}"
+author: "{{ cookiecutter.author }}"
+version: "{{ cookiecutter.version }}"
 description: "{{ cookiecutter.description }}"
 remote_theme: "{{ cookiecutter.theme }}"
 ga_tracking: "{{ cookiecutter.ga_tracking }}"

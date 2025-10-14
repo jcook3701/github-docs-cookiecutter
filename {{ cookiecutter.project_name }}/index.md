@@ -1,8 +1,8 @@
 ---
 layout: default
-title: "{{ cookiecutter.project_name }}"
+title: "{{ site.title }}"
 nav_order: 1
-description: "{{ cookiecutter.description }}"
+description: "{{ site.description }}"
 ---
 
 <!-- {% include image-carousel.html %} -->
