@@ -1,8 +1,18 @@
-# Emacs #
+# tmp ignores
+hooks/
+
+# Backup Extensions #
+*.bak
+*.old
+*.save
+
+# Emacs Tmp Extensions #
 ########### 
+*.tmp
+*.tmp.*
 .#*
 
-# Compiled source #
+# Compiled source Extensions #
 ###################
 *.com
 *.class
@@ -11,7 +21,7 @@
 *.o
 *.so
 
-# Packages #
+# Package Extensions #
 ############
 # it's better to unpack these files and commit the raw source
 # git has its own built in compression methods
@@ -24,7 +34,7 @@
 *.tar
 *.zip
 
-# Logs and databases #
+# Logs and databases Extensions #
 ######################
 *.log
 *.sql

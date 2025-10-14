@@ -70,24 +70,19 @@
 
 <style>
   /* ================================
-		   * Social Bar Styling
-		   * ================================ */
-
+  * Social Bar Styling
+  * ================================ */
   #social-bar {
     text-align: center;
-    padding: 1.5rem 0;
-    background-color: #1e1e1e;
-    color: #ccc;
-    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    padding: 2rem 1rem;
+    background-color: #111;
     border-top: 1px solid #333;
   }
 
-  /* Icon List
-		*/
   #social-bar .icons {
     list-style: none;
+    margin: 0;
     padding: 0;
-    margin: 0 0 1.2rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,35 +90,35 @@
     gap: 1rem;
   }
 
-  /* List Items */
   #social-bar .icons li {
     display: inline-flex;
   }
 
-  /*
-		Icon Circle Base */
+  /* Icon Circle Base */
   #social-bar .icon.circle {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    background: #2a2a2a;
+    background: #1e1e1e;
     color: #fff;
-    font-size: 1.25rem;
-    transition: all 0.25s ease;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
     text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   }
 
   /* Hover Animations */
   #social-bar .icon.circle:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px) scale(1.1);
     background-color: #ffdd00;
-    color: #000;
+    color: #111;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
   }
 
-  /* Specific Brand Hovers */
+  /* Brand Colors */
   #social-bar .fa-github:hover {
     background-color: #333;
     color: #fff;
@@ -135,25 +130,23 @@
   }
 
   #social-bar .fa-x-twitter:hover {
-    background-color: #000;
+    background-color: #1da1f2;
     color: #fff;
   }
 
   /* Buy Me a Coffee Wrapper */
   #social-bar .bmc-wrapper {
-    width: 58px;
-    height: 58px;
-    overflow: hidden;
-    border-radius: 50%;
+    width: 52px;
+    height: 52px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  /* Responsive Adjustment */
+  /* Responsive */
   @media (max-width: 600px) {
     #social-bar {
-      padding: 1rem 0;
+      padding: 1.5rem 0;
     }
 
     #social-bar .icon.circle {
