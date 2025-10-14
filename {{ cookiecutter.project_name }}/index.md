@@ -6,7 +6,6 @@ description: {{ cookiecutter.description }}
 ---
 
 {% raw %}
-
 {% if site.carousel_images %}
 	{% include "image-carousel.html" %}
 {% endif %}
