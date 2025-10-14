@@ -9,5 +9,5 @@ Template cookiecutter project for Github Pages (Jekyll).
 
 1. Pull Project with cookiecutter command:  
 ``` shell
-$ cookiecutter https://github.com/jcook3701/github-docs-cookiecutter  
+$ cookiecutter git@github.com:jcook3701/github-docs-cookiecutter.git  
 ```

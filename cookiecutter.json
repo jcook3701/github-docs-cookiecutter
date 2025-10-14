@@ -8,5 +8,11 @@
   "github_username": "jcook3701",
   "linkedin_usercode": "jared-cook-b3585a114",
   "twitter_username": "",
-  "buymeacoffee_username": "jcook3701"
+  "buymeacoffee_username": "jcook3701",
+  "_copy_without_render": [
+    "index.md",
+    "README.md",
+    "_includes/*"
+  ]
+
 }
