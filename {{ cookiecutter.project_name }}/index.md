@@ -15,5 +15,5 @@ description: {{ cookiecutter.description }}
 # ☕ Support Me
 If you enjoy this project, consider buying me a coffee or making code contributions.  
 
-{% include social-bar.html %}
+{% include "social-bar.html" %}
 
