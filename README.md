@@ -11,3 +11,9 @@ Template cookiecutter project for Github Pages (Jekyll).
 ``` shell
 $ cookiecutter git@github.com:jcook3701/github-docs-cookiecutter.git  
 ```
+
+## Development
+1. Pull code from development branch while testing updates.  
+``` shell
+$ cookiecutter git@github.com:jcook3701/github-docs-cookiecutter.git --checkout develop  
+```
