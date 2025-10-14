@@ -1,14 +1,14 @@
 <!-- social-bar -->
 <div id="social-bar">
   <ul class="icons" style="vertical-align: middle">
-    <!-- Twitter Link -->
     {% if site.twitter_username %}
     <li>
       <a
-        href="https://x.com/{{ site.twitter_username }}?lang=en"
-        class="icon circle fab fa-x-twitter fa-fw"
+        class="icon circle twitter"
+        href="https://x.com/{{ site.twitter_username }}"
+        title="Twitter"
       >
-        <span class="label">Twitter</span>
+        <i class="fab fa-twitter"></i>
       </a>
     </li>
     {% endif %}
@@ -16,21 +16,23 @@
     {% if site.linkedin_usercode %}
     <li>
       <a
+        class="icon circle linkedin"
         href="https://www.linkedin.com/in/{{ site.linkedin_usercode }}/"
-        class="icon circle fab fa-linkedin fa-fw"
+        title="LinkedIn"
       >
-        <span class="label">Linkedin</span>
+        <i class="fab fa-linkedin"></i>
       </a>
     </li>
-    {% endif %}
+    {% endif %} {% endif %}
     <!-- GitHub Link -->
     {% if site.github_username %}
     <li>
       <a
+        class="icon circle github"
         href="https://github.com/{{ site.github_username }}"
-        class="icon circle fab fa-github fa-fw"
+        title="GitHub"
       >
-        <span class="label">Github</span>
+        <i class="fab fa-github"></i>
       </a>
     </li>
     {% endif %}
@@ -70,8 +72,9 @@
 
 <style>
   /* ================================
-		  * Social Bar Styling
-		  * ================================ */
+   * Social Bar Styling
+   * ================================ */
+
   #social-bar {
     text-align: center;
     padding: 1rem 1rem;
