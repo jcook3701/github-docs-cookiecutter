@@ -72,14 +72,15 @@
 
 <style>
   /* ================================
-   * Social Bar Styling
-   * ================================ */
+		   * Social Bar Styling
+		   * ================================ */
 
   #social-bar {
     text-align: center;
     padding: 1rem 1rem;
   }
 
+  /* Icon List */
   #social-bar .icons {
     list-style: none;
     margin: 0;
@@ -94,6 +95,7 @@
     display: inline-flex;
   }
 
+  /* Circle Icon Styling */
   #social-bar .icon.circle {
     display: inline-flex;
     justify-content: center;
@@ -102,29 +104,36 @@
     height: 52px;
     border-radius: 50%;
     background: #fff;
-    /* neutral background */
     color: #111;
     font-size: 1.3rem;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    position: relative;
   }
 
-  #social-bar .fa-github:hover {
-    background-color: #333;
-    color: #fff;
+  /* Hover effect with brand colors */
+  #social-bar .icon.circle:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   }
 
-  #social-bar .fa-linkedin:hover {
-    background-color: #0077b5;
-    color: #fff;
-  }
-
-  #social-bar .fa-x-twitter:hover {
+  #social-bar .icon.twitter:hover {
     background-color: #1da1f2;
     color: #fff;
   }
 
-  /* BuyMeACoffee Wrapper */
+  #social-bar .icon.linkedin:hover {
+    background-color: #0077b5;
+    color: #fff;
+  }
+
+  #social-bar .icon.github:hover {
+    background-color: #333;
+    color: #fff;
+  }
+
+  /* Buy Me a Coffee Wrapper */
   #social-bar .bmc-wrapper {
     width: 52px;
     height: 52px;
