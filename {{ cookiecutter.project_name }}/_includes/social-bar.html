@@ -8,7 +8,7 @@
         href="https://x.com/{{ site.twitter_username }}"
         title="Twitter"
       >
-        <i class="fa-brands fa-twitter"></i>
+        <i class="fab fa-twitter"></i>
       </a>
     </li>
     {% endif %}
@@ -20,7 +20,7 @@
         href="https://www.linkedin.com/in/{{ site.linkedin_usercode }}/"
         title="LinkedIn"
       >
-        <i class="fa-brands fa-linkedin"></i>
+        <i class="fab fa-linkedin"></i>
       </a>
     </li>
     {% endif %}
@@ -32,7 +32,7 @@
         href="https://github.com/{{ site.github_username }}"
         title="GitHub"
       >
-        <i class="fa-brands fa-github"></i>
+        <i class="fab fa-github"></i>
       </a>
     </li>
     {% endif %}
@@ -116,6 +116,17 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
     text-decoration: none;
     position: relative;
+  }
+
+  /* Brand icon colors when not hovered */
+  #social-bar .fa-linkedin {
+    color: #0077b5;
+  }
+  #social-bar .fa-github {
+    color: #333;
+  }
+  #social-bar .fa-x-twitter {
+    color: #1da1f2;
   }
 
   /* Hover effect with brand colors */
