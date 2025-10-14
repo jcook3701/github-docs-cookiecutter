@@ -68,11 +68,12 @@
     {% endif %}
   </ul>
 </div>
+{%endraw}
 
 <style>
   /* ================================
-   * Social Bar Styling
-   * ================================ */
+		   * Social Bar Styling
+		   * ================================ */
 
   #social-bar {
     text-align: center;
@@ -81,8 +82,10 @@
     color: #ccc;
     font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
     border-top: 1px solid #333;
-  } /* Icon List
-*/
+  }
+
+  /* Icon List
+		*/
   #social-bar .icons {
     list-style: none;
     padding: 0;
@@ -92,11 +95,15 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
-  } /* List Items */
+  }
+
+  /* List Items */
   #social-bar .icons li {
     display: inline-flex;
-  } /*
-Icon Circle Base */
+  }
+
+  /*
+		Icon Circle Base */
   #social-bar .icon.circle {
     display: inline-flex;
     justify-content: center;
@@ -109,24 +116,32 @@ Icon Circle Base */
     font-size: 1.25rem;
     transition: all 0.25s ease;
     text-decoration: none;
-  } /* Hover Animations */
+  }
+
+  /* Hover Animations */
   #social-bar .icon.circle:hover {
     transform: translateY(-3px);
     background-color: #ffdd00;
     color: #000;
-  } /* Specific Brand Hovers */
+  }
+
+  /* Specific Brand Hovers */
   #social-bar .fa-github:hover {
     background-color: #333;
     color: #fff;
   }
+
   #social-bar .fa-linkedin:hover {
     background-color: #0077b5;
     color: #fff;
   }
+
   #social-bar .fa-x-twitter:hover {
     background-color: #000;
     color: #fff;
-  } /* Buy Me a Coffee Wrapper */
+  }
+
+  /* Buy Me a Coffee Wrapper */
   #social-bar .bmc-wrapper {
     width: 58px;
     height: 58px;
@@ -135,11 +150,14 @@ Icon Circle Base */
     display: flex;
     justify-content: center;
     align-items: center;
-  } /* Responsive Adjustment */
+  }
+
+  /* Responsive Adjustment */
   @media (max-width: 600px) {
     #social-bar {
       padding: 1rem 0;
     }
+
     #social-bar .icon.circle {
       width: 44px;
       height: 44px;
@@ -147,4 +165,3 @@ Icon Circle Base */
     }
   }
 </style>
-{%endraw}
