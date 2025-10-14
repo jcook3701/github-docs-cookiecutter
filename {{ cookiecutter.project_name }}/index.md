@@ -14,3 +14,4 @@ description: {{ cookiecutter.description }}
 If you enjoy this project, consider buying me a coffee or making code contributions.  
 
 {% include "social-bar.html" %}
+
