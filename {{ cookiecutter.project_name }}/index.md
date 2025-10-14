@@ -4,8 +4,9 @@ title: {{ cookiecutter.project_name }}
 nav_order: 1
 description: {{ cookiecutter.description }}
 ---
-
-<!-- {% include image-carousel.html %} -->
+{% comment %}
+{% include image-carousel.html %}
+{% endcomment %}
 
 {% include README.md %}
 
