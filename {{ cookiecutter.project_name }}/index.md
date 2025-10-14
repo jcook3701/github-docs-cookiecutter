@@ -4,7 +4,7 @@ title: {{ cookiecutter.project_name }}
 nav_order: 1
 description: {{ cookiecutter.description }}
 ---
-{% if site.carousel_images %}
+{% if false %}
 	{% include image-carousel.html %}
 {% endif %}
 
