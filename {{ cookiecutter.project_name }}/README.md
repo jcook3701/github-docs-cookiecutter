@@ -1,1 +1,1 @@
-./_includes/{{ cookiecutter.project_name }}.md
+./_includes/README.md

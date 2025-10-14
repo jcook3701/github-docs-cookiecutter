@@ -7,7 +7,7 @@ description: {{ cookiecutter.description }}
 
 <!-- {% include image-carousel.html %} -->
 
-{% include {{ cookiecutter.project_name }} %}
+{% include README.md %}
 
 # ☕ Support Me
 If you enjoy this project, consider buying me a coffee or making code contributions.  
