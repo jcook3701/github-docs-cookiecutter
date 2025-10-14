@@ -7,6 +7,8 @@ description: {{ cookiecutter.description }}
 
 {% raw %}
 
+{% include snipped_loader.html %}
+
 {% if site.carousel_images %}
 	{% include image-carousel.html %}
 {% endif %}
