@@ -1,15 +1,24 @@
 ---
 layout: default
-title: "{{ site.title }}"
+title: {{ cookiecutter.project_name }}
 nav_order: 1
-description: "{{ site.description }}"
+description: {{ cookiecutter.description }}
 ---
 
-<!-- {% include image-carousel.html %} -->
+{% raw %}
 
-{% include_relative README.md %}
+{% if site.carousel_images %}
+	{% include "image-carousel.html" %}
+{% endif %}
+
+
+{% include_relative "README.md" %}
+
 
 # ☕ Support Me
 If you enjoy this project, consider buying me a coffee or making code contributions.  
 
-{% include footer.html %}
+
+{% include social-bar.html %}
+
+{% endraw %}
