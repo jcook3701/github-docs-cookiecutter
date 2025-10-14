@@ -1,7 +1,7 @@
 # {{ cookiecutter.project_name }} Documentation
 ---
 
-title: "{{ cookiecutter.project_name }}" 
+title: "{{ cookiecutter.project_name }}"
 description: "{{ cookiecutter.description }}"
 remote_theme: "{{ cookiecutter.theme }}"
 ga_tracking: "{{ cookiecutter.ga_tracking }}"

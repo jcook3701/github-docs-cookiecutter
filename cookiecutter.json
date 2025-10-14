@@ -1,5 +1,6 @@
 {
-  "project_name": "github-docs-cookiecuter",
+  "project_name": "github-docs-cookiecutter",
+  "author": "Jared Cook",
   "version": "0.1.0",
   "description": "Cookiecuter documentation for future project Github Wiki Pages.",
   "theme": "pmarsceill/just-the-docs",
