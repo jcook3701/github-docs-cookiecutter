@@ -8,7 +8,9 @@ description: {{ cookiecutter.description }}
 	{% include "image-carousel.html" %}
 {% endif %}
 
-{% include "README.md" %}
+{% raw %}
+	{% include_relative "README.md" %}
+{% endraw %}
 
 # ☕ Support Me
 If you enjoy this project, consider buying me a coffee or making code contributions.  
