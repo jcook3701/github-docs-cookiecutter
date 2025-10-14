@@ -8,11 +8,11 @@ description: {{ cookiecutter.description }}
 {% raw %}
 
 {% if site.carousel_images %}
-	{% include "image-carousel.html" %}
+	{% include image-carousel.html %}
 {% endif %}
 
 
-{% include_relative "README.md" %}
+{% include_relative README.md %}
 
 
 # ☕ Support Me
