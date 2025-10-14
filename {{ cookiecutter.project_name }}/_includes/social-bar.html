@@ -37,34 +37,18 @@
     </li>
     {% endif %}
     <!-- Buy Me A Coffee Link -->
+    <!-- Buy Me A Coffee Link -->
     {% if site.buymeacoffee_username %}
     <li>
-      <div
-        class="icon circle bmc-wrapper"
-        style="
-          width: 58px;
-          height: 58px;
-          overflow: hidden;
-          border-radius: 50%;
-          display: flex;
-          justify-content: start;
-          align-items: center; /* centers vertically */
-        "
+      <a
+        href="https://www.buymeacoffee.com/{{ site.buymeacoffee_username }}"
+        class="icon circle fa-solid fa-mug-hot"
+        title="Buy me a coffee"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        <script
-          type="text/javascript"
-          src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
-          data-name="bmc-button"
-          data-slug="{{ site.buymeacoffee_username }}"
-          data-color="#FFDD00"
-          data-emoji=""
-          data-font="Cookie"
-          data-text=""
-          data-outline-color="#000000"
-          data-font-color="#000000"
-          data-coffee-color="#ffffff"
-        ></script>
-      </div>
+        <span class="label">Buy Me A Coffee</span>
+      </a>
     </li>
     {% endif %}
   </ul>
@@ -129,6 +113,10 @@
     color: #1da1f2;
   }
 
+  #social-bar .fa-mug-hot {
+    color: #f4b400; /* coffee-like color by default */
+  }
+
   /* Hover effect with brand colors */
   #social-bar .icon.circle:hover {
     transform: translateY(-3px) scale(1.1);
@@ -147,6 +135,11 @@
 
   #social-bar .icon.github:hover {
     background-color: #333;
+    color: #fff;
+  }
+
+  #social-bar .fa-mug-hot:hover {
+    background-color: #f4b400;
     color: #fff;
   }
 
