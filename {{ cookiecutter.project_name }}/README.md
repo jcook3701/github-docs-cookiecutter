@@ -1,7 +1,1 @@
-# {{ site.title }}
-
-__Author:__ {{ site.author }}  
-__Version:__ {{ site.version }}  
-
-## Overview
-{{ site.description }}  
+./_includes/{{ cookiecutter.project_name }}.md

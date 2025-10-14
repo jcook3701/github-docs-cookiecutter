@@ -1,0 +1,148 @@
+<!-- social-bar -->
+<div id="social-bar">
+  <ul class="icons" style="vertical-align: middle">
+    <!-- Twitter Link -->
+    {% if site.twitter_username %}
+    <li>
+      <a
+        href="https://x.com/{{ site.twitter_username }}?lang=en"
+        class="icon circle fa-x-twitter"
+      >
+        <span class="label">Twitter</span>
+      </a>
+    </li>
+    {% endif %}
+    <!-- Linkedin Link -->
+    {% if site.linkedin_usercode %}
+    <li>
+      <a
+        href="https://www.linkedin.com/in/{{ site.linkedin_usercode }}/"
+        class="icon circle fa-linkedin"
+      >
+        <span class="label">Linkedin</span>
+      </a>
+    </li>
+    {% endif %}
+    <!-- GitHub Link -->
+    {% if site.github_username %}
+    <li>
+      <a
+        href="https://github.com/{{ site.github_username }}"
+        class="icon circle fa-github"
+      >
+        <span class="label">Github</span>
+      </a>
+    </li>
+    {% endif %}
+    <!-- Buy Me A Coffee Link -->
+    {% if site.buymeacoffee_username %}
+    <li>
+      <div
+        class="icon circle bmc-wrapper"
+        style="
+          width: 58px;
+          height: 58px;
+          overflow: hidden;
+          border-radius: 50%;
+          display: flex;
+          justify-content: start;
+          align-items: center; /* centers vertically */
+        "
+      >
+        <script
+          type="text/javascript"
+          src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+          data-name="bmc-button"
+          data-slug="{{ site.buymeacoffee_username }}"
+          data-color="#FFDD00"
+          data-emoji=""
+          data-font="Cookie"
+          data-text=""
+          data-outline-color="#000000"
+          data-font-color="#000000"
+          data-coffee-color="#ffffff"
+        ></script>
+      </div>
+    </li>
+    {% endif %}
+  </ul>
+</div>
+
+<style>
+  /* ================================
+   * Social Bar Styling
+   * ================================ */
+
+  #social-bar {
+    text-align: center;
+    padding: 1.5rem 0;
+    background-color: #1e1e1e;
+    color: #ccc;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    border-top: 1px solid #333;
+  } /* Icon List
+*/
+  #social-bar .icons {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  } /* List Items */
+  #social-bar .icons li {
+    display: inline-flex;
+  } /*
+Icon Circle Base */
+  #social-bar .icon.circle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #2a2a2a;
+    color: #fff;
+    font-size: 1.25rem;
+    transition: all 0.25s ease;
+    text-decoration: none;
+  } /* Hover Animations */
+  #social-bar .icon.circle:hover {
+    transform: translateY(-3px);
+    background-color: #ffdd00;
+    color: #000;
+  } /* Specific Brand Hovers */
+  #social-bar .fa-github:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  #social-bar .fa-linkedin:hover {
+    background-color: #0077b5;
+    color: #fff;
+  }
+  #social-bar .fa-x-twitter:hover {
+    background-color: #000;
+    color: #fff;
+  } /* Buy Me a Coffee Wrapper */
+  #social-bar .bmc-wrapper {
+    width: 58px;
+    height: 58px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } /* Responsive Adjustment */
+  @media (max-width: 600px) {
+    #social-bar {
+      padding: 1rem 0;
+    }
+    #social-bar .icon.circle {
+      width: 44px;
+      height: 44px;
+      font-size: 1.1rem;
+    }
+  }
+</style>
