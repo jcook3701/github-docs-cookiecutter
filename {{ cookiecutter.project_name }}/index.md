@@ -18,8 +18,9 @@ description: {{ cookiecutter.description }}
 
 
 # ☕ Support Me
-If you enjoy this project, consider buying me a coffee or making code contributions.  
+If you enjoy this project, please consider buying me a coffee or making a code contribution.  
 
+# Social Links
 
 {% include social-bar.html %}
 
