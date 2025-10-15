@@ -7,6 +7,8 @@ description: {{ cookiecutter.description }}
 
 {% raw %}
 
+{% include snippet_loader.html %}
+
 {% if site.carousel_images %}
 	{% include image-carousel.html %}
 {% endif %}
@@ -16,8 +18,9 @@ description: {{ cookiecutter.description }}
 
 
 # ☕ Support Me
-If you enjoy this project, consider buying me a coffee or making code contributions.  
+If you enjoy this project, please consider buying me a coffee or making a code contribution.  
 
+# Social Links
 
 {% include social-bar.html %}
 
