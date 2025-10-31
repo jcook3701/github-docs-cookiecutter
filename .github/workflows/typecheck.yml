@@ -1,7 +1,6 @@
-# cookiecutter tests
+# typecheck
 ---
-
-name: Cookiecutter Tests
+name: Typecheck
 
 on:
   push:
@@ -10,15 +9,15 @@ on:
     branches: [master, develop]
 
 jobs:
-  test:
+  typecheck:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
         with:
           python-version: "3.11"
 
@@ -26,6 +25,6 @@ jobs:
         run: |
           make install
 
-      - name: Run tests
+      - name: Run typecheck
         run: |
-            make test
+          make typecheck
