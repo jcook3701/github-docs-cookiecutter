@@ -11,11 +11,12 @@ SHELL := /bin/bash
 # --------------------------------------------------
 # Build Directories
 # --------------------------------------------------
+SRC_DIR := '{{ cookiecutter.project_name }}'
 HOOKS_DIR := hooks
 TESTS_DIR := tests
 DOCS_DIR := docs
-SPHINX_DIR := docs/sphinx
-JEKYLL_DIR := docs/jekyll
+SPHINX_DIR := $(DOCS_DIR)/sphinx
+JEKYLL_DIR := $(DOCS_DIR)/jekyll
 
 SPHINX_BUILD_DIR := $(SPHINX_DIR)/_build/html
 JEKYLL_OUTPUT_DIR := $(JEKYLL_DIR)/sphinx
@@ -43,7 +44,7 @@ MYPY := $(ACTIVATE) && $(PYTHON) -m mypy
 # --------------------------------------------------
 # Linting (ruff, yaml, jinja2)
 # --------------------------------------------------
-RUFF := $(ACTIVATE) && $(PYTHON) -m ruff -v
+RUFF := $(ACTIVATE) && $(PYTHON) -m ruff
 YAMLLINT := $(ACTIVATE) && $(PYTHON) -m yamllint
 JINJA := $(ACTIVATE) && jinja2 --strict
 # --------------------------------------------------
@@ -92,7 +93,7 @@ ruff-lint-check:
 
 ruff-lint-fix:
 	@echo "🔍 Running ruff lint fixes..."
-	$(RUFF) check --fix --show-files $(HOOKS_DIR) $(TESTS_DIR)
+	$(RUFF) check --fix --show-files -v $(HOOKS_DIR) $(TESTS_DIR)
 
 yaml-lint-check:
 	@echo "🔍 Running yamllint..."
