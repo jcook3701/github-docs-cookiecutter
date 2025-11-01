@@ -75,9 +75,8 @@ back_to_top_text: "Back to top"
 
 footer_content: >-
   Copyright &copy; 2025 {{ cookiecutter.author }}. Distributed by an
-  <a href="https://github.com/{{ cookiecutter.github_username }}\
-    /{{ cookiecutter.project_name }}/blob/master/LICENSE">\
-      MIT license./
+  <a href="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/blob/master/LICENSE">
+      MIT license.
   </a>
   <a href=""></a>
 
