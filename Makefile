@@ -93,7 +93,8 @@ ruff-lint-check:
 
 ruff-lint-fix:
 	@echo "🎨 Running ruff lint fixes..."
-	$(RUFF) check --fix --show-files -v $(TESTS_DIR)
+	$(RUFF) check --show-files $(TESTS_DIR)
+	$(RUFF) check --fix $(TESTS_DIR)
 
 yaml-lint-check:
 	@echo "🔍 Running yamllint..."
@@ -124,7 +125,7 @@ lint-check: ruff-lint-check yaml-lint-check jinja2-lint-check
 # --------------------------------------------------
 typecheck:
 	@echo "🧠 Checking types (MyPy)..."
-	$(MYPY) $(HOOKS_DIR)
+	$(MYPY) $(TESTS_DIR)
 
 # --------------------------------------------------
 # Testing (pytest)
