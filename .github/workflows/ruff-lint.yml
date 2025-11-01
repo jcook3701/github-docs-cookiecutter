@@ -1,7 +1,6 @@
-# tests
+# ruff lint
 ---
-
-name: Cookiecutter template tests
+name: Cookiecutter template ruff lint
 
 on:
   push:
@@ -10,7 +9,7 @@ on:
     branches: [master, develop]
 
 jobs:
-  test:
+  ruff-lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +21,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install pytest
+      - name: Install ruff
         run: |
           make install
 
-      - name: Run tests
+      - name: Lint with ruff
         run: |
-            make test
+          make ruff-lint-check

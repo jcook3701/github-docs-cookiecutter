@@ -1,7 +1,6 @@
-# tests
+# yaml lint
 ---
-
-name: Cookiecutter template tests
+name: Cookiecutter template YAML lint
 
 on:
   push:
@@ -10,7 +9,7 @@ on:
     branches: [master, develop]
 
 jobs:
-  test:
+  yaml-lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +21,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install pytest
+      - name: Install yaml-lint
         run: |
           make install
 
-      - name: Run tests
+      - name: Lint YAML files
         run: |
-            make test
+          make yaml-lint-check

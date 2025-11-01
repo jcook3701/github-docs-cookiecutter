@@ -1,7 +1,6 @@
-# tests
+# jinja2 lint
 ---
-
-name: Cookiecutter template tests
+name: Cookiecutter template jinja2 lint
 
 on:
   push:
@@ -10,7 +9,7 @@ on:
     branches: [master, develop]
 
 jobs:
-  test:
+  jinja2-lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +21,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install pytest
+      - name: Install Jinja2 CLI
         run: |
           make install
 
-      - name: Run tests
+      - name: Lint Jinja templates
         run: |
-            make test
+          make jinja2-lint-check
