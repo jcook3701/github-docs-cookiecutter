@@ -1,16 +1,15 @@
-# tests
+# black format
 ---
-
-name: Cookiecutter Template Tests
+name: Cookiecutter Template Black Format Check
 
 on:
   push:
-    branches: [master, develop]
+    branches: [main, develop]
   pull_request:
-    branches: [master, develop]
+    branches: [main, develop]
 
 jobs:
-  test:
+  black-format-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +21,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install pytest
+      - name: Install Black
         run: |
           make install
 
-      - name: Run tests
+      - name: Format check
         run: |
-            make test
+          make black-formatter-check
