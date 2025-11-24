@@ -67,7 +67,7 @@ DEV_DOCS := .[docs]
 # --------------------------------------------------
 # 🐍 Python Commands (venv, activate, pip)
 # --------------------------------------------------
-CREATE_VENV := $(PYTHON) -m venv $(VENV_DIR)
+CREATE_VENV := $(PYTHON_CMD) -m venv $(VENV_DIR)
 ACTIVATE := source $(VENV_DIR)/bin/activate
 PYTHON := $(ACTIVATE) && $(PYTHON_CMD)
 PIP := $(ACTIVATE) && $(PYTHON) -m pip
