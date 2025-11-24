@@ -70,7 +70,7 @@ DEV_DOCS := .[docs]
 CREATE_VENV := $(PYTHON_CMD) -m venv $(VENV_DIR)
 ACTIVATE := source $(VENV_DIR)/bin/activate
 PYTHON := $(ACTIVATE) && $(PYTHON_CMD)
-PIP := $(ACTIVATE) && $(PYTHON) -m pip
+PIP := $(PYTHON) -m pip
 # --------------------------------------------------
 # 🧠 Typing (mypy)
 # --------------------------------------------------
