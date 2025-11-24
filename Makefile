@@ -177,6 +177,8 @@ jinja2-lint-check:
 			fi; \
 		done
 
+# TODO: Should use this eventually to replace jinja2-lint-check (github-workspace, lint-check)
+# TODO: Look into djlint autofixes and update the pyproject.toml to include djlint.
 djlint-check:
 	$(AT)$(DJLINT)
 
@@ -231,6 +233,8 @@ clean:
 # --------------------------------------------------
 help:
 	$(AT)echo "📦 github-doc-cookiecutter Makefile"
+	$(AT)echo "   author: $(PACKAGE_AUTHOR)"
+	$(AT)echo "   version: $(PACKAGE_VERSION)"
 	$(AT)echo ""
 	$(AT)echo "Usage:"
 	$(AT)echo "  make venv                   Create virtual environment"
