@@ -57,7 +57,7 @@ jekyll:
 	$(AT)$(JEKYLL_BUILD)
 	$(AT)echo "✅ Full documentation build complete!"
 
-jekyll-serve: docs
+jekyll-serve:
 	$(AT)echo "🚀 Starting Jekyll development server..."
 	$(AT)$(JEKYLL_SERVE)
 
@@ -75,6 +75,8 @@ clean-docs:
 # --------------------------------------------------
 help:
 	$(AT)echo "📦 $(GALAXY_PACKAGE_NAME) github documentation Makefile"
+	$(AT)echo "   author: $(PACKAGE_AUTHOR)"
+	$(AT)echo "   version: $(PACKAGE_VERSION)"
 	$(AT)echo ""
 	$(AT)echo "Usage:"
 	$(AT)echo "  make build-docs             Generate Jekyll documentation"
