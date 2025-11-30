@@ -37,6 +37,7 @@ endef
 PACKAGE_NAME = "{{ cookiecutter.project_name }}"
 AUTHOR = "{{ cookiecutter.author }}"
 VERSION = "{{ cookiecutter.version }}"
+PUBLISHDIR ?=
 # --------------------------------------------------
 # 📘 Documentation (Sphinx + Jekyll)
 # --------------------------------------------------
@@ -44,16 +45,16 @@ JEKYLL_BUILD := bundle exec jekyll build --quiet
 JEKYLL_CLEAN := bundle exec jekyll clean
 JEKYLL_SERVE := bundle exec jekyll serve
 # --------------------------------------------------
-.PHONY: all jekyll jekyll-serve build-docs run-docs clean help
+.PHONY: all jekyll jekyll-serve build run clean help
 # --------------------------------------------------
 # Default:
 # --------------------------------------------------
-all: build-docs
+all: build
 # --------------------------------------------------
-# Documentation (Jekyll)
+# 📘 Documentation (Jekyll)
 # --------------------------------------------------
 jekyll:
-	$(AT)echo "🔨 Building Jekyll site..."
+	$(AT)echo "🔨 Building Jekyll site 📘..."
 	$(AT)$(JEKYLL_BUILD)
 	$(AT)echo "✅ Full documentation build complete!"
 
@@ -61,28 +62,28 @@ jekyll-serve:
 	$(AT)echo "🚀 Starting Jekyll development server..."
 	$(AT)$(JEKYLL_SERVE)
 
-build-docs: jekyll
-run-docs: jekyll-serve
+build: jekyll
+run: jekyll-serve
 # --------------------------------------------------
-# Clean artifacts
+# 🧹 Clean artifacts
 # --------------------------------------------------
-clean-docs:
-	$(AT)echo "🧹 Clening Jekyll build artifacts..."
+clean:
+	$(AT)echo "🧹 Cleaning Jekyll build artifacts..."
 	$(AT)$(call run_ci_safe,$(JEKYLL_CLEAN))
 	$(AT)echo "✅ Cleaned Jekyll build artifacts."
 # --------------------------------------------------
 # Help
 # --------------------------------------------------
 help:
-	$(AT)echo "📦 $(GALAXY_PACKAGE_NAME) github documentation Makefile"
+	$(AT)echo "📦 $(PACKAGE_NAME) github documentation Makefile"
 	$(AT)echo "   author: $(PACKAGE_AUTHOR)"
 	$(AT)echo "   version: $(PACKAGE_VERSION)"
 	$(AT)echo ""
 	$(AT)echo "Usage:"
-	$(AT)echo "  make build-docs             Generate Jekyll documentation"
-	$(AT)echo "  make run-docs               Serve Jekyll site locally"
-	$(AT)echo "  make clean-docs             Clean Jekyll build artifacts"
-	$(AT)echo "  make all                    Run build-docs"
+	$(AT)echo "  make build                  Generate Jekyll documentation"
+	$(AT)echo "  make run                    Serve Jekyll site locally"
+	$(AT)echo "  make clean                  Clean Jekyll build artifacts"
+	$(AT)echo "  make all                    Run make (build)"
 	$(AT)echo "Options:"
 	$(AT)echo "  V=1             Enable verbose output (show all commands being executed)"
 	$(AT)echo "  make -s         Run completely silently (suppress make's own output AND command echo)"
