@@ -114,7 +114,7 @@ list-folders:
 	     Shared Hooks: '$(SHARED_HOOKS_DIR)'\n\
 	     Test: $(TESTS_DIR)\n"
 # --------------------------------------------------
-# Virtual Environment Setup
+# 🐍 Virtual Environment Setup
 # --------------------------------------------------
 venv:
 	$(AT)echo "🐍 Creating virtual environment..."
@@ -129,7 +129,7 @@ install: venv
 	$(AT)$(PIP) install -e $(DEV_DOCS)
 	$(AT)echo "✅ Dependencies installed."
 # --------------------------------------------------
-# Formating (black)
+# 🎨 Formatting (black)
 # --------------------------------------------------
 black-formatter-check:
 	$(AT)echo "🔍 Running black formatter style check..."
@@ -144,7 +144,7 @@ black-formatter-fix:
 format-check: black-formatter-check
 format-fix: black-formatter-fix
 # --------------------------------------------------
-# Linting (ruff, yaml, jinja2)
+# 🔍 Linting (ruff, yaml, jinja2)
 # --------------------------------------------------
 ruff-lint-check:
 	$(AT)echo "🔍 Running ruff linting..."
@@ -185,21 +185,21 @@ djlint-check:
 lint-check: ruff-lint-check yaml-lint-check jinja2-lint-check
 lint-fix: ruff-lint-fix
 # --------------------------------------------------
-# Typechecking (MyPy)
+# 🧠 Typechecking (MyPy)
 # --------------------------------------------------
 typecheck:
 	$(AT)echo "🧠 Checking types (MyPy)..."
 	$(AT)$(call run_ci_safe, $(MYPY) $(TESTS_DIR))
 	$(AT)echo "✅ Python typecheck complete!"
 # --------------------------------------------------
-# Testing (pytest)
+# 🧪 Testing (pytest)
 # --------------------------------------------------
 test:
 	$(AT)echo "🧪 Running tests with pytest..."
 	$(AT)$(call run_ci_safe,$(PYTEST) $(TESTS_DIR))
 	$(AT)echo "✅ Python tests complete!"
 # --------------------------------------------------
-# Documentation (Sphinx + Jekyll)
+# 📘 Documentation (Sphinx + Jekyll)
 # --------------------------------------------------
 sphinx:
 	$(AT)echo "🔨 Building Sphinx documentation 📘 as Markdown..."
@@ -218,7 +218,7 @@ jekyll-serve: docs
 build-docs: sphinx jekyll
 run-docs: jekyll-serve
 # --------------------------------------------------
-# Clean artifacts
+# 🧹 Clean artifacts
 # --------------------------------------------------
 clean:
 	$(AT)echo "🧹 Clening build artifacts..."
