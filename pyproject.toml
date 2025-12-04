@@ -41,15 +41,24 @@ Documentation = "https://github.com/jcook3701/github-docs-cookiecutter/docs/jeky
 
 [project.optional-dependencies]
 dev = [
+  "bump-my-version>=1.2",
   "black>=25.11",
-  "ruff>=0.14.0",
+  "codespell>=2.4",
+  "coverage>=7.12",
+  "deptry>=0.24",
+  "djLint>=1.36",
+  "jinja2-cli>=0.8",
   "mypy==1.9",
+  "nameisok>=0.1",
+  "pip-audit>=2.10",
+  "pre-commit>=4.5",
   "pytest>=8.0",
   "pytest-cookies>=0.7",
-  "yamllint>=1.0",
-  "jinja2-cli>=0.8",
-  "djLint>=1.36",
+  "pytest-cov>=7.0",
+  "ruff>=0.14.0",
+  "tomllint>=0.3",
   "typer>=0.20",
+  "yamllint>=1.0",
 ]
 docs = [
   "sphinx>=8.0",
@@ -66,6 +75,43 @@ where = [
 ]
 include = [
   "hooks*",
+]
+# ====================================
+# Version Bumping (bump-my-version):
+# ====================================
+[tool.bumpversion]
+current_version = "0.1.0"
+parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
+serialize = ["{major}.{minor}.{patch}"]
+search = "{current_version}"
+replace = "{new_version}"
+tag = false
+commit = false
+
+[[tool.bumpversion.files]]
+filename = "Makefile"
+# ====================================
+# Codespell Configuration:
+# ====================================
+[tool.codespell]
+# files/patterns to ignore
+skip = ["*.svg", "*.css", "*.html"]
+
+# words to ignore globally
+ignore-words-list = ["crate", "ba"]
+
+# extra options
+check-filenames = true
+quiet-level = 2
+# ====================================
+# Deptry Configuration:
+# ====================================
+[tool.deptry]
+ignore_notebooks = true
+exclude = [
+    "tests/*",
+    "build/*",
+    "docs/*",
 ]
 # ====================================
 # Ruff Configuration:

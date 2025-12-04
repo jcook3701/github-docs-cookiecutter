@@ -5,7 +5,7 @@
 See the LICENSE file for more details.
 
 Author: Jared Cook
-Discription: Post project generation Scripts.
+Description: Post project generation Scripts.
 """
 
 import os
