@@ -9,7 +9,6 @@ Description: Post project generation Scripts.
 """
 
 import os
-import sys
 from pathlib import Path
 
 # Add the generated package to sys.path so Python can find it
