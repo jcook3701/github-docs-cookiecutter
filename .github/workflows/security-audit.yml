@@ -1,6 +1,6 @@
 # security-check
 ---
-name: Cookiecutter Template Security Check
+name: Cookiecutter Template Security Audit
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
     branches: [master, develop]
 
 jobs:
-  security-check:
+  security-audit:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,6 +25,6 @@ jobs:
         run: |
           make install
 
-      - name: Run Security Check
+      - name: Run Security Audit
         run: |
           make security

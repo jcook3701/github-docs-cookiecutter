@@ -30,18 +30,12 @@ else
 CI := 0
 endif
 # --------------------------------------------------
-# 🏗️ CI/CD Functions
-# --------------------------------------------------
-# Define a reusable CI-safe runner
-define run_ci_safe =
-( $1 || [ "$(CI)" != "1" ] )
-endef
-# --------------------------------------------------
 # ⚙️ Build Settings
 # --------------------------------------------------
-PACKAGE_NAME = "github-docs-cookiecutter"
-AUTHOR = "Jared Cook"
-VERSION = "0.1.0"
+PACKAGE_NAME := "github-docs-cookiecutter"
+AUTHOR := "Jared Cook"
+VERSION := "0.1.0"
+RELEASE := v$(VERSION)
 # --------------------------------------------------
 # 🐙 Github Build Settings
 # --------------------------------------------------
@@ -59,8 +53,8 @@ DOCS_DIR := $(PROJECT_ROOT)/docs
 SPHINX_DIR := $(DOCS_DIR)/sphinx
 JEKYLL_DIR := $(DOCS_DIR)/jekyll
 JEKYLL_SPHINX_DIR := $(JEKYLL_DIR)/sphinx
-CHANGELOG_DIR := $(PROJECT_ROOT)
-CHANGELOG_RELEASE_DIR = $(CHANGELOG_DIR)/changelogs/releases
+CHANGELOG_DIR := $(PROJECT_ROOT)/changelogs
+CHANGELOG_RELEASE_DIR := $(CHANGELOG_DIR)/releases
 # --------------------------------------------------
 # 📄 Build Files
 # --------------------------------------------------
@@ -100,6 +94,7 @@ BLACK := $(PYTHON) -m black
 # 🔍 Linting (ruff, yaml, jinja2)
 # --------------------------------------------------
 RUFF := $(PYTHON) -m ruff
+# NOTE: NOT AN ERROR!
 TOMLLINT := tomllint
 YAMLLINT := $(PYTHON) -m yamllint
 JINJA := $(ACTIVATE) && jinja2 --strict
@@ -148,7 +143,38 @@ PRECOMMIT := $(ACTIVATE) && pre-commit
 # --------------------------------------------------
 NUTRIMATIC := $(PYTHON) -m nutrimatic
 # --------------------------------------------------
-.PHONY: all venv install ruff-lint-check ruff-lint-fix yaml-lint-check \
+# 🏗️ CI/CD Functions
+# --------------------------------------------------
+# Define a reusable CI-safe runner
+define run_ci_safe =
+( $1 || [ "$(CI)" != "1" ] )
+endef
+
+# Command to get the most recent previous version tag
+# 'git describe --tags --abbrev=0' gets the latest tag, so we use HEAD~1 to get the one before that
+# Use 'git describe --tags --abbrev=0' to get the latest tag for the current version
+define get_version
+$(shell $(GIT) describe --tags --abbrev=0 2> /dev/null || echo $(RELEASE))
+endef
+
+define get_previous_version
+$(shell $(GIT) describe --tags --abbrev=0 HEAD~1 2> /dev/null || echo None)
+endef
+# Variables to store the versions
+CURRENT_VERSION := $(call get_version)
+PREVIOUS_VERSION := $(call get_previous_version)
+
+define git_cliff_release_tag
+$(if $(filter-out None,$(PREVIOUS_VERSION)),\
+    $(GITCLIFF) $(PREPREVIOUS_VERSION)..$(CURRENT_VERSION) --tag $(CURRENT_VERSION), \
+    $(GITCLIFF) --unreleased --tag $(CURRENT_VERSION) \
+)
+endef
+
+CHANGELOG_RELEASE_FILE := $(CHANGELOG_RELEASE_DIR)/$(CURRENT_VERSION).md
+GITCLIFF_RELEASE := $(call git_cliff_release_tag) --output $(CHANGELOG_RELEASE_FILE)
+# --------------------------------------------------
+.PHONY: all list-folders venv install ruff-lint-check ruff-lint-fix yaml-lint-check \
 	jinja2-lint-check lint-check typecheck test build-docs jekyll-serve clean help
 # --------------------------------------------------
 # Default: run lint, typecheck, tests, and docs
@@ -157,11 +183,10 @@ all: install lint-check typecheck spellcheck test build-docs
 # --------------------------------------------------
 # Make Internal Utilities
 # --------------------------------------------------
-# TODO: Build Utilities: '$(BUILD_UTILS_DIR)'\n\
 list-folders:
 	$(AT)printf "\
-	     🐍 Hooks: $(HOOKS_DIR)\n\
-	     🧪 Test: $(TESTS_DIR)\n"
+	🐍 src: $(SRC_DIR)\n\
+	🧪 Test: $(TESTS_DIR)\n"
 # --------------------------------------------------
 # 🐍 Virtual Environment Setup
 # --------------------------------------------------
@@ -219,14 +244,16 @@ format-fix: black-formatter-fix
 # --------------------------------------------------
 # 🔍 Linting (ruff, toml, yaml, jinja2)
 # --------------------------------------------------
-ruff-lint-check:
+ruff-lint-check: list-folders
 	$(AT)echo "🔍 Running ruff linting..."
-	$(AT)$(RUFF) check $(TESTS_DIR)
+	$(AT)$(RUFF) check $(SRC_DIR) $(TESTS_DIR)
+	$(AT)echo "✅ Finished linting check of Python code with Ruff!"
 
 ruff-lint-fix:
 	$(AT)echo "🎨 Running ruff lint fixes..."
-	$(AT)$(RUFF) check --show-files $(TESTS_DIR)
-	$(AT)$(RUFF) check --fix $(TESTS_DIR)
+	$(AT)$(RUFF) check --show-files $(SRC_DIR) $(TESTS_DIR)
+	$(AT)$(RUFF) check --fix $(SRC_DIR) $(TESTS_DIR)
+	$(AT)echo "✅ Finished linting Python code with Ruff!"
 
 toml-lint-check:
 	$(AT)echo "🔍 Running Tomllint..."
@@ -241,6 +268,7 @@ toml-lint-check:
 yaml-lint-check:
 	$(AT)echo "🔍 Running yamllint..."
 	$(AT)$(YAMLLINT) .
+	$(AT)echo "✅ Finished linting check of yaml files with yamllint!"
 
 jinja2-lint-check:
 	$(AT)echo "🔍 jinja2 linting all template files under $(COOKIE_DIR)..."
@@ -259,11 +287,14 @@ jinja2-lint-check:
 				$(JINJA) "$$f" /tmp/_cc_wrapped.json || exit 1; \
 			fi; \
 		done
+	$(AT)echo "✅ Finished linting check of jinja2 files with jinja2!"
 
 # TODO: Should use this eventually to replace jinja2-lint-check (github-workspace, lint-check)
 # TODO: Look into djlint autofixes and update the pyproject.toml to include djlint.
 djlint-check:
-	$(AT)$(DJLINT)
+	$(AT)echo "🔍 Running DJLint..."
+	$(AT)echo "$(DJLINT)"
+	$(AT)echo "✅ Finished linting with DJLint!"
 
 lint-check: ruff-lint-check yaml-lint-check jinja2-lint-check
 lint-fix: ruff-lint-fix
@@ -323,24 +354,29 @@ changelog:
 	$(AT)echo "📜 $(PACKAGE_NAME) Changelog Generation..."
 	$(AT)$(GITCLIFF) \
 	  --output $(CHANGELOG_FILE)
+	$(AT)$(GITCLIFF_RELEASE)
 	$(AT)$(GIT) add $(CHANGELOG_FILE)
+	$(AT)$(GIT) add $(CHANGELOG_RELEASE_FILE)
 	$(AT)echo "✅ Finished Changelog Update!"
+
+changelog-test:
+	$(AT)echo "current version: $(CURRENT_VERSION)"
+	$(AT)echo "previous version: $(PREVIOUS_VERSION)"
+	$(AT)echo $(GITCLIFF_RELEASE)
+	$(AT)echo $(CHANGELOG_RELEASE_FILE)
 # --------------------------------------------------
 # 🐙 Github Commands (git)
 # --------------------------------------------------
 #NOTE: Not yet tested!!!
 git-release:
-	$(AT)echo "📦 $(PACKAGE_NAME) Release Tag - $(VERSION)! 🎉"
-	$(AT)$(GIT) tag -a v$(VERSION) -m "Release v$(VERSION)"
-	$(AT)$(GITCLIFF) --config github --output "$(CHANGELOG_RELEASE_DIR)/v${VERSION}.md"
-	$(AT)$(GIT) push origin v$(VERSION)
-	$(AT)echo "✅ Finished uploading Release - $(VERSION)!"
+	$(AT)echo "📦 $(PACKAGE_NAME) Release Tag - $(RELEASE)! 🎉"
+	$(AT)echo $(GIT) tag -a $(RELEASE) -m "Release $(RELEASE)"
+	$(AT)echo $(GIT) push origin $(RELEASE)
+	$(AT)echo "✅ Finished uploading Release - $(RELEASE)!"
 # --------------------------------------------------
 # 📢 Release
 # --------------------------------------------------
-release:
-	$(MAKE) bump-version-patch
-	$(MAKE) git-release
+release: changelog git-release bump-version-patch
 # --------------------------------------------------
 # 🧹 Clean artifacts
 # --------------------------------------------------
@@ -349,7 +385,7 @@ clean:
 	$(AT)rm -rf $(SPHINX_DIR)/_build $(JEKYLL_SPHINX_DIR)
 	$(AT)$(call run_ci_safe,cd $(JEKYLL_DIR) && $(JEKYLL_CLEAN))
 	$(AT)rm -rf build dist *.egg-info
-	$(AT)find $(HOOKS_DIR) $(TESTS_DIR) -name "__pycache__" -type d -exec rm -rf {} +
+	$(AT)find $(SRC_DIR) $(TESTS_DIR) -name "__pycache__" -type d -exec rm -rf {} +
 	$(AT)-[ -d "$(VENV_DIR)" ] && rm -r $(VENV_DIR)
 	$(AT)echo "🧹 Cleaned build artifacts."
 # --------------------------------------------------
@@ -358,7 +394,7 @@ clean:
 version:
 	$(AT)echo "$(PACKAGE_NAME)"
 	$(AT)echo "author: $(AUTHOR)"
-	$(AT)echo "version: $(VERSION)"
+	$(AT)echo "version: $(RELEASE)"
 # --------------------------------------------------
 # ❓ Help
 # --------------------------------------------------
