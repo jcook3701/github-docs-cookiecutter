@@ -146,6 +146,10 @@ Develop
 - Fixing linting and testing issues.
 - Fixes for ruff-linter
 
+### 🚀 Added
+
+- *(build)* CI/CD updates and major updates to use pre-commit, codespell, deptry, & pip-audit. Also setup configuration for git-cliff chanagelog generation.
+
 ### 🚫 Removed
 
 - Removed emacs backup
