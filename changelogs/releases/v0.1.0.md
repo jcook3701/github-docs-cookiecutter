@@ -194,6 +194,10 @@ Co-authored-by: jcook3701 <jcook3701@gmail.com>
 
 - Fixes for repo name change
 
+### 🚀 Added
+
+- *(build)* Updates to Makefile for changelog generation and future tag generation.
+
 ### 🚫 Removed
 
 - Removed emacs backup
