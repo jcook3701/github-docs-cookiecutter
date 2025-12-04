@@ -370,13 +370,13 @@ changelog-test:
 #NOTE: Not yet tested!!!
 git-release:
 	$(AT)echo "📦 $(PACKAGE_NAME) Release Tag - $(RELEASE)! 🎉"
-	$(AT)echo $(GIT) tag -a $(RELEASE) -m "Release $(RELEASE)"
-	$(AT)echo $(GIT) push origin $(RELEASE)
+	$(AT)$(GIT) tag -a $(RELEASE) -m "Release $(RELEASE)"
+	$(AT)$(GIT) push origin $(RELEASE)
 	$(AT)echo "✅ Finished uploading Release - $(RELEASE)!"
 # --------------------------------------------------
 # 📢 Release
 # --------------------------------------------------
-release: changelog git-release bump-version-patch
+release: git-release bump-version-patch
 # --------------------------------------------------
 # 🧹 Clean artifacts
 # --------------------------------------------------
