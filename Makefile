@@ -29,7 +29,9 @@ CI := 1
 else
 CI := 0
 endif
-
+# --------------------------------------------------
+# 🏗️ CI/CD Functions
+# --------------------------------------------------
 # Define a reusable CI-safe runner
 define run_ci_safe =
 ( $1 || [ "$(CI)" != "1" ] )
@@ -41,18 +43,29 @@ PACKAGE_NAME = "github-docs-cookiecutter"
 AUTHOR = "Jared Cook"
 VERSION = "0.1.0"
 # --------------------------------------------------
+# 🐙 Github Build Settings
+# --------------------------------------------------
+GITHUB_USER := "jcook3701"
+GITHUB_REPO := $(GITHUB_USER)/$(PACKAGE_NAME)
+# --------------------------------------------------
 # 📁 Build Directories
 # --------------------------------------------------
-COOKIE_DIR := {{ cookiecutter.project_name }}
-HOOKS_DIR := hooks
+PROJECT_ROOT := $(PWD)
+COOKIE_DIR := $(PROJECT_ROOT)/{{ cookiecutter.project_name }}
+HOOKS_DIR := $(PROJECT_ROOT)/hooks
 SRC_DIR := $(HOOKS_DIR)
-TESTS_DIR := tests
-DOCS_DIR := docs
+TESTS_DIR := $(PROJECT_ROOT)/tests
+DOCS_DIR := $(PROJECT_ROOT)/docs
 SPHINX_DIR := $(DOCS_DIR)/sphinx
 JEKYLL_DIR := $(DOCS_DIR)/jekyll
-
-SPHINX_BUILD_DIR := $(SPHINX_DIR)/_build/html
-JEKYLL_OUTPUT_DIR := $(JEKYLL_DIR)/sphinx
+JEKYLL_SPHINX_DIR := $(JEKYLL_DIR)/sphinx
+CHANGELOG_DIR := $(PROJECT_ROOT)
+CHANGELOG_RELEASE_DIR = $(CHANGELOG_DIR)/changelogs/releases
+# --------------------------------------------------
+# 📄 Build Files
+# --------------------------------------------------
+README_FILE := $(PROJECT_ROOT)/README.md
+CHANGELOG_FILE := $(CHANGELOG_DIR)/CHANGELOG.md
 # --------------------------------------------------
 # 🐍 Python / Virtual Environment
 # --------------------------------------------------
@@ -72,47 +85,83 @@ ACTIVATE := source $(VENV_DIR)/bin/activate
 PYTHON := $(ACTIVATE) && $(PYTHON_CMD)
 PIP := $(PYTHON) -m pip
 # --------------------------------------------------
-# 🧠 Typing (mypy)
+# 🧬 Dependency Management (deptry)
 # --------------------------------------------------
-MYPY := $(PYTHON) -m mypy
+DEPTRY := $(ACTIVATE) && deptry
 # --------------------------------------------------
-# 🔍 Linting (ruff, yaml, jinja2)
+# 🛡️ Security Audit (pip-audit)
 # --------------------------------------------------
-RUFF := $(PYTHON) -m ruff
-YAMLLINT := $(PYTHON) -m yamllint
-JINJA := $(ACTIVATE) && jinja2 --strict
-DJLINT := $(PYTHON) -m djlint
+PIPAUDIT :=	$(ACTIVATE) && pip-audit
 # --------------------------------------------------
 # 🎨 Formatting (black)
 # --------------------------------------------------
 BLACK := $(PYTHON) -m black
 # --------------------------------------------------
+# 🔍 Linting (ruff, yaml, jinja2)
+# --------------------------------------------------
+RUFF := $(PYTHON) -m ruff
+TOMLLINT := tomllint
+YAMLLINT := $(PYTHON) -m yamllint
+JINJA := $(ACTIVATE) && jinja2 --strict
+DJLINT := $(PYTHON) -m djlint
+# --------------------------------------------------
+# 🎓 Spellchecker (codespell)
+# --------------------------------------------------
+CODESPELL := $(ACTIVATE) && codespell
+# --------------------------------------------------
+# 🧠 Typing (mypy)
+# --------------------------------------------------
+MYPY := $(PYTHON) -m mypy
+# --------------------------------------------------
 # 🧪 Testing (pytest)
 # --------------------------------------------------
 PYTEST := $(PYTHON) -m pytest
 # --------------------------------------------------
-# 📘 Documentation (Sphinx + Jekyll)
+# 📚 Documentation (Sphinx + Jekyll)
 # --------------------------------------------------
 SPHINX := $(PYTHON) -m sphinx -b markdown
 JEKYLL_BUILD := bundle exec jekyll build --quiet
 JEKYLL_CLEAN := bundle exec jekyll clean
 JEKYLL_SERVE := bundle exec jekyll serve
 # --------------------------------------------------
+# 🔖 Version Bumping (bumpy-my-version)
+# --------------------------------------------------
+BUMPVERSION := $(ACTIVATE) && bump-my-version bump --verbose
+# Patch types:
+MAJOR := major
+MINOR := minor
+PATCH := patch
+# --------------------------------------------------
+# 📜 Changelog generation (git-clif)
+# --------------------------------------------------
+GITCLIFF := git cliff
+# --------------------------------------------------
+# 🐙 Github Tools (git)
+# --------------------------------------------------
+GIT := git
+# --------------------------------------------------
+# 🚨 Pre-Commit (pre-commit)
+# --------------------------------------------------
+PRECOMMIT := $(ACTIVATE) && pre-commit
+# --------------------------------------------------
+# 🏃‍♂️ Nutri-Matic command
+# --------------------------------------------------
+NUTRIMATIC := $(PYTHON) -m nutrimatic
+# --------------------------------------------------
 .PHONY: all venv install ruff-lint-check ruff-lint-fix yaml-lint-check \
-	jinja2-lint-check lint-check typecheck test docs jekyll-serve clean help
+	jinja2-lint-check lint-check typecheck test build-docs jekyll-serve clean help
 # --------------------------------------------------
 # Default: run lint, typecheck, tests, and docs
 # --------------------------------------------------
-all: install lint-check typecheck test docs
+all: install lint-check typecheck spellcheck test build-docs
 # --------------------------------------------------
 # Make Internal Utilities
 # --------------------------------------------------
 # TODO: Build Utilities: '$(BUILD_UTILS_DIR)'\n\
 list-folders:
 	$(AT)printf "\
-	     Hooks: $(HOOKS_DIR)\n\
-	     Shared Hooks: '$(SHARED_HOOKS_DIR)'\n\
-	     Test: $(TESTS_DIR)\n"
+	     🐍 Hooks: $(HOOKS_DIR)\n\
+	     🧪 Test: $(TESTS_DIR)\n"
 # --------------------------------------------------
 # 🐍 Virtual Environment Setup
 # --------------------------------------------------
@@ -123,11 +172,35 @@ venv:
 
 install: venv
 	$(AT)echo "📦 Installing project dependencies..."
-	$(AT)$(PIP) install --upgrade pip
+	$(AT)$(PIP) install --upgrade pip setuptools wheel
 	# $(AT)$(PIP) install -e $(DEPS)
 	$(AT)$(PIP) install -e $(DEV_DEPS)
 	$(AT)$(PIP) install -e $(DEV_DOCS)
 	$(AT)echo "✅ Dependencies installed."
+# --------------------------------------------------
+# 🚨 Pre-Commit (pre-commit)
+# --------------------------------------------------
+pre-commit-init:
+	$(AT)echo "📦 Installing pre-commit hooks and hook-types..."
+	$(AT)which $(GIT) >/dev/null || { $(AT)echo "Git is required"; exit 1; }
+	$(AT)$(PRECOMMIT) install --install-hooks
+	$(AT)$(PRECOMMIT) install --hook-type pre-commit --hook-type commit-msg
+	$(AT)echo "✅ pre-commit dependencies installed!"
+# --------------------------------------------------
+# 🛡️ Security (pip-audit)
+# --------------------------------------------------
+security:
+	$(AT)echo "🛡️ Running security audit..."
+	$(AT)$(call run_ci_safe, $(PIPAUDIT))
+	$(AT)echo "✅ Finished security audit!"
+# --------------------------------------------------
+# 🧬 Dependency Management (deptry)
+# --------------------------------------------------
+dependency-check:
+	$(AT)echo "🧬 Checking dependency issues..."
+	$(AT)$(DEPTRY) --pep621-dev-dependency-groups dev,docs \
+		 $(SRC_DIR)
+	$(AT)echo "✅ Finished checking for dependency issues!"
 # --------------------------------------------------
 # 🎨 Formatting (black)
 # --------------------------------------------------
@@ -135,7 +208,7 @@ black-formatter-check:
 	$(AT)echo "🔍 Running black formatter style check..."
 	$(AT)$(call run_ci_safe, $(BLACK) --check $(SRC_DIR) $(TESTS_DIR))
 	$(AT)echo "✅ Finished formatting check of Python code with Black!"
-	
+
 black-formatter-fix:
 	$(AT)echo "🎨 Running black formatter fixes..."
 	$(AT)$(BLACK) $(SRC_DIR) $(TESTS_DIR)
@@ -144,7 +217,7 @@ black-formatter-fix:
 format-check: black-formatter-check
 format-fix: black-formatter-fix
 # --------------------------------------------------
-# 🔍 Linting (ruff, yaml, jinja2)
+# 🔍 Linting (ruff, toml, yaml, jinja2)
 # --------------------------------------------------
 ruff-lint-check:
 	$(AT)echo "🔍 Running ruff linting..."
@@ -154,6 +227,16 @@ ruff-lint-fix:
 	$(AT)echo "🎨 Running ruff lint fixes..."
 	$(AT)$(RUFF) check --show-files $(TESTS_DIR)
 	$(AT)$(RUFF) check --fix $(TESTS_DIR)
+
+toml-lint-check:
+	$(AT)echo "🔍 Running Tomllint..."
+	$(AT)$(ACTIVATE) && \
+		find $(PROJECT_ROOT) -name "*.toml" \
+			! -path "$(VENV_DIR)/*" \
+			! -path "*{{*" \
+			! -path "*}}*" \
+			-print0 | xargs -0 -n 1 $(TOMLLINT)
+	$(AT)echo "✅ Finished linting check of toml configuration files with Tomllint!"
 
 yaml-lint-check:
 	$(AT)echo "🔍 Running yamllint..."
@@ -185,6 +268,13 @@ djlint-check:
 lint-check: ruff-lint-check yaml-lint-check jinja2-lint-check
 lint-fix: ruff-lint-fix
 # --------------------------------------------------
+# 🎓 Spellchecker (codespell)
+# --------------------------------------------------
+spellcheck:
+	$(AT)echo "🎓 Checking Spelling (codespell)..."
+	$(AT)$(CODESPELL) $(SRC_DIR) $(TESTS_DIR) $(DOCS_DIR)
+	$(AT)echo "✅ Finished spellcheck!"
+# --------------------------------------------------
 # 🧠 Typechecking (MyPy)
 # --------------------------------------------------
 typecheck:
@@ -199,11 +289,11 @@ test:
 	$(AT)$(call run_ci_safe,$(PYTEST) $(TESTS_DIR))
 	$(AT)echo "✅ Python tests complete!"
 # --------------------------------------------------
-# 📘 Documentation (Sphinx + Jekyll)
+# 📚 Documentation (Sphinx + Jekyll)
 # --------------------------------------------------
 sphinx:
 	$(AT)echo "🔨 Building Sphinx documentation 📘 as Markdown..."
-	$(AT)$(SPHINX) $(SPHINX_DIR) $(JEKYLL_OUTPUT_DIR)
+	$(AT)$(SPHINX) $(SPHINX_DIR) $(JEKYLL_SPHINX_DIR)
 	$(AT)echo "✅ Sphinx Markdown build complete!"
 
 jekyll:
@@ -218,18 +308,59 @@ jekyll-serve: docs
 build-docs: sphinx jekyll
 run-docs: jekyll-serve
 # --------------------------------------------------
+# 🔖 Version Bumping (bumpy-my-version)
+# --------------------------------------------------
+# TODO: Also create a git tag of current version.
+bump-version-patch:
+	$(AT)echo "🔖 Updating $(PACKAGE_NAME) version from $(VERSION)..."
+	$(AT)$(BUMPVERSION) $(PATCH)
+	$(AT)echo "✅ $(PACKAGE_NAME) version update complete!"
+# --------------------------------------------------
+# 📜 Changelog generation (git-cliff)
+# --------------------------------------------------
+# Note: Run as part of pre-commit.  No manual run needed.
+changelog:
+	$(AT)echo "📜 $(PACKAGE_NAME) Changelog Generation..."
+	$(AT)$(GITCLIFF) \
+	  --output $(CHANGELOG_FILE)
+	$(AT)$(GIT) add $(CHANGELOG_FILE)
+	$(AT)echo "✅ Finished Changelog Update!"
+# --------------------------------------------------
+# 🐙 Github Commands (git)
+# --------------------------------------------------
+#NOTE: Not yet tested!!!
+git-release:
+	$(AT)echo "📦 $(PACKAGE_NAME) Release Tag - $(VERSION)! 🎉"
+	$(AT)$(GIT) tag -a v$(VERSION) -m "Release v$(VERSION)"
+	$(AT)$(GITCLIFF) --config github --output "$(CHANGELOG_RELEASE_DIR)/v${VERSION}.md"
+	$(AT)$(GIT) push origin v$(VERSION)
+	$(AT)echo "✅ Finished uploading Release - $(VERSION)!"
+# --------------------------------------------------
+# 📢 Release
+# --------------------------------------------------
+release:
+	$(MAKE) bump-version-patch
+	$(MAKE) git-release
+# --------------------------------------------------
 # 🧹 Clean artifacts
 # --------------------------------------------------
 clean:
 	$(AT)echo "🧹 Clening build artifacts..."
-	$(AT)rm -rf $(SPHINX_DIR)/_build $(JEKYLL_OUTPUT_DIR)
+	$(AT)rm -rf $(SPHINX_DIR)/_build $(JEKYLL_SPHINX_DIR)
 	$(AT)$(call run_ci_safe,cd $(JEKYLL_DIR) && $(JEKYLL_CLEAN))
 	$(AT)rm -rf build dist *.egg-info
 	$(AT)find $(HOOKS_DIR) $(TESTS_DIR) -name "__pycache__" -type d -exec rm -rf {} +
 	$(AT)-[ -d "$(VENV_DIR)" ] && rm -r $(VENV_DIR)
 	$(AT)echo "🧹 Cleaned build artifacts."
 # --------------------------------------------------
-# Help
+# Version
+# --------------------------------------------------
+version:
+	$(AT)echo "$(PACKAGE_NAME)"
+	$(AT)echo "author: $(AUTHOR)"
+	$(AT)echo "version: $(VERSION)"
+# --------------------------------------------------
+# ❓ Help
 # --------------------------------------------------
 help:
 	$(AT)echo "📦 github-doc-cookiecutter Makefile"
