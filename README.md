@@ -24,7 +24,7 @@ __Example:__ Pull from main branch.
 ``` shell
 $ cookiecutter git@github.com:jcook3701/github-docs-cookiecutter.git  
 ```
-__Example:__ Pull from develop branch.
+__Example:__ Pull from develop branch.  
 1. Pull code from development branch while testing updates.  
 ``` shell
 $ cookiecutter git@github.com:jcook3701/github-docs-cookiecutter.git --checkout develop  
@@ -76,8 +76,8 @@ $ make help
 ```
 
 ## Commit Help:
-__Note:__ Commits are required to be conventional git commit message.  This helps with the auto-generation of the changelog files and is enforced by pre-commit.
-__example:__
+__Note:__ Commits are required to be conventional git commit message.  This helps with the auto-generation of the changelog files and is enforced by pre-commit.  
+__example:__  
 ```shell
 <type>[optional scope]: <description>
 
@@ -96,7 +96,7 @@ __example:__
 ## Requirements:
 1. Python 3.11  
 ```shell
-$ apt install python3.11
+$ sudo apt install python3.11
 ```
 2. [rustup](https://rust-lang.org/tools/install/)  
 __Note:__ I found that it is easiest to use rustup to manage rustc and cargo but this is not required.  

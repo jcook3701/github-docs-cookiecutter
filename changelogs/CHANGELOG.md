@@ -206,6 +206,7 @@ Co-authored-by: jcook3701 <jcook3701@gmail.com>
 ### 📚 Documentation
 
 - *(update)* Small build makefile updates along with updates for required packages in README.
+- *(readme)* Readme cleanup.
 
 ### 🚫 Removed
 
