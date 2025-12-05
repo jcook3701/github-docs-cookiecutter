@@ -189,14 +189,22 @@ Co-authored-by: jcook3701 <jcook3701@gmail.com>
 ---------
 
 Co-authored-by: jcook3701 <jcook3701@gmail.com>
+- Feat 01 (#13)
+
+* feat(build): Updates to Makefile for changelog generation and future tag generation.
+
+* docs(update): Updates to readme to make project easier for future users.
+
+---------
+
+Co-authored-by: jcook3701 <jcook3701@gmail.com>
+- Merge pull request #14 from jcook3701/develop
+
+Feat 01 (#13)
 
 ### 🐛 Fixed
 
 - Fixes for repo name change
-
-### 🚀 Added
-
-- *(build)* Updates to Makefile for changelog generation and future tag generation.
 
 ### 🚫 Removed
 

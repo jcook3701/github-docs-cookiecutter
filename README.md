@@ -38,12 +38,13 @@ __Note:__ All Makefile commands are used in ci/cd to ensure that if they pass lo
 ``` shell
 $ make install
 ```
-### 🔍 Linting (ruff & yaml-lint)
-``` shell
-$ make lint-check
+### 🧬 Dependency Management (deptry)
+```shell
+$ make dependency-check
 ```
-``` shell
-$ make lint-fix
+### 🛡️ Security Audit (pip-audit)
+```shell
+$ make security
 ```
 ### 🎨 Formatting (black)
 ```shell
@@ -51,6 +52,17 @@ $ make format-check
 ```
 ```shell
 $ make format-fix
+```
+### 🔍 Linting (ruff tomllint, yaml-lint & jinja2-cli)
+``` shell
+$ make lint-check
+```
+``` shell
+$ make lint-fix
+```
+### 🎓 Spellchecking (codespell)
+```shell
+$ make spellcheck
 ```
 ### 🧠 Typechecking (mypy)
 ``` shell
