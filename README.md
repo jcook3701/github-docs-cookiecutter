@@ -3,8 +3,8 @@
 __Author:__ Jared Cook  
 __Version:__ 0.1.0  
 
-## Overview
-Template cookiecutter project for Github Pages (Jekyll).  
+## Overview:
+Template cookiecutter project for Github Pages (Jekyll).  Skip the boring stuff and get to the work that matters.
 
 ![black-format](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/black-format.yml/badge.svg)
 ![dependency-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/dependency-check.yml/badge.svg)
@@ -38,7 +38,7 @@ Utilization of [nutri-matic](https://github.com/jcook3701/nutri-matic) is the op
 
 ***
 
-## Development Strategy
+## Development Strategy:
 __Note:__ All Makefile commands are used in ci/cd to ensure that if they pass locally they should also pass once pushed to github.  
 ### 🐍️ Build environment (.venv)
 ``` shell
