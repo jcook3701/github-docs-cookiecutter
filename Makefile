@@ -91,7 +91,7 @@ PIPAUDIT :=	$(ACTIVATE) && pip-audit
 # --------------------------------------------------
 BLACK := $(PYTHON) -m black
 # --------------------------------------------------
-# 🔍 Linting (ruff, yaml, jinja2)
+# 🔍 Linting (ruff, toml, yaml, jinja2)
 # --------------------------------------------------
 RUFF := $(PYTHON) -m ruff
 # NOTE: NOT AN ERROR!
@@ -242,33 +242,14 @@ black-formatter-fix:
 format-check: black-formatter-check
 format-fix: black-formatter-fix
 # --------------------------------------------------
-# 🔍 Linting (ruff, toml, yaml, jinja2)
+# 🔍 Linting (jinja2, ruff, toml, yaml)
 # --------------------------------------------------
-ruff-lint-check: list-folders
-	$(AT)echo "🔍 Running ruff linting..."
-	$(AT)$(RUFF) check $(SRC_DIR) $(TESTS_DIR)
-	$(AT)echo "✅ Finished linting check of Python code with Ruff!"
-
-ruff-lint-fix:
-	$(AT)echo "🎨 Running ruff lint fixes..."
-	$(AT)$(RUFF) check --show-files $(SRC_DIR) $(TESTS_DIR)
-	$(AT)$(RUFF) check --fix $(SRC_DIR) $(TESTS_DIR)
-	$(AT)echo "✅ Finished linting Python code with Ruff!"
-
-toml-lint-check:
-	$(AT)echo "🔍 Running Tomllint..."
-	$(AT)$(ACTIVATE) && \
-		find $(PROJECT_ROOT) -name "*.toml" \
-			! -path "$(VENV_DIR)/*" \
-			! -path "*{{*" \
-			! -path "*}}*" \
-			-print0 | xargs -0 -n 1 $(TOMLLINT)
-	$(AT)echo "✅ Finished linting check of toml configuration files with Tomllint!"
-
-yaml-lint-check:
-	$(AT)echo "🔍 Running yamllint..."
-	$(AT)$(YAMLLINT) .
-	$(AT)echo "✅ Finished linting check of yaml files with yamllint!"
+# TODO: Should use this eventually to replace jinja2-lint-check (github-workspace, lint-check)
+# TODO: Look into djlint autofixes and update the pyproject.toml to include djlint.
+djlint-check:
+	$(AT)echo "🔍 Running DJLint..."
+	$(AT)echo "$(DJLINT)"
+	$(AT)echo "✅ Finished linting with DJLint!"
 
 jinja2-lint-check:
 	$(AT)echo "🔍 jinja2 linting all template files under $(COOKIE_DIR)..."
@@ -289,14 +270,33 @@ jinja2-lint-check:
 		done
 	$(AT)echo "✅ Finished linting check of jinja2 files with jinja2!"
 
-# TODO: Should use this eventually to replace jinja2-lint-check (github-workspace, lint-check)
-# TODO: Look into djlint autofixes and update the pyproject.toml to include djlint.
-djlint-check:
-	$(AT)echo "🔍 Running DJLint..."
-	$(AT)echo "$(DJLINT)"
-	$(AT)echo "✅ Finished linting with DJLint!"
+ruff-lint-check: list-folders
+	$(AT)echo "🔍 Running ruff linting..."
+	$(AT)$(call run_ci_safe, $(RUFF) check $(SRC_DIR) $(TESTS_DIR))
+	$(AT)echo "✅ Finished linting check of Python code with Ruff!"
 
-lint-check: ruff-lint-check yaml-lint-check jinja2-lint-check
+ruff-lint-fix:
+	$(AT)echo "🎨 Running ruff lint fixes..."
+	$(AT)$(RUFF) check --show-files $(SRC_DIR) $(TESTS_DIR)
+	$(AT)$(RUFF) check --fix $(SRC_DIR) $(TESTS_DIR)
+	$(AT)echo "✅ Finished linting Python code with Ruff!"
+
+toml-lint-check:
+	$(AT)echo "🔍 Running Tomllint..."
+	$(AT)$(ACTIVATE) && \
+		find $(PROJECT_ROOT) -name "*.toml" \
+			! -path "$(VENV_DIR)/*" \
+			! -path "*{{*" \
+			! -path "*}}*" \
+			-print0 | xargs -0 -n 1 $(TOMLLINT)
+	$(AT)echo "✅ Finished linting check of toml configuration files with Tomllint!"
+
+yaml-lint-check:
+	$(AT)echo "🔍 Running yamllint..."
+	$(AT)$(call run_ci_safe, $(YAMLLINT) .)
+	$(AT)echo "✅ Finished linting check of yaml files with yamllint!"
+
+lint-check: jinja2-lint-check ruff-lint-check toml-lint-check yaml-lint-check
 lint-fix: ruff-lint-fix
 # --------------------------------------------------
 # 🎓 Spellchecker (codespell)
@@ -400,26 +400,29 @@ version:
 # --------------------------------------------------
 help:
 	$(AT)echo "📦 github-doc-cookiecutter Makefile"
-	$(AT)echo "   author: $(PACKAGE_AUTHOR)"
-	$(AT)echo "   version: $(PACKAGE_VERSION)"
 	$(AT)echo ""
 	$(AT)echo "Usage:"
-	$(AT)echo "  make venv                   Create virtual environment"
-	$(AT)echo "  make install                Install dependencies"
-	$(AT)echo "  make format-check           Run all project formatter checks (black)"
-	$(AT)echo "  make format-fix             Run all project formatter autofixes (black)"
-	$(AT)echo "  make ruff-lint-check        Run Ruff linter"
-	$(AT)echo "  make ruff-lint-fix          Auto-fix lint issues with python ruff"
-	$(AT)echo "  make yaml-lint-check        Run YAML linter"
-	$(AT)echo "  make jinja2-lint-check      Run jinja-cmd linter"
-	$(AT)echo "  make lint-check             Run all project linters (ruff, yaml, & jinja2)"
-	$(AT)echo "  make lint-fix               Run all project linter autofixes (ruff)"
-	$(AT)echo "  make typecheck              Run Mypy type checking"
-	$(AT)echo "  make test                   Run Pytest suite"
-	$(AT)echo "  make docs                   Build Sphinx + Jekyll documentation"
-	$(AT)echo "  make jekyll-serve           Serve Jekyll site locally"
-	$(AT)echo "  make clean                  Clean build artifacts"
-	$(AT)echo "  make all                    Run install, lint, typecheck, test, and docs"
+	$(AT)echo "  make venv                   Create virtual environment."
+	$(AT)echo "  make install                Install dependencies."
+	$(AT)echo "  make security               Run security audit (pip-audit)."
+	$(AT)echo "  make dependency-check       Run dependency check (deptry)."
+	$(AT)echo "  make format-check           Run all project formatter checks (black)."
+	$(AT)echo "  make format-fix             Run all project formatter autofixes (black)."
+	$(AT)echo "  make jinja2-lint-check      Run jinja-cmd linter."
+	$(AT)echo "  make ruff-lint-check        Run Ruff linter."
+	$(AT)echo "  make ruff-lint-fix          Auto-fix lint issues with python ruff."
+	$(AT)echo "  make toml-lint-check        Run toml linter (tomllint)."
+	$(AT)echo "  make yaml-lint-check        Run YAML linter (yamllint)."
+	$(AT)echo "  make lint-check             Run all project linters (ruff, yaml, & jinja2)."
+	$(AT)echo "  make lint-fix               Run all project linter autofixes (ruff)."
+	$(AT)echo "  make spellcheck             Run Spellchecker (codespell)."
+	$(AT)echo "  make typecheck              Run Mypy type checking."
+	$(AT)echo "  make test                   Run Pytest suite."
+	$(AT)echo "  make build-docs             Build Sphinx + Jekyll documentation."
+	$(AT)echo "  make run-docs               Serve Jekyll site locally."
+	$(AT)echo "  make version                Displays project information."
+	$(AT)echo "  make clean                  Clean build artifacts."
+	$(AT)echo "  make all                    Run install, lint, typecheck, test, and docs."
 	$(AT)echo "Options:"
 	$(AT)echo "  V=1             Enable verbose output (show all commands being executed)"
 	$(AT)echo "  make -s         Run completely silently (suppress make's own output AND command echo)"

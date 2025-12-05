@@ -59,7 +59,7 @@ $ make format-check
 ```shell
 $ make format-fix
 ```
-### 🔍 Linting (ruff tomllint, yaml-lint & jinja2-cli)
+### 🔍 Linting (jinja2-cli, ruff, tomllint, & yaml-lint)
 ``` shell
 $ make lint-check
 ```
