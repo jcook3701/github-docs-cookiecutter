@@ -2,6 +2,11 @@
 # Changelog:
 # --------------------------------------------------
 
+## [unreleased]
+
+### ⚙️  Miscellaneous
+
+- *(rev)* Rev up to new patch version after first tag release!
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous

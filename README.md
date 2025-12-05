@@ -1,7 +1,7 @@
 # Github Docs Cookiecutter
 
 __Author:__ Jared Cook  
-__Version:__ 0.1.0  
+__Version:__ 0.1.1  
 
 ## Overview:
 Template cookiecutter project for Github Pages (Jekyll).  Skip the boring stuff and get to the work that matters.

@@ -30,6 +30,13 @@ else
 CI := 0
 endif
 # --------------------------------------------------
+# 🏗️ CI/CD Functions
+# --------------------------------------------------
+# Define a reusable CI-safe runner
+define run_ci_safe =
+( $1 || [ "$(CI)" != "1" ] )
+endef
+# --------------------------------------------------
 # ⚙️ Build Settings
 # --------------------------------------------------
 PACKAGE_NAME := "github-docs-cookiecutter"
@@ -60,6 +67,7 @@ CHANGELOG_RELEASE_DIR := $(CHANGELOG_DIR)/releases
 # --------------------------------------------------
 README_FILE := $(PROJECT_ROOT)/README.md
 CHANGELOG_FILE := $(CHANGELOG_DIR)/CHANGELOG.md
+CHANGELOG_RELEASE_FILE := $(CHANGELOG_RELEASE_DIR)/$(RELEASE).md
 # --------------------------------------------------
 # 🐍 Python / Virtual Environment
 # --------------------------------------------------
@@ -130,6 +138,8 @@ PATCH := patch
 # 📜 Changelog generation (git-clif)
 # --------------------------------------------------
 GITCLIFF := git cliff
+GITCLIFF_CHANGELOG:= $(GITCLIFF) --output $(CHANGELOG_FILE)
+GITCLIFF_CHANGELOG_RELEASE := $(GITCLIFF) --unreleased --tag $(RELEASE) --output $(CHANGELOG_RELEASE_FILE)
 # --------------------------------------------------
 # 🐙 Github Tools (git)
 # --------------------------------------------------
@@ -142,37 +152,6 @@ PRECOMMIT := $(ACTIVATE) && pre-commit
 # 🏃‍♂️ Nutri-Matic command
 # --------------------------------------------------
 NUTRIMATIC := $(PYTHON) -m nutrimatic
-# --------------------------------------------------
-# 🏗️ CI/CD Functions
-# --------------------------------------------------
-# Define a reusable CI-safe runner
-define run_ci_safe =
-( $1 || [ "$(CI)" != "1" ] )
-endef
-
-# Command to get the most recent previous version tag
-# 'git describe --tags --abbrev=0' gets the latest tag, so we use HEAD~1 to get the one before that
-# Use 'git describe --tags --abbrev=0' to get the latest tag for the current version
-define get_version
-$(shell $(GIT) describe --tags --abbrev=0 2> /dev/null || echo $(RELEASE))
-endef
-
-define get_previous_version
-$(shell $(GIT) describe --tags --abbrev=0 HEAD~1 2> /dev/null || echo None)
-endef
-# Variables to store the versions
-CURRENT_VERSION := $(call get_version)
-PREVIOUS_VERSION := $(call get_previous_version)
-
-define git_cliff_release_tag
-$(if $(filter-out None,$(PREVIOUS_VERSION)),\
-    $(GITCLIFF) $(PREPREVIOUS_VERSION)..$(CURRENT_VERSION) --tag $(CURRENT_VERSION), \
-    $(GITCLIFF) --unreleased --tag $(CURRENT_VERSION) \
-)
-endef
-
-CHANGELOG_RELEASE_FILE := $(CHANGELOG_RELEASE_DIR)/$(CURRENT_VERSION).md
-GITCLIFF_RELEASE := $(call git_cliff_release_tag) --output $(CHANGELOG_RELEASE_FILE)
 # --------------------------------------------------
 .PHONY: all list-folders venv install ruff-lint-check ruff-lint-fix yaml-lint-check \
 	jinja2-lint-check lint-check typecheck test build-docs jekyll-serve clean help
@@ -352,18 +331,15 @@ bump-version-patch:
 # Note: Run as part of pre-commit.  No manual run needed.
 changelog:
 	$(AT)echo "📜 $(PACKAGE_NAME) Changelog Generation..."
-	$(AT)$(GITCLIFF) \
-	  --output $(CHANGELOG_FILE)
-	$(AT)$(GITCLIFF_RELEASE)
+	$(AT)$(GITCLIFF_CHANGELOG)
+	$(AT)$(GITCLIFF_CHANGELOG_RELEASE)
 	$(AT)$(GIT) add $(CHANGELOG_FILE)
 	$(AT)$(GIT) add $(CHANGELOG_RELEASE_FILE)
 	$(AT)echo "✅ Finished Changelog Update!"
 
 changelog-test:
-	$(AT)echo "current version: $(CURRENT_VERSION)"
-	$(AT)echo "previous version: $(PREVIOUS_VERSION)"
-	$(AT)echo $(GITCLIFF_RELEASE)
-	$(AT)echo $(CHANGELOG_RELEASE_FILE)
+	$(AT)echo $(GITCLIFF_CHANGELOG)
+	$(AT)echo $(GITCLIFF_CHANGELOG_RELEASE)
 # --------------------------------------------------
 # 🐙 Github Commands (git)
 # --------------------------------------------------
