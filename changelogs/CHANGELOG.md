@@ -7,6 +7,10 @@
 ### ⚙️  Miscellaneous
 
 - *(rev)* Rev up to new patch version after first tag release!
+
+### 🐛 Fixed
+
+- *(build)* Fix the build so that released changelogs work correctly now.  rev version now revs up readme file as well.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous

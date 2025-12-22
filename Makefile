@@ -32,9 +32,17 @@ endif
 # --------------------------------------------------
 # 🏗️ CI/CD Functions
 # --------------------------------------------------
-# Define a reusable CI-safe runner
+# Returns true when CI is off and gracefully moves through failed checks.
 define run_ci_safe =
-( $1 || [ "$(CI)" != "1" ] )
+( $1 || \
+	if [ "$(CI)" != "1" ]; then \
+		echo "❌ process finished with error; continuing..."; \
+		true; \
+	else \
+		echo "❌ process finished with error"; \
+		exit 1; \
+	fi \
+)
 endef
 # --------------------------------------------------
 # ⚙️ Build Settings
@@ -69,6 +77,13 @@ README_FILE := $(PROJECT_ROOT)/README.md
 CHANGELOG_FILE := $(CHANGELOG_DIR)/CHANGELOG.md
 CHANGELOG_RELEASE_FILE := $(CHANGELOG_RELEASE_DIR)/$(RELEASE).md
 # --------------------------------------------------
+# 🍪 Template Directories (cookiecutter)
+# --------------------------------------------------
+COOKIE_DIR := $(PROJECT_ROOT)/{{ cookiecutter.project_slug }}
+COOKIE_MACRO_DIR := $(COOKIE_DIR)/.cookiecutter_includes
+RENDERED_COOKIE_DIR := /tmp/rendered
+RENDERED_VENV_DIR := $(RENDERED_COOKIE_DIR)/**/.venv
+# --------------------------------------------------
 # 🐍 Python / Virtual Environment
 # --------------------------------------------------
 PYTHON_CMD := python3.11
@@ -86,6 +101,10 @@ CREATE_VENV := $(PYTHON_CMD) -m venv $(VENV_DIR)
 ACTIVATE := source $(VENV_DIR)/bin/activate
 PYTHON := $(ACTIVATE) && $(PYTHON_CMD)
 PIP := $(PYTHON) -m pip
+# --------------------------------------------------
+# 🍪 Render template (cookiecutter)
+# --------------------------------------------------
+COOKIECUTTER := $(ACTIVATE) && cookiecutter
 # --------------------------------------------------
 # 🧬 Dependency Management (deptry)
 # --------------------------------------------------
@@ -144,6 +163,7 @@ GITCLIFF_CHANGELOG_RELEASE := $(GITCLIFF) --unreleased --tag $(RELEASE) --output
 # 🐙 Github Tools (git)
 # --------------------------------------------------
 GIT := git
+GITHUB := gh
 # --------------------------------------------------
 # 🚨 Pre-Commit (pre-commit)
 # --------------------------------------------------
@@ -152,6 +172,28 @@ PRECOMMIT := $(ACTIVATE) && pre-commit
 # 🏃‍♂️ Nutri-Matic command
 # --------------------------------------------------
 NUTRIMATIC := $(PYTHON) -m nutrimatic
+# --------------------------------------------------
+# Functions
+# --------------------------------------------------
+# Finds files of a given extension or "*" (all files) under a directory,
+# skipping VENV_DIR and template markers like {{ }}.
+define get_files_by_extension
+	find $(1) -name "$(2)" \
+		! -path "$(VENV_DIR)/*" \
+		! -path "$(RENDERED_VENV_DIR)/*" \
+		! -path "*{{*" \
+		! -path "*}}*" \
+		-print0
+endef
+
+JINJA_FILE_LIST := ( \
+		$(call get_files_by_extension,$(PROJECT_ROOT),*.j2); \
+		$(call get_files_by_extension,$(RENDERED_COOKIE_DIR),*.j2) \
+	)
+TOML_FILE_LIST := 	( \
+		$(call get_files_by_extension,$(PROJECT_ROOT),*.toml); \
+		$(call get_files_by_extension,$(RENDERED_COOKIE_DIR),*.toml) \
+	)
 # --------------------------------------------------
 .PHONY: all list-folders venv install ruff-lint-check ruff-lint-fix yaml-lint-check \
 	jinja2-lint-check lint-check typecheck test build-docs jekyll-serve clean help
@@ -186,7 +228,7 @@ install: venv
 # --------------------------------------------------
 pre-commit-init:
 	$(AT)echo "📦 Installing pre-commit hooks and hook-types..."
-	$(AT)which $(GIT) >/dev/null || { $(AT)echo "Git is required"; exit 1; }
+	$(AT)which $(GIT) >/dev/null || { echo "Git is required"; exit 1; }
 	$(AT)$(PRECOMMIT) install --install-hooks
 	$(AT)$(PRECOMMIT) install --hook-type pre-commit --hook-type commit-msg
 	$(AT)echo "✅ pre-commit dependencies installed!"
@@ -231,23 +273,17 @@ djlint-check:
 	$(AT)echo "✅ Finished linting with DJLint!"
 
 jinja2-lint-check:
-	$(AT)echo "🔍 jinja2 linting all template files under $(COOKIE_DIR)..."
+	$(AT)echo "🔍 jinja2 lint..."
 	$(AT)jq '{cookiecutter: .}' cookiecutter.json > /tmp/_cc_wrapped.json
-	$(AT)find '$(COOKIE_DIR)' -type f \
-		! -path "$(COOKIE_DIR)/.github/workflows/*" \
-		! -name "*.md" \
-		! -name "*.html" \
-		! -name "*.png" \
-		! -name "*.jpg" \
-		! -name "*.ico" \
-		! -name "*.gif" \
-		-print0 | while IFS= read -r -d '' f; do \
+	$(AT)$(JINJA_FILE_LIST) | tr '\0' '\n'
+	$(AT)$(ACTIVATE) && $(JINJA_FILE_LIST) | \
+		while IFS= read -r -d '' f; do \
 			if file "$$f" | grep -q text; then \
 				echo "Checking $$f"; \
 				$(JINJA) "$$f" /tmp/_cc_wrapped.json || exit 1; \
 			fi; \
 		done
-	$(AT)echo "✅ Finished linting check of jinja2 files with jinja2!"
+	$(AT)echo "✅ Finished linting check of jinja2 macro files with jinja2!"
 
 ruff-lint-check: list-folders
 	$(AT)echo "🔍 Running ruff linting..."
@@ -262,13 +298,11 @@ ruff-lint-fix:
 
 toml-lint-check:
 	$(AT)echo "🔍 Running Tomllint..."
+	$(AT)$(TOML_FILE_LIST) | tr '\0' '\n'
 	$(AT)$(ACTIVATE) && \
-		find $(PROJECT_ROOT) -name "*.toml" \
-			! -path "$(VENV_DIR)/*" \
-			! -path "*{{*" \
-			! -path "*}}*" \
-			-print0 | xargs -0 -n 1 $(TOMLLINT)
-	$(AT)echo "✅ Finished linting check of toml configuration files with Tomllint!"
+		$(TOML_FILE_LIST) \
+		| xargs -0 -n 1 $(TOMLLINT)
+	$(AT)echo "✅ Finished linting check of toml files with Tomllint!"
 
 yaml-lint-check:
 	$(AT)echo "🔍 Running yamllint..."
