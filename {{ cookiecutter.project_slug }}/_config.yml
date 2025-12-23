@@ -8,10 +8,10 @@ description: "{{ cookiecutter.description }}"
 remote_theme: "{{ cookiecutter.theme }}"
 ga_tracking: "{{ cookiecutter.ga_tracking }}"
 
-repo_name: "{{ cookiecutter.project_name }}"
-baseurl: "/{{ cookiecutter.project_name }}"
+repo_name: "{{ cookiecutter.project_slug }}"
+baseurl: "/{{ cookiecutter.project_slug }}"
 repo_url: >
-  https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
+  https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
 
 # Author Remote User Accounts
 # twitter_username: "{{ cookiecutter.twitter_username }}"
@@ -54,7 +54,7 @@ heading_anchors: true
 # Aux links for the upper right navigation
 aux_links:
   "{{ cookiecutter.project_name }} on GitHub":
-    - "//github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
+    - "//github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: false
@@ -67,7 +67,7 @@ nav_enabled: true
 # External navigation links
 nav_external_links:
   - title: "{{ cookiecutter.project_name }} on GitHub"
-    url: "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
+    url: "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 
 # Back to top link
 back_to_top: true
@@ -75,7 +75,7 @@ back_to_top_text: "Back to top"
 
 footer_content: >-
   Copyright &copy; 2025 {{ cookiecutter.author }}. Distributed by an
-  <a href="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/blob/master/LICENSE">
+  <a href="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/blob/master/LICENSE">
       MIT license.
   </a>
   <a href=""></a>
@@ -92,7 +92,7 @@ gh_edit_link: true
 gh_edit_link_text: "Edit this page on GitHub"
 # the github URL for your repo
 gh_edit_repository: >-
-  https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
+  https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
 # the branch that your docs is served from
 gh_edit_branch: "master"
 # the source that your files originate from
@@ -137,4 +137,4 @@ exclude:
 # Optional SEO metadata
 seo:
   title: "{{ cookiecutter.project_name }} Documentation"
-  description: "Full code documentation for the {{ cookiecutter.project_name }} project"
+  description: "Full code documentation for the {{ cookiecutter.project_slug }} project"

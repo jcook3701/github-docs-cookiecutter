@@ -9,12 +9,6 @@ Description: Post project generation Scripts.
 """
 
 import os
-from pathlib import Path
-
-# Add the generated package to sys.path so Python can find it
-PROJECT_DIR = Path.cwd()
-# HOOKS_DIR = PROJECT_DIR / "_shared_hooks" / "post_gen_logic"
-# sys.path.insert(0, str(HOOKS_DIR))
 
 
 def main() -> None:

@@ -30,11 +30,26 @@ else
 CI := 0
 endif
 # --------------------------------------------------
+# 🏗️ CI/CD Functions
+# --------------------------------------------------
+# Returns true when CI is off and gracefully moves through failed checks.
+define run_ci_safe =
+( $1 || \
+	if [ "$(CI)" != "1" ]; then \
+		echo "❌ process finished with error; continuing..."; \
+		true; \
+	else \
+		echo "❌ process finished with error"; \
+		exit 1; \
+	fi \
+)
+endef
+# --------------------------------------------------
 # ⚙️ Build Settings
 # --------------------------------------------------
 PACKAGE_NAME := "github-docs-cookiecutter"
 AUTHOR := "Jared Cook"
-VERSION := "0.1.0"
+VERSION := "0.1.1"
 RELEASE := v$(VERSION)
 # --------------------------------------------------
 # 🐙 Github Build Settings
@@ -60,6 +75,14 @@ CHANGELOG_RELEASE_DIR := $(CHANGELOG_DIR)/releases
 # --------------------------------------------------
 README_FILE := $(PROJECT_ROOT)/README.md
 CHANGELOG_FILE := $(CHANGELOG_DIR)/CHANGELOG.md
+CHANGELOG_RELEASE_FILE := $(CHANGELOG_RELEASE_DIR)/$(RELEASE).md
+# --------------------------------------------------
+# 🍪 Template Directories (cookiecutter)
+# --------------------------------------------------
+COOKIE_DIR := $(PROJECT_ROOT)/{{ cookiecutter.project_slug }}
+COOKIE_MACRO_DIR := $(COOKIE_DIR)/.cookiecutter_includes
+RENDERED_COOKIE_DIR := /tmp/rendered
+RENDERED_VENV_DIR := $(RENDERED_COOKIE_DIR)/**/.venv
 # --------------------------------------------------
 # 🐍 Python / Virtual Environment
 # --------------------------------------------------
@@ -78,6 +101,10 @@ CREATE_VENV := $(PYTHON_CMD) -m venv $(VENV_DIR)
 ACTIVATE := source $(VENV_DIR)/bin/activate
 PYTHON := $(ACTIVATE) && $(PYTHON_CMD)
 PIP := $(PYTHON) -m pip
+# --------------------------------------------------
+# 🍪 Render template (cookiecutter)
+# --------------------------------------------------
+COOKIECUTTER := $(ACTIVATE) && cookiecutter
 # --------------------------------------------------
 # 🧬 Dependency Management (deptry)
 # --------------------------------------------------
@@ -130,10 +157,13 @@ PATCH := patch
 # 📜 Changelog generation (git-clif)
 # --------------------------------------------------
 GITCLIFF := git cliff
+GITCLIFF_CHANGELOG:= $(GITCLIFF) --output $(CHANGELOG_FILE)
+GITCLIFF_CHANGELOG_RELEASE := $(GITCLIFF) --unreleased --tag $(RELEASE) --output $(CHANGELOG_RELEASE_FILE)
 # --------------------------------------------------
 # 🐙 Github Tools (git)
 # --------------------------------------------------
 GIT := git
+GITHUB := gh
 # --------------------------------------------------
 # 🚨 Pre-Commit (pre-commit)
 # --------------------------------------------------
@@ -143,36 +173,27 @@ PRECOMMIT := $(ACTIVATE) && pre-commit
 # --------------------------------------------------
 NUTRIMATIC := $(PYTHON) -m nutrimatic
 # --------------------------------------------------
-# 🏗️ CI/CD Functions
+# Functions
 # --------------------------------------------------
-# Define a reusable CI-safe runner
-define run_ci_safe =
-( $1 || [ "$(CI)" != "1" ] )
+# Finds files of a given extension or "*" (all files) under a directory,
+# skipping VENV_DIR and template markers like {{ }}.
+define get_files_by_extension
+	find $(1) -name "$(2)" \
+		! -path "$(VENV_DIR)/*" \
+		! -path "$(RENDERED_VENV_DIR)/*" \
+		! -path "*{{*" \
+		! -path "*}}*" \
+		-print0
 endef
 
-# Command to get the most recent previous version tag
-# 'git describe --tags --abbrev=0' gets the latest tag, so we use HEAD~1 to get the one before that
-# Use 'git describe --tags --abbrev=0' to get the latest tag for the current version
-define get_version
-$(shell $(GIT) describe --tags --abbrev=0 2> /dev/null || echo $(RELEASE))
-endef
-
-define get_previous_version
-$(shell $(GIT) describe --tags --abbrev=0 HEAD~1 2> /dev/null || echo None)
-endef
-# Variables to store the versions
-CURRENT_VERSION := $(call get_version)
-PREVIOUS_VERSION := $(call get_previous_version)
-
-define git_cliff_release_tag
-$(if $(filter-out None,$(PREVIOUS_VERSION)),\
-    $(GITCLIFF) $(PREPREVIOUS_VERSION)..$(CURRENT_VERSION) --tag $(CURRENT_VERSION), \
-    $(GITCLIFF) --unreleased --tag $(CURRENT_VERSION) \
-)
-endef
-
-CHANGELOG_RELEASE_FILE := $(CHANGELOG_RELEASE_DIR)/$(CURRENT_VERSION).md
-GITCLIFF_RELEASE := $(call git_cliff_release_tag) --output $(CHANGELOG_RELEASE_FILE)
+JINJA_FILE_LIST := ( \
+		$(call get_files_by_extension,$(PROJECT_ROOT),*.j2); \
+		$(call get_files_by_extension,$(RENDERED_COOKIE_DIR),*.j2) \
+	)
+TOML_FILE_LIST := 	( \
+		$(call get_files_by_extension,$(PROJECT_ROOT),*.toml); \
+		$(call get_files_by_extension,$(RENDERED_COOKIE_DIR),*.toml) \
+	)
 # --------------------------------------------------
 .PHONY: all list-folders venv install ruff-lint-check ruff-lint-fix yaml-lint-check \
 	jinja2-lint-check lint-check typecheck test build-docs jekyll-serve clean help
@@ -207,7 +228,7 @@ install: venv
 # --------------------------------------------------
 pre-commit-init:
 	$(AT)echo "📦 Installing pre-commit hooks and hook-types..."
-	$(AT)which $(GIT) >/dev/null || { $(AT)echo "Git is required"; exit 1; }
+	$(AT)which $(GIT) >/dev/null || { echo "Git is required"; exit 1; }
 	$(AT)$(PRECOMMIT) install --install-hooks
 	$(AT)$(PRECOMMIT) install --hook-type pre-commit --hook-type commit-msg
 	$(AT)echo "✅ pre-commit dependencies installed!"
@@ -252,23 +273,17 @@ djlint-check:
 	$(AT)echo "✅ Finished linting with DJLint!"
 
 jinja2-lint-check:
-	$(AT)echo "🔍 jinja2 linting all template files under $(COOKIE_DIR)..."
+	$(AT)echo "🔍 jinja2 lint..."
 	$(AT)jq '{cookiecutter: .}' cookiecutter.json > /tmp/_cc_wrapped.json
-	$(AT)find '$(COOKIE_DIR)' -type f \
-		! -path "$(COOKIE_DIR)/.github/workflows/*" \
-		! -name "*.md" \
-		! -name "*.html" \
-		! -name "*.png" \
-		! -name "*.jpg" \
-		! -name "*.ico" \
-		! -name "*.gif" \
-		-print0 | while IFS= read -r -d '' f; do \
+	$(AT)$(JINJA_FILE_LIST) | tr '\0' '\n'
+	$(AT)$(ACTIVATE) && $(JINJA_FILE_LIST) | \
+		while IFS= read -r -d '' f; do \
 			if file "$$f" | grep -q text; then \
 				echo "Checking $$f"; \
 				$(JINJA) "$$f" /tmp/_cc_wrapped.json || exit 1; \
 			fi; \
 		done
-	$(AT)echo "✅ Finished linting check of jinja2 files with jinja2!"
+	$(AT)echo "✅ Finished linting check of jinja2 macro files with jinja2!"
 
 ruff-lint-check: list-folders
 	$(AT)echo "🔍 Running ruff linting..."
@@ -283,13 +298,11 @@ ruff-lint-fix:
 
 toml-lint-check:
 	$(AT)echo "🔍 Running Tomllint..."
+	$(AT)$(TOML_FILE_LIST) | tr '\0' '\n'
 	$(AT)$(ACTIVATE) && \
-		find $(PROJECT_ROOT) -name "*.toml" \
-			! -path "$(VENV_DIR)/*" \
-			! -path "*{{*" \
-			! -path "*}}*" \
-			-print0 | xargs -0 -n 1 $(TOMLLINT)
-	$(AT)echo "✅ Finished linting check of toml configuration files with Tomllint!"
+		$(TOML_FILE_LIST) \
+		| xargs -0 -n 1 $(TOMLLINT)
+	$(AT)echo "✅ Finished linting check of toml files with Tomllint!"
 
 yaml-lint-check:
 	$(AT)echo "🔍 Running yamllint..."
@@ -352,18 +365,15 @@ bump-version-patch:
 # Note: Run as part of pre-commit.  No manual run needed.
 changelog:
 	$(AT)echo "📜 $(PACKAGE_NAME) Changelog Generation..."
-	$(AT)$(GITCLIFF) \
-	  --output $(CHANGELOG_FILE)
-	$(AT)$(GITCLIFF_RELEASE)
+	$(AT)$(GITCLIFF_CHANGELOG)
+	$(AT)$(GITCLIFF_CHANGELOG_RELEASE)
 	$(AT)$(GIT) add $(CHANGELOG_FILE)
 	$(AT)$(GIT) add $(CHANGELOG_RELEASE_FILE)
 	$(AT)echo "✅ Finished Changelog Update!"
 
 changelog-test:
-	$(AT)echo "current version: $(CURRENT_VERSION)"
-	$(AT)echo "previous version: $(PREVIOUS_VERSION)"
-	$(AT)echo $(GITCLIFF_RELEASE)
-	$(AT)echo $(CHANGELOG_RELEASE_FILE)
+	$(AT)echo $(GITCLIFF_CHANGELOG)
+	$(AT)echo $(GITCLIFF_CHANGELOG_RELEASE)
 # --------------------------------------------------
 # 🐙 Github Commands (git)
 # --------------------------------------------------

@@ -6,6 +6,21 @@
 
 ### ⚙️  Miscellaneous
 
+- *(rev)* Rev up to new patch version after first tag release!
+
+### 🐛 Fixed
+
+- *(build)* Fix the build so that released changelogs work correctly now.  rev version now revs up readme file as well.
+- *(template)* Updated project to use project_slug as cookiecutter standard.
+- *(tests)* Fixed output of project path to the new expected output.
+
+### 🚀 Added
+
+- *(template)* Added template generated settings under docs as standard.
+## [0.1.0] - 2025-12-05
+
+### ⚙️  Miscellaneous
+
 - Initial commit
 - Have a start of a chrome extension.
 - Addding gitignore
@@ -201,7 +216,24 @@ Co-authored-by: jcook3701 <jcook3701@gmail.com>
 - Merge pull request #14 from jcook3701/develop
 
 Feat 01 (#13)
-- Merge branch 'develop' into feat-02
+- Feat 02 (#15)
+
+* docs(update): small build makefile updates along with updates for required packages in README.
+
+* docs(readme): readme cleanup.
+
+* docs(readme): readme cleanup.
+
+* docs(readme): readme cleanup.
+
+* build(makefile): Updates to makefile build.
+
+---------
+
+Co-authored-by: jcook3701 <jcook3701@gmail.com>
+- Merge pull request #16 from jcook3701/develop
+
+Develop
 
 ### 🐛 Fixed
 
@@ -209,10 +241,6 @@ Feat 01 (#13)
 
 ### 📚 Documentation
 
-- *(update)* Small build makefile updates along with updates for required packages in README.
-- *(readme)* Readme cleanup.
-- *(readme)* Readme cleanup.
-- *(readme)* Readme cleanup.
 - *(readme)* Added extra make commands to documentation.
 
 ### 🚫 Removed
