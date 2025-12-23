@@ -12,6 +12,7 @@
 
 - *(build)* Fix the build so that released changelogs work correctly now.  rev version now revs up readme file as well.
 - *(template)* Updated project to use project_slug as cookiecutter standard.
+- *(tests)* Fixed output of project path to the new expected output.
 
 ### 🚀 Added
 

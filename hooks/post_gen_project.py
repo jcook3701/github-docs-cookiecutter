@@ -9,7 +9,6 @@ Description: Post project generation Scripts.
 """
 
 import os
-from pathlib import Path
 
 
 def main() -> None:
