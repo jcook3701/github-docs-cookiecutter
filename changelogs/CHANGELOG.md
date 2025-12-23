@@ -12,6 +12,10 @@
 
 - *(build)* Fix the build so that released changelogs work correctly now.  rev version now revs up readme file as well.
 - *(template)* Updated project to use project_slug as cookiecutter standard.
+
+### 🚀 Added
+
+- *(template)* Added template generated settings under docs as standard.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
