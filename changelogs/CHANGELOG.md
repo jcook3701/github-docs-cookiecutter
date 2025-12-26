@@ -6,17 +6,19 @@
 
 ### ⚙️  Miscellaneous
 
-- *(rev)* Rev up to new patch version after first tag release!
+- Feat 03 (#17)
 
-### 🐛 Fixed
+* chore(rev): rev up to new patch version after first tag release!
 
-- *(build)* Fix the build so that released changelogs work correctly now.  rev version now revs up readme file as well.
-- *(template)* Updated project to use project_slug as cookiecutter standard.
-- *(tests)* Fixed output of project path to the new expected output.
+* fix(build): fix the build so that released changelogs work correctly now.  rev version now revs up readme file as well.
 
-### 🚀 Added
+* fix(template): Updated project to use project_slug as cookiecutter standard.
 
-- *(template)* Added template generated settings under docs as standard.
+* feat(template): added template generated settings under docs as standard.
+
+* fix(tests): Fixed output of project path to the new expected output.
+
+* fix(template): fixed cookiecutter.json.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
