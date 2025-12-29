@@ -1,4 +1,4 @@
-# spellcheck.yml for github-docs-cookiecutter
+# pre_gen_project.py for github-docs-cookiecutter
 #
 # Copyright (c) 2025, Jared Cook
 # SPDX-License-Identifier: GPL-3.0-or-later
@@ -16,28 +16,21 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <www.gnu.org>.
 #
----
-name: Cookiecutter Template Spellcheck
 
-on: [push, pull_request]
 
-jobs:
-  spellcheck:
-    runs-on: ubuntu-latest
+import json
+import os
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+def main() -> None:
+    """Cookiecutter Pre Generation Scripts"""
+    # Detect CI (e.g. GitHub Actions, GitLab CI, etc.)
+    if os.getenv("CI"):
+        print("⚙️  Detected CI environment — skipping GitHub Docs generation.")
+        return
+    context = json.loads("""{{ cookiecutter | jsonify }}""")
+    print(f"Context: {context}")
 
-      - name: Install codespell
-        run: |
-          make install
 
-      - name: Run Spellcheck
-        run: |
-          make spellcheck
+if __name__ == "__main__":
+    main()
