@@ -19,6 +19,10 @@
 * fix(tests): Fixed output of project path to the new expected output.
 
 * fix(template): fixed cookiecutter.json.
+
+### 🚀 Added
+
+- *(upgrade)* Setting up project for upgrade from cookiecutter-cookiecutter.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
