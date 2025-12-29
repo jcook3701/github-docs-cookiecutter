@@ -12,7 +12,7 @@
         "project_name": "github-docs-cookiecutter",
         "target_version": "py311"
     },
-    "_checkout": "feat-006",
+    "_checkout": "main",
     "_copy_without_render": [],
     "_extensions": [
         "jinja2.ext.do",
