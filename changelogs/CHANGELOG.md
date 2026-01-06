@@ -19,10 +19,18 @@
 * fix(tests): Fixed output of project path to the new expected output.
 
 * fix(template): fixed cookiecutter.json.
+- Feat 004 (#18)
 
-### 🚀 Added
+* feat(upgrade): setting up project for upgrade from cookiecutter-cookiecutter.
 
-- *(upgrade)* Setting up project for upgrade from cookiecutter-cookiecutter.
+* Update template
+
+* Update template
+
+* Update template
+- Merge pull request #19 from jcook3701/develop
+
+Feat 004 (#18)
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
