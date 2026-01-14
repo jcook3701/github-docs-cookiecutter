@@ -31,6 +31,16 @@
 - Merge pull request #19 from jcook3701/develop
 
 Feat 004 (#18)
+- Merge pull request #20 from jcook3701/feat-005
+
+Feat (005)
+- Merge pull request #21 from jcook3701/develop
+
+Develop
+
+### 🐛 Fixed
+
+- *(template)* Updates to template cookiecutter.json file.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
