@@ -41,6 +41,10 @@ Develop
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
+
+### 🚀 Added
+
+- *(docs)* Preparing project for Contributor License Agreements and getting major project documentation ready.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous

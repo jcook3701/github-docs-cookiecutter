@@ -1,6 +1,6 @@
 # post_gen_project.py for github-docs-cookiecutter
 #
-# Copyright (c) 2025, Jared Cook
+# Copyright (c) 2026, Jared Cook
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <www.gnu.org>.
 #
-
 
 import json
 import os
@@ -34,6 +33,8 @@ def main() -> None:
     if os.getenv("CI"):
         print("⚙️  Detected CI environment — skipping GitHub Docs generation.")
         return
+    os.environ["COOKIECUTTER_HOOKS"] = "true"
+
     # Access cookiecutter context safely
     context = json.loads("""{{ cookiecutter | jsonify }}""")
     generate_docs_templates(context)

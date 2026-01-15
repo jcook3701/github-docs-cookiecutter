@@ -1,6 +1,6 @@
 # Makefile for github-docs-cookiecutter
 #
-# Copyright (c) 2025, Jared Cook
+# Copyright (c) 2026, Jared Cook
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 # This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,6 @@
 # --------------------------------------------------
 SHELL := /bin/bash
 .SHELLFLAGS := -O globstar -c
-
 # If V is set to '1' or 'y' on the command line,
 # AT will be empty (verbose).  Otherwise, AT will
 # contain '@' (quiet by default).  The '?' is a
@@ -33,7 +32,6 @@ ifeq ($(V),0)
 else
     AT =
 endif
-
 # Detect if we are running inside GitHub Actions CI.
 # GitHub sets the environment variable GITHUB_ACTIONS=true in workflows.
 # We set CI=1 if running in GitHub Actions, otherwise CI=0 for local runs.
@@ -42,7 +40,6 @@ CI := 1
 else
 CI := 0
 endif
-
 # Detect if we are running inside Cookiecutter (pre/post) hooks.
 # Cookiecutter hooks are used to set the environment variable COOKIECUTTER_HOOKS=true.
 # We set CC=1 if running in Cookiecutter hooks, otherwise CC=0 for standard runs.
@@ -110,7 +107,7 @@ CHANGELOG_RELEASE_FILE := $(CHANGELOG_RELEASE_DIR)/$(RELEASE).md
 # --------------------------------------------------
 # 🍪 Template Directories (cookiecutter)
 # --------------------------------------------------
-COOKIE_DIR := $(PROJECT_ROOT)/{{ cookiecutter.project_slug }}
+COOKIE_DIR := {{ cookiecutter.project_slug }}
 COOKIE_MACRO_DIR := $(COOKIE_DIR)/.cookiecutter_includes
 RENDERED_COOKIE_DIR := /tmp/rendered
 RENDERED_VENV_DIR := $(RENDERED_COOKIE_DIR)/**/.venv
@@ -219,6 +216,7 @@ define get_files_by_extension
 		! -path "$(RENDERED_VENV_DIR)/*" \
 		! -path "*{{*" \
 		! -path "*}}*" \
+		! -name "__init__.j2" \
 		-print0
 endef
 
@@ -293,7 +291,10 @@ pre-commit-init:
 # --------------------------------------------------
 project-upgrade:
 	$(AT)echo "🍪 Upgrading project from initial cookiecutter template..."
-	$(AT)$(PROJECT_UPGRADE) --context-file ./docs/cookiecutter_input.json --upgrade-branch main -e cookiecutter.json
+	$(AT)$(PROJECT_UPGRADE) --context-file ./docs/cookiecutter_input.json \
+		--upgrade-branch main \
+		-e "cookiecutter.json" \
+		-e "$(COOKIE_DIR)"
 	$(AT)echo "✅ Finished project upgrade!"
 # --------------------------------------------------
 # 🛡️ Security (pip-audit)
@@ -352,6 +353,7 @@ ruff-lint-check:
 	$(AT)$(MAKE) list-folders
 	$(AT)$(RUFF) check --config pyproject.toml $(SRC_DIR) $(TESTS_DIR) \
 		--force-exclude '$(COOKIE_DIR)/pyproject.toml'
+	$(AT)echo "✅ Finished linting check of Python code with Ruff!"
 
 ruff-lint-fix:
 	$(AT)echo "🎨 Running ruff lint fixes..."
