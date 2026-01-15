@@ -14,6 +14,14 @@
   "linkedin_usercode": "jared-cook-b3585a114",
   "twitter_username": "",
   "buymeacoffee_username": "jcook3701",
+  "template_type": [
+    "ansible",
+    "c/c++",
+    "cookiecutter",
+    "python",
+    "ros2",
+    "typescript"
+  ],
   "_is_sub_template": true,
   "_copy_without_render": [
     "README.md",

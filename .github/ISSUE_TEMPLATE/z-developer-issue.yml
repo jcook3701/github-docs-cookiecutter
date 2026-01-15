@@ -1,4 +1,4 @@
-# security-audit.yml for github-docs-cookiecutter
+# z-developer-issue.yml for github-docs-cookiecutter
 #
 # Copyright (c) 2026, Jared Cook
 # SPDX-License-Identifier: GPL-3.0-or-later
@@ -17,27 +17,18 @@
 # along with this program.  If not, see <www.gnu.org>.
 #
 ---
-name: Cookiecutter Template Security Audit
-
-on: [push, pull_request]
-
-jobs:
-  security-audit:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install pip-audit
-        run: |
-          make install
-
-      - name: Run Security Check
-        run: |
-          make security
+name: "🛠️ Developer / General Issue"
+description: "Blank template for contributors and maintainers (no form)."
+title: "[Dev]: "
+labels: ["internal"]
+assignees:
+  - jcook3701
+body:
+  - type: textarea
+    id: content
+    attributes:
+      label: Issue Content
+      description: "Free-form text area for developer tasks, refactoring, or general notes."
+      placeholder: "Describe the task or internal update..."
+    validations:
+      required: true
