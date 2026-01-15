@@ -9,9 +9,11 @@ remote_theme: "{{ cookiecutter.theme }}"
 ga_tracking: "{{ cookiecutter.ga_tracking }}"
 
 repo_name: "{{ cookiecutter.project_slug }}"
-baseurl: "/{{ cookiecutter.project_slug }}"
 repo_url: >
   https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
+
+# Specifies the site's subpath for correct URL generation
+baseurl: "/{{ cookiecutter.project_slug }}"
 
 # Author Remote User Accounts
 # twitter_username: "{{ cookiecutter.twitter_username }}"
@@ -117,6 +119,13 @@ callouts:
   warning:
     title: Warning
     color: red
+
+collections:
+  manual:
+    output: true
+    permalink: /:manual/:path/
+
+collections_dir: .
 
 plugins:
   - jekyll-seo-tag

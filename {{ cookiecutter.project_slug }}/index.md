@@ -1,6 +1,6 @@
 ---
 layout: default
-title: {{ cookiecutter.project_name }}
+title: {{ cookiecutter.project_slug }}
 nav_order: 1
 description: {{ cookiecutter.description }}
 ---
