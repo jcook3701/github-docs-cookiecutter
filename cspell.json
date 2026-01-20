@@ -21,6 +21,7 @@
         "pyproject",
         "pytest",
         "rpmnew",
+        "rustc",
         "streetsidesoftware",
         "tomllint",
         "tsmerge",
