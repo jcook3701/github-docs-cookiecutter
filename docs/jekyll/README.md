@@ -9,6 +9,10 @@ __Version:__ {{ site.version }}
 ## Overview:
 Template cookiecutter project for Github Pages (Jekyll).  Skip the boring stuff and get to the work that matters.
 
+***
+
+[![License](https://img.shields.io/github/license/jcook3701/github-docs-cookiecutter)](LICENSE)
+
 ![dependency-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/dependency-check.yml/badge.svg)
 ![format-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/format-check.yml/badge.svg)
 ![lint-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/lint-check.yml/badge.svg)

@@ -4,8 +4,12 @@
   "author": "Jared Cook",
   "email": "jcook3701+github@gmail.com",
   "version": "0.1.0",
+  "timezone": [
+    "America/Los_Angeles"
+  ],
   "description": "Cookiecutter documentation for future project Github Wiki Pages.",
   "theme": [
+    "just-the-docs/just-the-docs@v0.11.0",
     "pmarsceill/just-the-docs",
     "carlosperate/jekyll-theme-rtd"
   ],

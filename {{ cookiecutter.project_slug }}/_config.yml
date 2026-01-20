@@ -4,6 +4,7 @@
 title: "{{ cookiecutter.project_name }}"
 author: "{{ cookiecutter.author }}"
 version: "{{ cookiecutter.version }}"
+timezone: "{{ cookiecutter.timezone }}"
 description: "{{ cookiecutter.description }}"
 remote_theme: "{{ cookiecutter.theme }}"
 ga_tracking: "{{ cookiecutter.ga_tracking }}"
@@ -14,6 +15,35 @@ repo_url: >
 
 # Specifies the site's subpath for correct URL generation
 baseurl: "/{{ cookiecutter.project_slug }}"
+
+collections:
+  manual:
+    output: true
+    permalink: /:collection/:path
+
+  resources:
+    output: true
+    permalink: /:collection/:path
+
+just_the_docs:
+  collections:
+    manual:
+      name: Manual
+      nav_fold: true
+      nav_exclude: false
+
+    resources:
+      name: "External Links"
+      nav_fold: false
+      nav_exclude: false
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-github-metadata
+  - jekyll-include-cache
+  - jekyll-sitemap
 
 # Author Remote User Accounts
 # twitter_username: "{{ cookiecutter.twitter_username }}"
@@ -66,11 +96,6 @@ aux_links_new_tab: false
 #     using page variables or the minimal layout
 nav_enabled: true
 
-# External navigation links
-nav_external_links:
-  - title: "{{ cookiecutter.project_name }} on GitHub"
-    url: "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
-
 # Back to top link
 back_to_top: true
 back_to_top_text: "Back to top"
@@ -120,21 +145,11 @@ callouts:
     title: Warning
     color: red
 
-collections:
-  manual:
-    output: true
-    permalink: /:manual/:path/
-
-collections_dir: .
-
-plugins:
-  - jekyll-seo-tag
-  - jekyll-github-metadata
-  - jekyll-include-cache
-  - jekyll-sitemap
-
 kramdown:
   auto_ids: true
+
+include:
+  - .well-known
 
 # Exclude files/folders from Jekyll processing
 exclude:
