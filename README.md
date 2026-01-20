@@ -14,6 +14,10 @@
 <h2 id="overview-1">Overview:</h2>
 <p>Template cookiecutter project for Github Pages (Jekyll).  Skip the boring stuff and get to the work that matters.</p>
 
+<hr />
+
+<p><a href="LICENSE"><img src="https://img.shields.io/github/license/jcook3701/github-docs-cookiecutter" alt="License" /></a></p>
+
 <p><img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/dependency-check.yml/badge.svg" alt="dependency-check" />
 <img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/format-check.yml/badge.svg" alt="format-check" />
 <img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/lint-check.yml/badge.svg" alt="lint-check" />

@@ -6,6 +6,7 @@
   "version": "0.1.0",
   "description": "Cookiecutter documentation for future project Github Wiki Pages.",
   "theme": [
+    "just-the-docs/just-the-docs@v0.11.0",
     "pmarsceill/just-the-docs",
     "carlosperate/jekyll-theme-rtd"
   ],

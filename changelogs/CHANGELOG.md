@@ -37,14 +37,18 @@ Feat (005)
 - Merge pull request #21 from jcook3701/develop
 
 Develop
+- Feat 006 (#23)
+
+* feat(docs): Preparing project for Contributor License Agreements and getting major project documentation ready.
+
+* chore(update): Update from cookiecutter-cookiecutter using cookiecutter_project_upgrader.
+- Merge pull request #24 from jcook3701/develop
+
+Feat 006 (#23)
 
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
-
-### 🚀 Added
-
-- *(docs)* Preparing project for Contributor License Agreements and getting major project documentation ready.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
