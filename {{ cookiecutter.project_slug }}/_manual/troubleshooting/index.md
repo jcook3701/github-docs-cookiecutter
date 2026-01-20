@@ -2,5 +2,6 @@
 layout: default
 title: Troubleshooting
 nav_order: 1
-parent: {{ cookiecutter.project_name }}
+has_children: true
 ---
+## Troubleshooting {{ cookiecutter.project_name }}

@@ -2,5 +2,6 @@
 layout: default
 title: Introduction
 nav_order: 1
-parent: {{ cookiecutter.project_name }}
+has_children: true
 ---
+## Introduction to {{ cookiecutter.project_name }}
