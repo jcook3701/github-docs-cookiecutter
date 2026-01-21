@@ -11,8 +11,7 @@
 <h2 id="overview">Overview</h2>
 <p>Github docs cookiecutter template generation.</p>
 
-<h2 id="overview-1">Overview:</h2>
-<p>Template cookiecutter project for Github Pages (Jekyll).  Skip the boring stuff and get to the work that matters.</p>
+<p>Template cookiecutter project for Github Pages (Jekyll).  This project can utilize a variety of different documentation templates but is focused mainly on a clean implementation of <a href="https://github.com/just-the-docs/just-the-docs">just the docs</a>. Skip the boring boilerplate code and get to the work that matters.</p>
 
 <hr />
 
@@ -87,57 +86,9 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>make <span class="nb">help</span>
 </code></pre></div></div>
 
-<h2 id="commit-help">Commit Help:</h2>
-<p><strong>Note:</strong> Commits are required to be conventional git commit message.  This helps with the auto-generation of the changelog files and is enforced by pre-commit.<br />
-<strong>example:</strong></p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;<span class="nb">type</span><span class="o">&gt;[</span>optional scope]: &lt;description&gt;
-
-<span class="o">[</span>optional body]
-
-<span class="o">[</span>optional footer<span class="o">(</span>s<span class="o">)]</span>
-</code></pre></div></div>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">&lt;type&gt;</code>: A required noun that describes the nature of the change.</li>
-  <li><code class="language-plaintext highlighter-rouge">[optional scope]</code>: An optional phrase within parentheses that specifies the part of the codebase being affected (e.g., fix(parser):).</li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;description&gt;</code>: A required short, imperative-mood summary of the changes.</li>
-  <li><code class="language-plaintext highlighter-rouge">[optional body]</code>: A longer description providing additional context and “what and why” details.</li>
-  <li><code class="language-plaintext highlighter-rouge">[optional footer(s)]</code>: Used for adding meta-information, such as issue references (Fixes #123) or indicating breaking changes.</li>
-</ul>
-
-<hr />
-
-<h2 id="requirements">Requirements:</h2>
-<ol>
-  <li>Python 3.11
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>python3.11
-</code></pre></div>    </div>
-  </li>
-  <li><a href="https://rust-lang.org/tools/install/">rustup</a><br />
-<strong>Note:</strong> I found that it is easiest to use rustup to manage rustc and cargo but this is not required.<br />
-<strong>Example:</strong> Install rustup with the following:
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">--proto</span> <span class="s1">'=https'</span> <span class="nt">--tlsv1</span>.2 <span class="nt">-sSf</span> https://sh.rustup.rs | sh
-</code></pre></div>    </div>
-  </li>
-  <li><a href="https://git-cliff.org/">git-cliff</a><br />
-<strong>Note:</strong> git-cliff can generate changelog files from the Git history by utilizing conventional commits as well as regex-powered custom parsers.
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>cargo <span class="nb">install </span>git-cliff
-</code></pre></div>    </div>
-  </li>
-</ol>
-
 <hr />
 
 <h3 id="authors-notes">Authors Notes:</h3>
 <ol>
   <li>This code currently works with cookiecutter 1.7 from Ubuntu’s apt repositories.</li>
 </ol>
-
-<!--
-### Authors Hidden TODO's
-12/4/2025 - Need to weigh out if it is worth the work to move to DJLint as jinja2 seems to be doing the job well.
-1. ~~[markdown](https://github.com/jackdewinter/pymarkdown) linter.~~  
-      * ~~[docs](https://pymarkdown.readthedocs.io/en/latest/getting-started/)~~  
-2. [djlint](https://djlint.com/)  
-      * Swap jinja2 for djlint...
-
--->

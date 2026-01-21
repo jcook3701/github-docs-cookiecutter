@@ -53,6 +53,15 @@ Feat 006 (#23)
 - Merge pull request #26 from jcook3701/develop
 
 Feat 007 cla continued (#25)
+- Feat 009 jekyll ci cd (#27)
+
+* fix(docs): fix for the jekyll ci/cd.  Switched to my makefile build and am using that build path.
+
+* chore(upgrade): Update template from cookiecutter-cookiecutter parent project using cookiecutter_project_upgrader.
+- Merge pull request #28 from jcook3701/develop
+
+Feat 009 jekyll ci cd (#27)
+- Merge branch 'develop' into feat-008-cla
 
 ### 🐛 Fixed
 
