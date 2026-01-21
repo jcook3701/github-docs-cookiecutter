@@ -57,6 +57,7 @@ Feat 007 cla continued (#25)
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
+- *(docs)* Fix for the jekyll ci/cd.  Switched to my makefile build and am using that build path.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
