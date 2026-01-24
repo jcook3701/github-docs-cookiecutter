@@ -7,12 +7,12 @@ parent: Contribute
 
 ## Create a pull request
 
-Every contribution to {{cookiecutter.project_name }}'s software begins with a [pull request](https://help.github.com/en/articles/about-pull-requests/). This document guides you through the process of creating a PR.
+Every contribution to {{ cookiecutter.project_name }}'s software begins with a [pull request](https://help.github.com/en/articles/about-pull-requests/). This document guides you through the process of creating a PR.
 
 ## Before you begin
 
 We know you're excited to create your first pull request. Before we get started, read these resources first:
 
-- Get started [contributing to {{ cookiecutter.project_name }}]({{ site.repo_url }}/CONTRIBUTING.md).
-- Make sure your code follows the relevant [style guides]({% link style-guides/index.md %}).
-- It's recommended you [set up precommit hooks]({% link developer-guide.md %}) to auto-format when you commit
+- Get started [contributing to {{ cookiecutter.project_name }}]({% raw %}{{ site.repo_url }}{% endraw %}/CONTRIBUTING.md).
+- Make sure your code follows the relevant [style guides]({% raw %}{% link style-guides/index.md %}{% endraw %}).
+- It's recommended you [set up precommit hooks]({% raw %}{% link developer-guide.md %}{% endraw %}) to auto-format when you commit.

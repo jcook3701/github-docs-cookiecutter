@@ -62,6 +62,10 @@ Feat 007 cla continued (#25)
 
 Feat 009 jekyll ci cd (#27)
 - Merge branch 'develop' into feat-008-cla
+- Update template
+- Update template
+- Update template
+- Merge branch 'cookiecutter-template' into feat-008-cla
 
 ### 🐛 Fixed
 
