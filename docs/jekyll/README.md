@@ -6,8 +6,7 @@ __Version:__ {{ site.version }}
 ## Overview
 {{ site.description }}  
 
-## Overview:
-Template cookiecutter project for Github Pages (Jekyll).  Skip the boring stuff and get to the work that matters.
+Template cookiecutter project for Github Pages (Jekyll).  This project can utilize a variety of different documentation templates but is focused mainly on a clean implementation of [just the docs](https://github.com/just-the-docs/just-the-docs). Skip the boring boilerplate code and get to the work that matters.
 
 ***
 
@@ -92,53 +91,7 @@ $ make release
 $ make help
 ```
 
-## Commit Help:
-__Note:__ Commits are required to be conventional git commit message.  This helps with the auto-generation of the changelog files and is enforced by pre-commit.  
-__example:__  
-```shell
-<type>[optional scope]: <description>
-
-[optional body]
-
-[optional footer(s)]
-```
-* ```<type>```: A required noun that describes the nature of the change.  
-* ```[optional scope]```: An optional phrase within parentheses that specifies the part of the codebase being affected (e.g., fix(parser):).  
-* ```<description>```: A required short, imperative-mood summary of the changes.  
-* ```[optional body]```: A longer description providing additional context and "what and why" details.  
-* ```[optional footer(s)]```: Used for adding meta-information, such as issue references (Fixes #123) or indicating breaking changes.  
-
-***
-
-## Requirements:
-1. Python 3.11  
-```shell
-$ sudo apt install python3.11
-```
-2. [rustup](https://rust-lang.org/tools/install/)  
-__Note:__ I found that it is easiest to use rustup to manage rustc and cargo but this is not required.  
-__Example:__ Install rustup with the following:  
-```shell
-$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-3. [git-cliff](https://git-cliff.org/)  
-__Note:__ git-cliff can generate changelog files from the Git history by utilizing conventional commits as well as regex-powered custom parsers.  
-```shell
-$ cargo install git-cliff
-```
-
 ***
 
 ### Authors Notes:  
 1. This code currently works with cookiecutter 1.7 from Ubuntu's apt repositories.  
-
-<!--
-### Authors Hidden TODO's
-12/4/2025 - Need to weigh out if it is worth the work to move to DJLint as jinja2 seems to be doing the job well.
-1. ~~[markdown](https://github.com/jackdewinter/pymarkdown) linter.~~  
-      * ~~[docs](https://pymarkdown.readthedocs.io/en/latest/getting-started/)~~  
-2. [djlint](https://djlint.com/)  
-      * Swap jinja2 for djlint...
-
--->
