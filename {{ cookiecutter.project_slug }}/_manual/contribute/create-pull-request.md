@@ -13,6 +13,6 @@ Every contribution to {{cookiecutter.project_name }}'s software begins with a [p
 
 We know you're excited to create your first pull request. Before we get started, read these resources first:
 
-- Get started [contributing to {{ cookiecutter.project_name }}](/CONTRIBUTING.md).
-- Make sure your code follows the relevant [style guides](style-guides).
-- It's recommended you [set up precommit hooks](developer-guide.md) to auto-format when you commit
+- Get started [contributing to {{ cookiecutter.project_name }}]({{ site.repo_url }}/CONTRIBUTING.md).
+- Make sure your code follows the relevant [style guides]({% link style-guides/index.md %}).
+- It's recommended you [set up precommit hooks]({% link developer-guide.md %}) to auto-format when you commit

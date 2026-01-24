@@ -15,12 +15,12 @@ This page lists resources for developers who want to contribute to the {{ cookie
 * [Contributing to {{ cookiecutter.project_name }}]()
 * [Developer guide]()
 * [Create a pull request] walks you through preparing a clear, descriptive pull request.
-* Browse all [issues]() to find a good first task. You can also filter by [help wanted]().
+* Browse all [issues]({{ cookiecutter.repo_url }}/issues/new) to find a good first task. You can also filter by [help wanted]().
 
 ### Contribute without code
 
-* Report a bug with the [bug report template]() and include steps to reproduce.
-* Submit a [feature request]() to propose improvements.
+* Report a bug with the [bug report template]({{ cookiecutter.repo_url }}/issues/new?template=01-bug-report.yml) and include steps to reproduce.
+* Submit a [feature request]({{ cookiecutter.repo_url }}/issues/new?template=02-feature-request.yml) to propose improvements.
 * Report security vulnerabilities following our [security policy]().
 
 ### Best practices and style

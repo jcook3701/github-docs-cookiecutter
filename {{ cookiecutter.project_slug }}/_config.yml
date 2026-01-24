@@ -1,6 +1,5 @@
 # {{ cookiecutter.project_name }} Documentation
 ---
-
 title: "{{ cookiecutter.project_name }}"
 author: "{{ cookiecutter.author }}"
 version: "{{ cookiecutter.version }}"
@@ -9,9 +8,10 @@ description: "{{ cookiecutter.description }}"
 remote_theme: "{{ cookiecutter.theme }}"
 ga_tracking: "{{ cookiecutter.ga_tracking }}"
 
-repo_name: "{{ cookiecutter.project_slug }}"
-repo_url: >
-  https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
+repo_url: "{{ cookiecutter.repo_url }}"
+repo_blob: "{{cookiecutter.repo_url }}/blob/{{ cookiecutter._checkout }}/"
+
+repository: "{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 
 # Specifies the site's subpath for correct URL generation
 baseurl: "/{{ cookiecutter.project_slug }}"
@@ -101,9 +101,9 @@ back_to_top: true
 back_to_top_text: "Back to top"
 
 footer_content: >-
-  Copyright &copy; 2025 {{ cookiecutter.author }}. Distributed by an
-  <a href="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/blob/master/LICENSE">
-      MIT license.
+  {{ cookiecutter.copyright }}. Distributed by an
+  <a href="{{ cookiecutter.repo_url }}/blob/master/LICENSE">
+      {{ cookiecutter.license }} license.
   </a>
   <a href=""></a>
 
@@ -119,7 +119,7 @@ gh_edit_link: true
 gh_edit_link_text: "Edit this page on GitHub"
 # the github URL for your repo
 gh_edit_repository: >-
-  https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
+  {{ cookiecutter.repo_url }}
 # the branch that your docs is served from
 gh_edit_branch: "master"
 # the source that your files originate from
@@ -161,4 +161,4 @@ exclude:
 # Optional SEO metadata
 seo:
   title: "{{ cookiecutter.project_name }} Documentation"
-  description: "Full code documentation for the {{ cookiecutter.project_slug }} project"
+  description: "Full code documentation for the {{ cookiecutter.project_name }} project"
