@@ -53,11 +53,30 @@ Feat 006 (#23)
 - Merge pull request #26 from jcook3701/develop
 
 Feat 007 cla continued (#25)
+- Feat 009 jekyll ci cd (#27)
+
+* fix(docs): fix for the jekyll ci/cd.  Switched to my makefile build and am using that build path.
+
+* chore(upgrade): Update template from cookiecutter-cookiecutter parent project using cookiecutter_project_upgrader.
+- Merge pull request #28 from jcook3701/develop
+
+Feat 009 jekyll ci cd (#27)
+- Merge branch 'develop' into feat-008-cla
+- Update template
+- Update template
+- Update template
+- Merge branch 'cookiecutter-template' into feat-008-cla
 
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
 - *(docs)* Fix for the jekyll ci/cd.  Switched to my makefile build and am using that build path.
+- *(readme)* Moved commit-message help out of readme into better spot within documentation.  Also info update for contributing.
+- *(license)* Preparation for license update.
+
+### 🚀 Added
+
+- *(cla)* CLA Policy and CLA Privacy Policy setup.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
