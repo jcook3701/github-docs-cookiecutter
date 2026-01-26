@@ -24,9 +24,8 @@
             "build-docs": false,
             "changelog": false,
             "git-init": false,
-            "install": false,
             "pre-commit-init": false,
-            "python-install": true
+            "python-install": false
         }
     },
     "_is_sub_template": false,
