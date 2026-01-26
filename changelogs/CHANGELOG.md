@@ -81,6 +81,11 @@ Feat 009 jekyll ci cd (#27)
 - Merge pull request #32 from jcook3701/develop
 
 Feat 008 cla (#30)
+- Update template
+- Update template
+- Update template
+- Update template
+- Merge branch 'cookiecutter-template' into feat-010
 
 ### 🐛 Fixed
 
