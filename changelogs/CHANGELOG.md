@@ -125,6 +125,7 @@ Feat 012 (#39)
 
 - *(template)* Updates to template cookiecutter.json file.
 - *(makefile)* Emoji for documentation fixed.
+- *(ci/cd)* Jekyll build and deploy fix.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
