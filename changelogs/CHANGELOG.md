@@ -91,11 +91,23 @@ Feat 008 cla (#30)
 - Merge pull request #34 from jcook3701/develop
 
 Feat 010 (#33)
+- Feat 011 cla fix (#35)
+
+* fix(docs): jekyll ci/cd fix.
+
+* fix(cla): Fixed cla path-to-document to not use a template file.
+- Merge pull request #36 from jcook3701/develop
+
+Feat 011 cla fix (#35)
 
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
-- *(docs)* Jekyll ci/cd fix.
+
+### 🚀 Added
+
+- *(build)* Updates to documentation makefile.
+- *(build)* Updates to documentation makefile.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
