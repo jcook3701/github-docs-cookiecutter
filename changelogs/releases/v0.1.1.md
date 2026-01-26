@@ -99,6 +99,12 @@ Feat 010 (#33)
 - Merge pull request #36 from jcook3701/develop
 
 Feat 011 cla fix (#35)
+- Update template
+- Update template
+- Update template
+- Update template
+- Update template
+- Merge branch 'cookiecutter-template' into feat-012
 
 ### 🐛 Fixed
 
