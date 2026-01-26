@@ -90,6 +90,7 @@ Feat 008 cla (#30)
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
+- *(license)* Removed doubled copy of the license file.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
