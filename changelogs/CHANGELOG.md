@@ -103,6 +103,10 @@ Feat 011 cla fix (#35)
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
+
+### 🚀 Added
+
+- *(build)* Updates to documentation makefile.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
