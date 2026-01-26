@@ -53,13 +53,16 @@ jobs:
           python-version: "3.11"
       - name: Install Python Tools
         run: |
-          make install
+          make python-install
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3' # Recommended for Jekyll 4.4 in 2026
           bundler-cache: true # Runs 'bundle install' and caches gems automatically
           working-directory: ./docs/jekyll
+      - name: Install Ruby Packages
+        run: |
+          make ruby-install
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll site in /docs/jekyll
