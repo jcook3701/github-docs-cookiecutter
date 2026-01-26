@@ -1,6 +1,5 @@
 # github-docs-cookiecutter Documentation
 ---
-
 title: "github-docs-cookiecutter"
 author: "Jared Cook"
 version: "0.1.1"
@@ -9,9 +8,10 @@ description: "Github docs cookiecutter template generation."
 remote_theme: "pmarsceill/just-the-docs"
 ga_tracking: "G-C7PWLWSHB9"
 
-repo_name: "github-docs-cookiecutter"
-repo_url: >
-  https://github.com/jcook3701/github-docs-cookiecutter
+repo_url: "https://github.com/jcook3701/github-docs-cookiecutter"
+repo_blob: "https://github.com/jcook3701/github-docs-cookiecutter/blob/None/"
+
+repository: "jcook3701/github-docs-cookiecutter"
 
 # Specifies the site's subpath for correct URL generation
 baseurl: "/github-docs-cookiecutter"
@@ -101,9 +101,9 @@ back_to_top: true
 back_to_top_text: "Back to top"
 
 footer_content: >-
-  Copyright &copy; 2025 Jared Cook. Distributed by an
+  Copyright (c) 2025-2026, Jared Cook. Distributed by an
   <a href="https://github.com/jcook3701/github-docs-cookiecutter/blob/master/LICENSE">
-      MIT license.
+      AGPL-3.0-or-later license.
   </a>
   <a href=""></a>
 

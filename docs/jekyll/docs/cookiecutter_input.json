@@ -1,4 +1,5 @@
 {
+    "__year_range": "2025-2026",
     "_checkout": null,
     "_copy_without_render": [
         "README.md",
@@ -6,7 +7,8 @@
     ],
     "_extensions": [
         "jinja2.ext.do",
-        "jinja2.ext.loopcontrols"
+        "jinja2.ext.loopcontrols",
+        "jinja2_time.TimeExtension"
     ],
     "_is_sub_template": true,
     "_jinja2_env_vars": {
@@ -18,13 +20,21 @@
     "_template": "https://github.com/jcook3701/github-docs-cookiecutter.git",
     "author": "Jared Cook",
     "buymeacoffee_username": "jcook3701",
+    "company": null,
+    "contribution_model": "CLA",
+    "copyright": "Copyright (c) 2025-2026, Jared Cook",
+    "current_year": "2026",
     "description": "Github docs cookiecutter template generation.",
     "email": "jcook3701+github@gmail.com",
     "ga_tracking": "G-C7PWLWSHB9",
+    "github_org": null,
     "github_username": "jcook3701",
+    "license": "AGPL-3.0-or-later",
     "linkedin_usercode": "jared-cook-b3585a114",
     "project_name": "github-docs-cookiecutter",
     "project_slug": "github-docs-cookiecutter",
+    "publication_year": "2025",
+    "repo_url": "https://github.com/jcook3701/github-docs-cookiecutter",
     "template_type": "cookiecutter",
     "theme": "pmarsceill/just-the-docs",
     "timezone": "America/Los_Angeles",
