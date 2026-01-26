@@ -110,6 +110,7 @@ Feat 011 cla fix (#35)
 
 - *(template)* Updates to template cookiecutter.json file.
 - *(cla)* Fix for CLA fix for master branch.
+- *(makefile)* Minor fix for documentation emoji.
 
 ### 🚀 Added
 
