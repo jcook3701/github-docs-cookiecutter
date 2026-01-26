@@ -81,16 +81,20 @@ Feat 009 jekyll ci cd (#27)
 - Merge pull request #32 from jcook3701/develop
 
 Feat 008 cla (#30)
-- Update template
-- Update template
-- Update template
-- Update template
-- Merge branch 'cookiecutter-template' into feat-010
+- Feat 010 (#33)
+
+* chore(update) Update template from cookiecutter-cookiecutter.
+
+* fix(license): Removed doubled copy of the license file.
+
+* fix(links): Fix for document links.
+- Merge pull request #34 from jcook3701/develop
+
+Feat 010 (#33)
 
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
-- *(license)* Removed doubled copy of the license file.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
