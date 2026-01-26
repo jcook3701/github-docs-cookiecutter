@@ -41,17 +41,23 @@ PUBLISHDIR ?=
 # --------------------------------------------------
 # 📘 Documentation (Sphinx + Jekyll)
 # --------------------------------------------------
+RUBY_INSTALL := bundle install
 JEKYLL_BUILD := bundle exec jekyll build --quiet
 JEKYLL_CLEAN := bundle exec jekyll clean
 JEKYLL_SERVE := bundle exec jekyll serve
 # --------------------------------------------------
-.PHONY: all jekyll jekyll-serve build run clean help
+.PHONY: all ruby-install jekyll jekyll-serve build run clean help
 # --------------------------------------------------
 # Default:
 # --------------------------------------------------
 all: build
 # --------------------------------------------------
-# 📘 Documentation (Jekyll)
+# ♦️ Ruby
+# --------------------------------------------------
+ruby-install:
+	$(AT)$(RUBY_INSTALL)
+# --------------------------------------------------
+# 📚 Documentation (Jekyll)
 # --------------------------------------------------
 jekyll:
 	$(AT)echo "🔨 Building Jekyll site 📘..."
