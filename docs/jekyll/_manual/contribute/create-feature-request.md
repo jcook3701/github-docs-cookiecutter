@@ -19,7 +19,9 @@ We're excited to hear your ideas! Before you submit a feature request, consider 
 
 When you're ready to submit a feature request, use the [feature request template](https://github.com/jcook3701/github-docs-cookiecutter/issues/new?template=02-feature_request.md). The template has three sections that help maintainers understand what you need and why.
 
-<!-- Here's an [example of how all three sections work together in an actual feature request](https://github.com/jcook3701/github-docs-cookiecutter) from the github-docs-cookiecutter community. We'll analyze each section based on this example feature request. -->
+<!-- TODO: Put together an example feature request.
+
+Here's an [example of how all three sections work together in an actual feature request](https://github.com/jcook3701/github-docs-cookiecutter) from the github-docs-cookiecutter community. We'll analyze each section based on this example feature request. -->
 
 ## Best practices for feature requests
 
@@ -52,6 +54,6 @@ After submitting your feature request, monitor the discussion. Answer questions 
 
 ## Contributing the feature yourself
 
-If you want to implement the feature yourself, feel free to create a pull request following the [pull request guidelines](create-pull-request.md).
+If you want to implement the feature yourself, feel free to create a pull request following the [pull request guidelines]({% link create-pull-request.md %}).
 
 We welcome community contributions and appreciate your help making github-docs-cookiecutter better!

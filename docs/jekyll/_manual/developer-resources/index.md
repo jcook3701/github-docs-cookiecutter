@@ -10,4 +10,4 @@ This section of the documentation contains additional resources for developers a
 
 ## Contribute to github-docs-cookiecutter
 
-Refer to the [Contribute to github-docs-cookiecutter]() guide to learn the various ways you can contribute to github-docs-cookiecutter. Read the [github-docs-cookiecutter Software Grant and Contributor License Agreement]() before making any contribution.
+Refer to the [Contribute to github-docs-cookiecutter]() guide to learn the various ways you can contribute to github-docs-cookiecutter. Read the [github-docs-cookiecutter Contributor License Agreement]() before making any contribution.
