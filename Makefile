@@ -230,7 +230,7 @@ TOML_FILE_LIST := 	( \
 	)
 # --------------------------------------------------
 .PHONY: \
-	all list-folders venv install \
+	all list-folders venv python-install \
 	pre-commit-init security dependency-check black-formatter-check \
 	black-formatter-fix render-cookiecutter jinja2-lint-check ruff-lint-check \
 	ruff-lint-fix toml-lint-check yaml-lint-check format-check \
@@ -243,7 +243,7 @@ TOML_FILE_LIST := 	( \
 # --------------------------------------------------
 # Default: run lint, typecheck, spellcheck, tests, & docs
 # --------------------------------------------------
-all: install lint-check typecheck spellcheck test build-docs
+all: python-install lint-check typecheck spellcheck test build-docs
 # --------------------------------------------------
 # Make Internal Utilities
 # --------------------------------------------------
@@ -269,7 +269,7 @@ venv:
 	$(AT)$(CREATE_VENV)
 	$(AT)echo "✅ Virtual environment created."
 
-install: venv
+python-install: venv
 	$(AT)echo "📦 Installing project dependencies..."
 	$(AT)$(PIP) install --upgrade pip setuptools wheel
 	# $(AT)$(PIP) install -e $(DEPS)
@@ -333,7 +333,8 @@ render-cookiecutter:
 	$(AT)rm -rf $(RENDERED_COOKIE_DIR)
 	$(AT)$(COOKIECUTTER) . --no-input \
 		--output-dir $(RENDERED_COOKIE_DIR) \
-		--overwrite-if-exists
+		--overwrite-if-exists \
+		--keep-project-on-failure
 
 djlint-lint-check:
 	$(AT)echo "🔍 djlint lint..."
@@ -414,6 +415,9 @@ test:
 # --------------------------------------------------
 # 📚 Documentation (Jekyll + nutrimatic)
 # --------------------------------------------------
+ruby-install:
+	$(MAKE) -C $(JEKYLL_DIR) ruby-install;
+
 jekyll:
 	$(MAKE) -C $(JEKYLL_DIR) all;
 
@@ -479,7 +483,7 @@ git-release:
 # 📢 Release
 # --------------------------------------------------
 pre-commit: test security dependency-check format-fix lint-check spellcheck typecheck
-pre-release: clean install pre-commit build-docs changelog build
+pre-release: clean python-install pre-commit build-docs changelog build
 release: git-release bump-version-patch
 # --------------------------------------------------
 # 🧹 Clean artifacts
