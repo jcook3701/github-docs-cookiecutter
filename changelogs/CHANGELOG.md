@@ -99,25 +99,33 @@ Feat 010 (#33)
 - Merge pull request #36 from jcook3701/develop
 
 Feat 011 cla fix (#35)
-- Update template
-- Update template
-- Update template
-- Update template
-- Update template
-- Merge branch 'cookiecutter-template' into feat-012
-- Update template
-- Merge branch 'cookiecutter-template' into feat-012
+- Feat 012 (#37)
+
+* feat(build): Updates to documentation makefile.
+
+* fix(cla): Fix for CLA fix for master branch.
+- Merge pull request #38 from jcook3701/develop
+
+Feat 012 (#37)
+- Creating file for storing CLA Signatures
+- Feat 012 (#39)
+
+* feat(build): Updates to documentation makefile.
+
+* fix(cla): Fix for CLA fix for master branch.
+
+* chore(template) Update template from cookiecutter-cookiecutter repository. 
+
+* fix(makefile): Minor fix for documentation emoji.
+- Merge pull request #40 from jcook3701/develop
+
+Feat 012 (#39)
 
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
-- *(cla)* Fix for CLA fix for master branch.
-- *(makefile)* Minor fix for documentation emoji.
-
-### 🚀 Added
-
-- *(build)* Updates to documentation makefile.
-- *(build)* Updates to documentation makefile.
+- *(makefile)* Emoji for documentation fixed.
+- *(ci/cd)* Jekyll build and deploy fix.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous

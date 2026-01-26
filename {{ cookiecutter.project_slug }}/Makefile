@@ -39,7 +39,7 @@ AUTHOR = "{{ cookiecutter.author }}"
 VERSION = "{{ cookiecutter.version }}"
 PUBLISHDIR ?=
 # --------------------------------------------------
-# 📘 Documentation (Sphinx + Jekyll)
+# 📚 Documentation (Sphinx + Jekyll)
 # --------------------------------------------------
 RUBY_INSTALL := bundle install
 JEKYLL_BUILD := bundle exec jekyll build --quiet
@@ -50,7 +50,7 @@ JEKYLL_SERVE := bundle exec jekyll serve
 # --------------------------------------------------
 # Default:
 # --------------------------------------------------
-all: build
+all: ruby-install build
 # --------------------------------------------------
 # ♦️ Ruby
 # --------------------------------------------------
@@ -60,7 +60,7 @@ ruby-install:
 # 📚 Documentation (Jekyll)
 # --------------------------------------------------
 jekyll:
-	$(AT)echo "🔨 Building Jekyll site 📘..."
+	$(AT)echo "🔨 Building Jekyll site 📚..."
 	$(AT)$(JEKYLL_BUILD)
 	$(AT)echo "✅ Full documentation build complete!"
 
