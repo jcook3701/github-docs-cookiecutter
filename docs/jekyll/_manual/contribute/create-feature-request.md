@@ -54,6 +54,6 @@ After submitting your feature request, monitor the discussion. Answer questions 
 
 ## Contributing the feature yourself
 
-If you want to implement the feature yourself, feel free to create a pull request following the [pull request guidelines]({% link create-pull-request.md %}).
+If you want to implement the feature yourself, feel free to create a pull request following the [pull request guidelines]({% link _manual/contribute/create-pull-request.md %}).
 
 We welcome community contributions and appreciate your help making github-docs-cookiecutter better!

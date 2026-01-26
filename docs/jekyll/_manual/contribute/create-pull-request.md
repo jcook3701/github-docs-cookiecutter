@@ -14,5 +14,5 @@ Every contribution to github-docs-cookiecutter's software begins with a [pull re
 We know you're excited to create your first pull request. Before we get started, read these resources first:
 
 - Get started [contributing to github-docs-cookiecutter]({{ site.repo_url }}/CONTRIBUTING.md).
-- Make sure your code follows the relevant [style guides]({% link style-guides/index.md %}).
-- It's recommended you [set up precommit hooks]({% link developer-guide.md %}) to auto-format when you commit.
+- Make sure your code follows the relevant [style guides]({% link _manual/contribute/style-guides/index.md %}).
+- It's recommended you [set up precommit hooks]({% link _manual/contribute/developer-guide.md %}) to auto-format when you commit.
