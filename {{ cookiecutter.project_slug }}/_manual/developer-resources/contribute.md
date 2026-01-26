@@ -12,10 +12,11 @@ This page lists resources for developers who want to contribute to the {{ cookie
 
 ### Contribute code to {{ cookiecutter.project_name }}
 
-* [Contributing to {{ cookiecutter.project_name }}]()
 * [Developer guide]({% raw %}{% link _manual/contribute/developer-guide.md %}{% endraw %})
 * [Create a pull request] walks you through preparing a clear, descriptive pull request.
-* Browse all [issues]({{ cookiecutter.repo_url }}/issues/new) to find a good first task. You can also filter by [help wanted]().
+* [Create a feature request]({% raw %}{% link _manual/contribute/create-feature-request.md %}{% endraw %})
+* [Merge a pull request]({% raw %}{% link _manual/contribute/merge-pull-request.md %}{% endraw %})
+* Browse all [issues]({{ cookiecutter.repo_url }}/issues/new) to find a good first task. <!-- You can also filter by [help wanted](). -->
 
 ### Contribute without code
 
