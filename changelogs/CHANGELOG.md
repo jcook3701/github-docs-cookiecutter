@@ -159,6 +159,7 @@ Feat 015 (#45)
 
 - *(template)* Updates to template cookiecutter.json file.
 - *(docs)* Docs are not being updated with upgrade for some reason.  debugging.
+- *(docs)* Revert. Docs are not being updated with upgrade for some reason.  debugging.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
