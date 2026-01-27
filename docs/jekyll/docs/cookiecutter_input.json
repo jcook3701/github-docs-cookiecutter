@@ -5,6 +5,7 @@
         "README.md",
         "_includes/*"
     ],
+    "_default_branch": "master",
     "_extensions": [
         "jinja2.ext.do",
         "jinja2.ext.loopcontrols",
