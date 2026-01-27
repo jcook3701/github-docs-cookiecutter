@@ -15,6 +15,7 @@
     "__year_range": "2025-2026",
     "_checkout": "main",
     "_copy_without_render": [],
+    "_default_branch": "master",
     "_extensions": [
         "jinja2.ext.do",
         "jinja2.ext.loopcontrols"
@@ -28,7 +29,7 @@
             "python-install": false
         }
     },
-    "_is_sub_template": false,
+    "_is_sub_template": true,
     "_jinja2_env_vars": {
         "lstrip_blocks": true,
         "trim_blocks": true

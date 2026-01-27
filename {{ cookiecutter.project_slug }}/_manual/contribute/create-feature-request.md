@@ -12,7 +12,7 @@ Feature requests help us understand what you need from {{ cookiecutter.project_n
 
 We're excited to hear your ideas! Before you submit a feature request, consider these resources:
 
-- Read the [Code of Conduct](../CODE_OF_CONDUCT.md) to understand our community guidelines.
+- Read the [Code of Conduct]({% raw %}{{ site.repo_blob }}/.github/CODE_OF_CONDUCT.md{% endraw %}) to understand our community guidelines.
 - Search [existing feature requests]({{ cookiecutter.repo_url }}/issues?q=is%3Aissue+is%3Aopen+label%3Atype%2Ffeature-request) to see if someone already suggested something similar.
 
 ## Your first feature request

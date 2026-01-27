@@ -120,12 +120,27 @@ Feat 012 (#37)
 - Merge pull request #40 from jcook3701/develop
 
 Feat 012 (#39)
+- Feat 013 (#41)
+
+* fix(makefile): emoji for documentation fixed.
+
+* fix(ci/cd): Jekyll build and deploy fix.
+
+* fix(cla): Forgot to add '$' to github.repo in cla ci/cd.
+- Merge pull request #42 from jcook3701/develop
+
+Feat 013 (#41)
 
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
-- *(makefile)* Emoji for documentation fixed.
-- *(ci/cd)* Jekyll build and deploy fix.
+- *(links)* Fix for document links.
+- *(links)* More link fixes.
+- *(upgrader)* Fixed upgrader file.
+
+### 🚀 Added
+
+- *(docs)* Added variables to jekyll configuration.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
