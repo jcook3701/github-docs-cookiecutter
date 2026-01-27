@@ -146,6 +146,7 @@ Feat 014 (#43)
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
+- *(links)* More link fixes along with a few configuration fixes to remove warnings.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
