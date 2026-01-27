@@ -130,17 +130,28 @@ Feat 012 (#39)
 - Merge pull request #42 from jcook3701/develop
 
 Feat 013 (#41)
+- Feat 014 (#43)
+
+* fix(links): Fix for document links.
+
+* fix(links): More link fixes.
+
+* feat(docs): Added variables to jekyll configuration.
+
+* fix(upgrader): Fixed upgrader file.
+- Merge pull request #44 from jcook3701/develop
+
+Feat 014 (#43)
 
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
-- *(links)* Fix for document links.
-- *(links)* More link fixes.
-- *(upgrader)* Fixed upgrader file.
+- *(links)* More link fixes along with a few configuration fixes to remove warnings.
 
 ### 🚀 Added
 
-- *(docs)* Added variables to jekyll configuration.
+- *(links)* More links and general docs template updates.
+- *(docs)* Documentation updates.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
