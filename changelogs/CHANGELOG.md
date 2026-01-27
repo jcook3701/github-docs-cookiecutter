@@ -135,6 +135,7 @@ Feat 013 (#41)
 
 - *(template)* Updates to template cookiecutter.json file.
 - *(links)* Fix for document links.
+- *(links)* More link fixes.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
