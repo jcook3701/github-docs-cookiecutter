@@ -22,11 +22,11 @@
     ],
     "_hooks": {
         "post_gen_make_cmds": {
-            "build-docs": false,
+            "build-docs": true,
             "changelog": false,
             "git-init": false,
             "pre-commit-init": false,
-            "python-install": false
+            "python-install": true
         }
     },
     "_is_sub_template": true,
