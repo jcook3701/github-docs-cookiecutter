@@ -163,6 +163,7 @@ Feat 015 (#45)
 - *(template)* Figured out _is_sub_template needs to be false for the documents.  Need to fix the cookiecutter-cookiecutter hooks.
 - *(configuration)* Cookiecutter upgrader configuration fix.
 - *(template)* Forgot to add configuration setting to main settings file.
+- *(template)* Forgot to add configuration setting to main settings file.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
