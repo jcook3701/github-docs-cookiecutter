@@ -164,6 +164,7 @@ Feat 015 (#45)
 - *(configuration)* Cookiecutter upgrader configuration fix.
 - *(template)* Forgot to add configuration setting to main settings file.
 - *(template)* Forgot to add configuration setting to main settings file.
+- *(theme)* Update to latest just the docs theme.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
