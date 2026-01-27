@@ -1,44 +1,23 @@
 {
-    "__python": {
-        "keywords": [
-            "docs",
-            "github-docs",
-            "github-pages",
-            "python3",
-            "cookiecutter",
-            "template",
-            "automation"
-        ],
-        "project_name": "github-docs-cookiecutter",
-        "target_version": "py311"
-    },
     "__year_range": "2025-2026",
-    "_checkout": "main",
-    "_copy_without_render": [],
-    "_default_branch": "master",
+    "_checkout": null,
+    "_copy_without_render": [
+        "README.md",
+        "_includes/*"
+    ],
     "_extensions": [
         "jinja2.ext.do",
-        "jinja2.ext.loopcontrols"
+        "jinja2.ext.loopcontrols",
+        "jinja2_time.TimeExtension"
     ],
-    "_hooks": {
-        "post_gen_make_cmds": {
-            "build-docs": false,
-            "changelog": false,
-            "git-init": false,
-            "pre-commit-init": false,
-            "python-install": false
-        }
-    },
-    "_is_sub_template": false,
+    "_is_sub_template": true,
     "_jinja2_env_vars": {
         "lstrip_blocks": true,
         "trim_blocks": true
     },
-    "_output_dir": "/home/jcook/Documents/git_repo/github-doc-cookiecutter/.git/cookiecutter",
-    "_repo_dir": "/home/jcook/.cookiecutters/cookiecutter-cookiecutter",
-    "_template": "git@github.com:jcook3701/cookiecutter-cookiecutter.git",
-    "add_github_docs": true,
-    "add_sphinx_docs": false,
+    "_output_dir": "/home/jcook/Documents/git_repo/github-doc-cookiecutter/.git/cookiecutter/github-docs-cookiecutter/docs/_tmp_docs",
+    "_repo_dir": "/home/jcook/.cookiecutters/github-docs-cookiecutter",
+    "_template": "https://github.com/jcook3701/github-docs-cookiecutter.git",
     "author": "Jared Cook",
     "buymeacoffee_username": "jcook3701",
     "company": null,
@@ -56,7 +35,6 @@
     "project_name": "github-docs-cookiecutter",
     "project_slug": "github-docs-cookiecutter",
     "publication_year": "2025",
-    "python_version": "3.11",
     "repo_url": "https://github.com/jcook3701/github-docs-cookiecutter",
     "template_type": "cookiecutter",
     "theme": "pmarsceill/just-the-docs",
