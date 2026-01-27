@@ -1,6 +1,6 @@
 {
     "__year_range": "2025-2026",
-    "_checkout": null,
+    "_checkout": "master",
     "_copy_without_render": [
         "README.md",
         "_includes/*"

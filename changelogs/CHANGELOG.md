@@ -160,6 +160,7 @@ Feat 015 (#45)
 - *(template)* Updates to template cookiecutter.json file.
 - *(docs)* Docs are not being updated with upgrade for some reason.  debugging.
 - *(docs)* Revert. Docs are not being updated with upgrade for some reason.  debugging.
+- *(template)* Figured out _is_sub_template needs to be false for the documents.  Need to fix the cookiecutter-cookiecutter hooks.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
