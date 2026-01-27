@@ -151,6 +151,7 @@ Feat 014 (#43)
 ### 🚀 Added
 
 - *(links)* More links and general docs template updates.
+- *(docs)* Documentation updates.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
