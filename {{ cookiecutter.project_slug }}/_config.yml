@@ -102,7 +102,7 @@ back_to_top_text: "Back to top"
 
 footer_content: >-
   {{ cookiecutter.copyright }}. Distributed by an
-  <a href="{{ cookiecutter.repo_url }}/blob/master/LICENSE">
+  <a href="{{ cookiecutter.repo_url }}/blob/master/LICENSE.md">
       {{ cookiecutter.license }} license.
   </a>
   <a href=""></a>
