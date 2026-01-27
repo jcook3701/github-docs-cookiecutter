@@ -9,7 +9,7 @@ remote_theme: "{{ cookiecutter.theme }}"
 ga_tracking: "{{ cookiecutter.ga_tracking }}"
 
 repo_url: "{{ cookiecutter.repo_url }}"
-repo_blob: "{{cookiecutter.repo_url }}/blob/{{ cookiecutter._default_branch }}"
+repo_blob: "{{ cookiecutter.repo_url }}/blob/{{ cookiecutter._default_branch }}"
 github_io_url: "{{ cookiecutter.github_io }}"
 repository: "{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 
