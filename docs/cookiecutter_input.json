@@ -15,6 +15,7 @@
     "__year_range": "2025-2026",
     "_checkout": "main",
     "_copy_without_render": [],
+    "_default_branch": "master",
     "_extensions": [
         "jinja2.ext.do",
         "jinja2.ext.loopcontrols"
