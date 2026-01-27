@@ -9,7 +9,7 @@ remote_theme: "{{ cookiecutter.theme }}"
 ga_tracking: "{{ cookiecutter.ga_tracking }}"
 
 repo_url: "{{ cookiecutter.repo_url }}"
-repo_blob: "{{cookiecutter.repo_url }}/blob/{{ cookiecutter._checkout }}"
+repo_blob: "{{ cookiecutter.repo_url }}/blob/{{ cookiecutter._default_branch }}"
 github_io_url: "{{ cookiecutter.github_io }}"
 repository: "{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 
@@ -102,7 +102,7 @@ back_to_top_text: "Back to top"
 
 footer_content: >-
   {{ cookiecutter.copyright }}. Distributed by an
-  <a href="{{ cookiecutter.repo_url }}/blob/master/LICENSE.md">
+  <a href="{{ cookiecutter.repo_url }}/blob/{{ cookiecutter._default_branch }}/LICENSE.md">
       {{ cookiecutter.license }} license.
   </a>
   <a href=""></a>
@@ -121,7 +121,7 @@ gh_edit_link_text: "Edit this page on GitHub"
 gh_edit_repository: >-
   {{ cookiecutter.repo_url }}
 # the branch that your docs is served from
-gh_edit_branch: "master"
+gh_edit_branch: "{{ cookiecutter._default_branch }}"
 # the source that your files originate from
 gh_edit_source: docs
 # "tree" or "edit" if you want the user to jump into the editor immediately

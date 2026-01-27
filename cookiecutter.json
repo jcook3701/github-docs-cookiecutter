@@ -50,6 +50,7 @@
     "ros2",
     "typescript"
   ],
+  "_default_branch": "master",
   "_is_sub_template": true,
   "_copy_without_render": [
     "README.md",

@@ -15,7 +15,7 @@
     "__year_range": "2025-2026",
     "_checkout": "main",
     "_copy_without_render": [],
-    "_default_branch": "master",
+    "_default_branch": "main",
     "_extensions": [
         "jinja2.ext.do",
         "jinja2.ext.loopcontrols"
@@ -26,10 +26,10 @@
             "changelog": false,
             "git-init": false,
             "pre-commit-init": false,
-            "python-install": false
+            "python-install": true
         }
     },
-    "_is_sub_template": true,
+    "_is_sub_template": false,
     "_jinja2_env_vars": {
         "lstrip_blocks": true,
         "trim_blocks": true
@@ -59,7 +59,7 @@
     "python_version": "3.11",
     "repo_url": "https://github.com/jcook3701/github-docs-cookiecutter",
     "template_type": "cookiecutter",
-    "theme": "pmarsceill/just-the-docs",
+    "theme": "just-the-docs/just-the-docs@v0.11.0",
     "timezone": "America/Los_Angeles",
     "twitter_username": "",
     "version": "0.1.1"
