@@ -4,9 +4,7 @@ title: {{ cookiecutter.project_name }}
 nav_order: 1
 description: {{ cookiecutter.description }}
 ---
-
-{% raw %}
-
+{%- raw %}
 {% include snippet_loader.html %}
 
 {% if site.carousel_images %}
@@ -21,5 +19,4 @@ If you enjoy this project, please consider buying me a coffee or making a code c
 ## Social Links
 
 {% include social-bar.html %}
-
 {% endraw %}

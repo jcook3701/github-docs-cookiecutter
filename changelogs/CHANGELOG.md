@@ -178,6 +178,7 @@ Feat 016 (#47)
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
+- *(configuration)* I think this should fix the last of the problems with main showing up where master should for this repository.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
