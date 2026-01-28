@@ -1,20 +1,25 @@
 ---
 layout: default
-title: Create Virtual Environment
+title: "Nutri-Matic"
 nav_order: 1
 parent: Tutorials
 ---
 ## Nutri-Matic Setup
 
-First clone the nutri-matic python utility.  This is needed to clone all jcook3701's, cookiecutter templates, with ```cookiecutter``` command.
+First clone the [Nutri-Matic](https://github.com/jcook3701/nutri-matic) python utility.  This is needed to clone all [jcook3701's](https://github.com/jcook3701), cookiecutter templates, with the ```cookiecutter``` command.  
+
 ```shell
 $ git clone git@github.com:jcook3701/nutri-matic.git
 ```
 
-Next, create a [virtual environment]({% raw %}{% link _manual/tutorials/create-virtual-env.md %}{% endraw %}) to store nutri-matic install. This is need to avoid installing packages directly to the system python instance.  
+Next, move into the newly cloned directory, ```cd nutri-matic``` . Then utilize the [developer guide]({% raw %}{% link _manual/contribute/developer-guide.md %}{% endraw %}) process and run ```make python-install``` to create a python virtual environment stored within the, ```.venv```, folder.  This ensures the latest version of nutri-matic code and is very helpful for development on any of the template repositories.  
 
-Finally, install [Nutri-Matic](https://github.com/jcook3701/nutri-matic) from [pypi](https://pypi.org/project/nutri-matic/) repository.  
+Finally, source Nutri-Matic's created virtual environment with the directory, ```.venv```, and begin generating templates.
 
 ```shell
-$ python -m pip install nutri-matic
+$ source .venv/bin/active
 ```
+
+The Nutri-Matic package is responsible for managing all [jcook3701's](https://github.com/jcook3701) cookiecutter template hooks and build features.  
+
+After the environment is sourced and other project dependencies are installed; templates should be able to be generated using the commands found in our [getting started]({% raw %}{% link _manual/introduction/getting-started.md %}{% endraw %}) guide.  

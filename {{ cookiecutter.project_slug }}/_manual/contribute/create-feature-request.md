@@ -17,7 +17,7 @@ We're excited to hear your ideas! Before you submit a feature request, consider 
 
 ## Your first feature request
 
-When you're ready to submit a feature request, use the [feature request template]({{ cookiecutter.repo_url }}/issues/new?template=02-feature_request.md). The template has three sections that help maintainers understand what you need and why.
+When you're ready to submit a feature request, use the [feature request template]({{ cookiecutter.repo_url }}/issues/new?template=02-feature-request.yml). The template has three sections that help maintainers understand what you need and why.
 
 <!-- TODO: Put together an example feature request.
 
