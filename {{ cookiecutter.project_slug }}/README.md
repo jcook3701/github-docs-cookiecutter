@@ -1,6 +1,6 @@
 # {{ site.title }}
 
-[![License](https://img.shields.io/github/license/{{ site.github_username }}/{{ site.baseurl }})](LICENSE.md)
+[![License](https://img.shields.io/github/license/{{ site.github_username }}{{ site.baseurl }})](LICENSE)
 
 __Author:__ {{ site.author }}  
 __Version:__ {{ site.version }}  
