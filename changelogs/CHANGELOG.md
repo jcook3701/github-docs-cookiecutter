@@ -154,17 +154,38 @@ Feat 014 (#43)
 - Merge pull request #46 from jcook3701/develop
 
 Feat 015 (#45)
+- Feat 016 (#47)
+
+* fix(docs): Docs are not being updated with upgrade for some reason.  debugging.
+
+* fix(docs): Revert. Docs are not being updated with upgrade for some reason.  debugging.
+
+* fix(template): figured out _is_sub_template needs to be false for the documents.  Need to fix the cookiecutter-cookiecutter hooks.
+
+* fix(configuration): cookiecutter upgrader configuration fix.
+
+* fix(template): Forgot to add configuration setting to main settings file.
+
+* fix(template): Forgot to add configuration setting to main settings file.
+
+* fix(theme): Update to latest just the docs theme.
+
+* fix(template): minor fix.
+- Merge pull request #48 from jcook3701/develop
+
+Feat 016 (#47)
 
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
-- *(docs)* Docs are not being updated with upgrade for some reason.  debugging.
-- *(docs)* Revert. Docs are not being updated with upgrade for some reason.  debugging.
-- *(template)* Figured out _is_sub_template needs to be false for the documents.  Need to fix the cookiecutter-cookiecutter hooks.
-- *(configuration)* Cookiecutter upgrader configuration fix.
-- *(template)* Forgot to add configuration setting to main settings file.
-- *(template)* Forgot to add configuration setting to main settings file.
-- *(theme)* Update to latest just the docs theme.
+- *(configuration)* I think this should fix the last of the problems with main showing up where master should for this repository.
+- *(links)* Major fixes for documentation links.
+- *(docs)* Fixed license image shield.
+
+### 🚀 Added
+
+- *(docs)* Updates to setup, getting-started, and initial tutorials.
+- *(faq)* Added the Frequently asked questions page.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
