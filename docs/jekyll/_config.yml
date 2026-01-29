@@ -3,14 +3,16 @@
 title: "github-docs-cookiecutter"
 author: "Jared Cook"
 version: "0.1.1"
+license: "AGPL-3.0-or-later"
+copyright: "Copyright (c) 2025-2026, Jared Cook"
 timezone: "America/Los_Angeles"
 description: "Github docs cookiecutter template generation."
-remote_theme: "pmarsceill/just-the-docs"
+remote_theme: "just-the-docs/just-the-docs@v0.11.0"
 ga_tracking: "G-C7PWLWSHB9"
 
 repo_url: "https://github.com/jcook3701/github-docs-cookiecutter"
-repo_blob: "https://github.com/jcook3701/github-docs-cookiecutter/blob/None/"
-
+repo_blob: "https://github.com/jcook3701/github-docs-cookiecutter/blob/master"
+github_io_url: "https://jcook3701.github.io/github-docs-cookiecutter"
 repository: "jcook3701/github-docs-cookiecutter"
 
 # Specifies the site's subpath for correct URL generation
@@ -102,7 +104,7 @@ back_to_top_text: "Back to top"
 
 footer_content: >-
   Copyright (c) 2025-2026, Jared Cook. Distributed by an
-  <a href="https://github.com/jcook3701/github-docs-cookiecutter/blob/master/LICENSE">
+  <a href="https://github.com/jcook3701/github-docs-cookiecutter/blob/master/LICENSE.md">
       AGPL-3.0-or-later license.
   </a>
   <a href=""></a>
