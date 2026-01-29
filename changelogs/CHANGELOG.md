@@ -185,6 +185,7 @@ Feat 016 (#47)
 ### 🚀 Added
 
 - *(docs)* Updates to setup, getting-started, and initial tutorials.
+- *(faq)* Added the Frequently asked questions page.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
