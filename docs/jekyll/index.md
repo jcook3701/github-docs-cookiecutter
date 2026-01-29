@@ -4,9 +4,6 @@ title: github-docs-cookiecutter
 nav_order: 1
 description: Github docs cookiecutter template generation.
 ---
-
-
-
 {% include snippet_loader.html %}
 
 {% if site.carousel_images %}
@@ -21,4 +18,3 @@ If you enjoy this project, please consider buying me a coffee or making a code c
 ## Social Links
 
 {% include social-bar.html %}
-

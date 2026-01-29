@@ -9,11 +9,11 @@ parent: "Setup Guide"
 
 1. Python 3.11  
     ```shell
-    $ sudo apt install python3.11
+    $ sudo apt install python3.11 python3.11-dev python3.11-venv
     ```
 2. [Nutri-Matic](https://github.com/jcook3701/nutri-matic)
     __Note:__
-    __Example:__ Install with the following command (Recommended that this is installed in a python virtual environment):
+    __Example:__ Install with the following command (Recommended that this is installed in a python [virtual environment]({% link _manual/tutorials/create-virtual-env.md %})):
     ```shell
     $ python -m pip install nutri-matic
     ```

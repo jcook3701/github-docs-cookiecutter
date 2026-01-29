@@ -13,10 +13,10 @@ This page lists resources for developers who want to contribute to the github-do
 ### Contribute code to github-docs-cookiecutter
 
 * [Developer guide]({% link _manual/contribute/developer-guide.md %})
-* [Create a pull request] walks you through preparing a clear, descriptive pull request.
+* [Create a pull request]({% link _manual/contribute/create-pull-request.md %}) walks you through preparing a clear, descriptive pull request.
 * [Create a feature request]({% link _manual/contribute/create-feature-request.md %})
 * [Merge a pull request]({% link _manual/contribute/merge-pull-request.md %})
-* Browse all [issues](https://github.com/jcook3701/github-docs-cookiecutter/issues/new) to find a good first task. <!-- You can also filter by [help wanted](). -->
+* Browse all [issues](https://github.com/jcook3701/github-docs-cookiecutter/issues) to find a good first task. <!-- You can also filter by [help wanted](). -->
 
 ### Contribute without code
 
@@ -26,7 +26,8 @@ This page lists resources for developers who want to contribute to the github-do
 
 ### Best practices and style
 
-Our [style guides]({% link _manual/contribute/style-guides/index.md %}) outline github-docs-cookiecutter style for frontend, backend, documentation, and more, including best practices. Please read through them before you start editing or coding!
-    * [Python style guide]({% link _manual/contribute/style-guides/python.md %}).
-    * [Typescript style guide]({% link _manual/contribute/style-guides/typescript.md %}).
-    * [YAML style guide]({% link _manual/contribute/style-guides/yaml.md %}).
+Our [style guides]({% link _manual/contribute/style-guides/index.md %}) outline github-docs-cookiecutter style for frontend, backend, documentation, and more, including best practices. Please read through them before you start editing or coding!  
+
+* [Python style guide]({% link _manual/contribute/style-guides/python.md %}).  
+* [Typescript style guide]({% link _manual/contribute/style-guides/typescript.md %}).  
+* [YAML style guide]({% link _manual/contribute/style-guides/yaml.md %}).  

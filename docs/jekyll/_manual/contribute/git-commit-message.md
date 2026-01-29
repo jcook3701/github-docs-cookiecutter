@@ -6,7 +6,7 @@ parent: Contribute
 ---
 ## Git Commit Message Format Guide
 
-Commits are required to be conventional git commit messages.  This helps with the auto-generation of the changelog files and is enforced by pre-commit.  
+Commits are required to be conventional git commit messages.  This helps with the auto-generation of the changelog files and is enforced by [pre-commit](https://pre-commit.com/).  
 
 __example:__  
 

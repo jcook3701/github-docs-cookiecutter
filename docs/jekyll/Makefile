@@ -42,7 +42,7 @@ PUBLISHDIR ?=
 # 📚 Documentation (Sphinx + Jekyll)
 # --------------------------------------------------
 RUBY_INSTALL := bundle install
-JEKYLL_BUILD := bundle exec jekyll build --quiet
+JEKYLL_BUILD := bundle exec jekyll build --trace --verbose
 JEKYLL_CLEAN := bundle exec jekyll clean
 JEKYLL_SERVE := bundle exec jekyll serve
 # --------------------------------------------------

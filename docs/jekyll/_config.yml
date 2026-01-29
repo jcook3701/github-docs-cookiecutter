@@ -3,6 +3,8 @@
 title: "github-docs-cookiecutter"
 author: "Jared Cook"
 version: "0.1.1"
+license: "AGPL-3.0-or-later"
+copyright: "Copyright (c) 2025-2026, Jared Cook"
 timezone: "America/Los_Angeles"
 description: "Github docs cookiecutter template generation."
 remote_theme: "just-the-docs/just-the-docs@v0.11.0"
