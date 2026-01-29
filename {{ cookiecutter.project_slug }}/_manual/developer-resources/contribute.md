@@ -13,10 +13,10 @@ This page lists resources for developers who want to contribute to the {{ cookie
 ### Contribute code to {{ cookiecutter.project_name }}
 
 * [Developer guide]({% raw %}{% link _manual/contribute/developer-guide.md %}{% endraw %})
-* [Create a pull request] walks you through preparing a clear, descriptive pull request.
+* [Create a pull request]({% raw %}{% link _manual/contribute/create-pull-request.md %}{% endraw %}) walks you through preparing a clear, descriptive pull request.
 * [Create a feature request]({% raw %}{% link _manual/contribute/create-feature-request.md %}{% endraw %})
 * [Merge a pull request]({% raw %}{% link _manual/contribute/merge-pull-request.md %}{% endraw %})
-* Browse all [issues]({{ cookiecutter.repo_url }}/issues/new) to find a good first task. <!-- You can also filter by [help wanted](). -->
+* Browse all [issues]({{ cookiecutter.repo_url }}/issues) to find a good first task. <!-- You can also filter by [help wanted](). -->
 
 ### Contribute without code
 
@@ -26,7 +26,8 @@ This page lists resources for developers who want to contribute to the {{ cookie
 
 ### Best practices and style
 
-Our [style guides]({% raw %}{% link _manual/contribute/style-guides/index.md %}{% endraw %}) outline {{ cookiecutter.project_name }} style for frontend, backend, documentation, and more, including best practices. Please read through them before you start editing or coding!
-    * [Python style guide]({% raw %}{% link _manual/contribute/style-guides/python.md %}{% endraw %}).
-    * [Typescript style guide]({% raw %}{% link _manual/contribute/style-guides/typescript.md %}{% endraw %}).
-    * [YAML style guide]({% raw %}{% link _manual/contribute/style-guides/yaml.md %}{% endraw %}).
+Our [style guides]({% raw %}{% link _manual/contribute/style-guides/index.md %}{% endraw %}) outline {{ cookiecutter.project_name }} style for frontend, backend, documentation, and more, including best practices. Please read through them before you start editing or coding!  
+
+* [Python style guide]({% raw %}{% link _manual/contribute/style-guides/python.md %}{% endraw %}).  
+* [Typescript style guide]({% raw %}{% link _manual/contribute/style-guides/typescript.md %}{% endraw %}).  
+* [YAML style guide]({% raw %}{% link _manual/contribute/style-guides/yaml.md %}{% endraw %}).  

@@ -12,6 +12,7 @@ Template cookiecutter project for Github Pages (Jekyll).  This project can utili
 
 [![License](https://img.shields.io/github/license/jcook3701/github-docs-cookiecutter)](LICENSE)
 
+<!-- [![CLA assistant](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/cla.yml/badge.svg)]() -->
 ![dependency-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/dependency-check.yml/badge.svg)
 ![format-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/format-check.yml/badge.svg)
 ![lint-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/lint-check.yml/badge.svg)

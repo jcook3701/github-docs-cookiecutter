@@ -13,6 +13,6 @@ Every contribution to {{ cookiecutter.project_name }}'s software begins with a [
 
 We know you're excited to create your first pull request. Before we get started, read these resources first:
 
-- Get started [contributing to {{ cookiecutter.project_name }}]({% raw %}{{ site.repo_url }}{% endraw %}/CONTRIBUTING.md).
+- Get started [contributing to {{ cookiecutter.project_name }}]({% raw %}{{ site.repo_blob }}{% endraw %}/.github/CONTRIBUTING.md).
 - Make sure your code follows the relevant [style guides]({% raw %}{% link _manual/contribute/style-guides/index.md %}{% endraw %}).
 - It's recommended you [set up precommit hooks]({% raw %}{% link _manual/contribute/developer-guide.md %}{% endraw %}) to auto-format when you commit.
