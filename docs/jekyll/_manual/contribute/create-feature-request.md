@@ -12,12 +12,12 @@ Feature requests help us understand what you need from github-docs-cookiecutter.
 
 We're excited to hear your ideas! Before you submit a feature request, consider these resources:
 
-- Read the [Code of Conduct](../CODE_OF_CONDUCT.md) to understand our community guidelines.
+- Read the [Code of Conduct]({{ site.repo_blob }}/.github/CODE_OF_CONDUCT.md) to understand our community guidelines.
 - Search [existing feature requests](https://github.com/jcook3701/github-docs-cookiecutter/issues?q=is%3Aissue+is%3Aopen+label%3Atype%2Ffeature-request) to see if someone already suggested something similar.
 
 ## Your first feature request
 
-When you're ready to submit a feature request, use the [feature request template](https://github.com/jcook3701/github-docs-cookiecutter/issues/new?template=02-feature_request.md). The template has three sections that help maintainers understand what you need and why.
+When you're ready to submit a feature request, use the [feature request template](https://github.com/jcook3701/github-docs-cookiecutter/issues/new?template=02-feature-request.yml). The template has three sections that help maintainers understand what you need and why.
 
 <!-- TODO: Put together an example feature request.
 

@@ -22,5 +22,5 @@ You accept and agree to the following terms and conditions for Your Contribution
 8. You agree to notify the Project of any facts or circumstances of which you become aware that would make these representations inaccurate in any respect.
 
 This is a legal contract containing Personally Identifiable Information.
-Please refer to our [cla-privacy-policy](cla-privacy-policy.md) for the policy
+Please refer to our [cla-privacy-policy]({% link _manual/developer-resources/cla-privacy-policy.md %}) for the policy
 governing how this information is used and shared.
