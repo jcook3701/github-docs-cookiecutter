@@ -180,6 +180,7 @@ Feat 016 (#47)
 - *(template)* Updates to template cookiecutter.json file.
 - *(configuration)* I think this should fix the last of the problems with main showing up where master should for this repository.
 - *(links)* Major fixes for documentation links.
+- *(docs)* Fixed license image shield.
 
 ### 🚀 Added
 
