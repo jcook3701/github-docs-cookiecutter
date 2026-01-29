@@ -190,6 +190,12 @@ Feat 016 (#47)
 - Merge pull request #50 from jcook3701/develop
 
 Feat 017 (#49)
+- Feat 018 (#51)
+
+* chore(update): Update template using ```cookiecutter_project_upgrader``` from cookiecutter-cookiecutter.
+- Merge pull request #52 from jcook3701/develop
+
+Feat 018 (#51)
 
 ### 🐛 Fixed
 
