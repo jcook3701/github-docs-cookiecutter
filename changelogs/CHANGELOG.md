@@ -226,6 +226,10 @@ Feat 020 (#55)
 
 - *(template)* Updates to template cookiecutter.json file.
 - *(upgrader)* Fix to move project back to cookiecutter template project.
+
+### 🚀 Added
+
+- *(upgrader)* Updates to upgrader configuration file to fix hooks upgrade.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
