@@ -21,6 +21,7 @@ import os
 
 from nutrimatic.core import make
 from nutrimatic.hooks.post_gen_logic import (
+    generate_cliff_changelog_dirs,
     generate_docs_templates,
     get_make_cmds,
 )
