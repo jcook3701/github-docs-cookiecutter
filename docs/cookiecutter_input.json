@@ -58,7 +58,7 @@
     "publication_year": "2025",
     "python_version": "3.11",
     "repo_url": "https://github.com/jcook3701/github-docs-cookiecutter",
-    "template_type": "documentation",
+    "template_type": "cookiecutter",
     "theme": "just-the-docs/just-the-docs@v0.11.0",
     "timezone": "America/Los_Angeles",
     "twitter_username": "",
