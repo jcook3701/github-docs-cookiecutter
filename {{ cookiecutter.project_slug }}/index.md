@@ -1,8 +1,8 @@
 ---
 layout: default
-title: {{ cookiecutter.project_name }}
+title: "{{ cookiecutter.project_name }}"
 nav_order: 1
-description: {{ cookiecutter.description }}
+description: "{{ cookiecutter.description }}"
 ---
 {%- raw %}
 {% include snippet_loader.html %}
