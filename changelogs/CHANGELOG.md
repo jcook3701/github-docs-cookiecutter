@@ -196,16 +196,29 @@ Feat 017 (#49)
 - Merge pull request #52 from jcook3701/develop
 
 Feat 018 (#51)
+- *(CLA)* Creating file for storing CLA Signatures.
+- Feat 019 (#53)
+
+* fix(cla): removed signatures folder as it should be re-generated as cla/v1/signatures.json.
+
+* feat(docs): Minor documentation update.
+
+* fix(configuration): Update to template_type configuration.
+
+* chore(update): Update template using ```cookiecutter_project_upgrader```
+- Merge pull request #54 from jcook3701/develop
+
+Feat 019 (#53)
 
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
-- *(cla)* Removed signatures folder as it should be re-generated as cla/v1/signatures.json.
-- *(configuration)* Update to template_type configuration.
-
-### 🚀 Added
-
-- *(docs)* Minor documentation update.
+- *(docs)* Readme updates.
+- *(docs)* Readme updates.
+- *(docs)* Readme updates.
+- *(docs)* Readme updates.
+- *(docs)* Readme ci/cd checklist updates.
+- *(docs)* Fixed FAQ page name.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
