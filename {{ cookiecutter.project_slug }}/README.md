@@ -9,6 +9,8 @@
 
 {{ site.description }}  
 
+***
+
 **CI/CD Check List:**
 
 * ![dependency-check]({{ site.repo_url }}/actions/workflows/dependency-check.yml/badge.svg)

@@ -17,7 +17,7 @@
 
 <hr />
 
-<p><a href="LICENSE.md"><img src="https://img.shields.io/github/license/jcook3701/github-docs-cookiecutter" alt="License" /></a></p>
+<p><strong>CI/CD Check List:</strong></p>
 
 <!-- [![CLA assistant](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/cla.yml/badge.svg)]() -->
 <p><img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/dependency-check.yml/badge.svg" alt="dependency-check" />
