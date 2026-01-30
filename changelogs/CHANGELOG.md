@@ -190,10 +190,22 @@ Feat 016 (#47)
 - Merge pull request #50 from jcook3701/develop
 
 Feat 017 (#49)
+- Feat 018 (#51)
+
+* chore(update): Update template using ```cookiecutter_project_upgrader``` from cookiecutter-cookiecutter.
+- Merge pull request #52 from jcook3701/develop
+
+Feat 018 (#51)
 
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
+- *(cla)* Removed signatures folder as it should be re-generated as cla/v1/signatures.json.
+- *(configuration)* Update to template_type configuration.
+
+### 🚀 Added
+
+- *(docs)* Minor documentation update.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous

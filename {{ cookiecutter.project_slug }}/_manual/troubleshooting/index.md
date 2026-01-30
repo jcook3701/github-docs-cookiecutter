@@ -6,4 +6,4 @@ has_children: true
 ---
 ## Troubleshooting {{ cookiecutter.project_name }}
 
-* **[FAQ]({% raw %}{% link _manual/troubleshooting/faq.md %}{% endraw %})** Common questions are answered in our [Frequently Asked Questions]({{ cookiecutter.github_io }}/manual/troubleshooting/faq.md).
+* **[FAQ]({% raw %}{% link _manual/troubleshooting/faq.md %}{% endraw %})** Common questions are answered in our Frequently Asked Questions

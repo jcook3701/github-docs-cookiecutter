@@ -3,7 +3,7 @@
         "search_paths": [
             ".",
             "./.cookiecutter_includes",
-            "./github-docs-cookiecutter"
+            "./{{ cookiecutter.project_slug }}"
         ],
         "base_dir": "."
     },
