@@ -201,6 +201,10 @@ Feat 018 (#51)
 
 - *(template)* Updates to template cookiecutter.json file.
 - *(cla)* Removed signatures folder as it should be re-generated as cla/v1/signatures.json.
+
+### 🚀 Added
+
+- *(docs)* Minor documentation update.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
