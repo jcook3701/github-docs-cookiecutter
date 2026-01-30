@@ -1,7 +1,9 @@
 # {{ site.title }}
 
-__Author:__ {{ site.author }}  
-__Version:__ {{ site.version }}  
+[![License](https://img.shields.io/github/license/{{ site.github_username }}{{ site.baseurl }})](LICENSE.md)
+
+**Author:** {{ site.author }}  
+**Version:** {{ site.version }}  
 
 ## Overview
 {{ site.description }}  
@@ -10,7 +12,7 @@ Template cookiecutter project for Github Pages (Jekyll).  This project can utili
 
 ***
 
-[![License](https://img.shields.io/github/license/jcook3701/github-docs-cookiecutter)](LICENSE)
+[![License](https://img.shields.io/github/license/jcook3701/github-docs-cookiecutter)](LICENSE.md)
 
 <!-- [![CLA assistant](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/cla.yml/badge.svg)]() -->
 ![dependency-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/dependency-check.yml/badge.svg)
@@ -23,76 +25,55 @@ Template cookiecutter project for Github Pages (Jekyll).  This project can utili
 
 ***
 
-## Usage Examples:
-__Example:__ Pull from main branch.  
+## Usage Examples
+
+**Example:** Pull from main branch.  
 1. Pull Project with cookiecutter command:  
 ``` shell
 $ cookiecutter git@github.com:jcook3701/github-docs-cookiecutter.git  
 ```
-__Example:__ Pull from develop branch.  
+**Example:** Pull from develop branch.  
 1. Pull code from development branch while testing updates.  
 ``` shell
 $ cookiecutter git@github.com:jcook3701/github-docs-cookiecutter.git --checkout develop  
 ```
 
-## Advance Examples:
-__Note:__ The real intention of this project is to call it as a hook within other cookiecutter projects as shown below.  
-__Explanation:__ [ansible-galaxy-cookiecutter](https://github.com/jcook3701/ansible-galaxy-cookiecutter) template utilizes [nutri-matic](https://github.com/jcook3701/nutri-matic) hooks to pull both this documentation template along with [sphinx-cookiecutter](https://github.com/jcook3701/sphinx-cookiecutter) template into generated project ```$(PROJECT_ROOT)/docs/```.  
+## Advance Examples
+
+**Note:** The real intention of this project is to call it as a hook within other cookiecutter projects as shown below.  
+**Explanation:** [ansible-galaxy-cookiecutter](https://github.com/jcook3701/ansible-galaxy-cookiecutter) template utilizes [nutri-matic](https://github.com/jcook3701/nutri-matic) hooks to pull both this documentation template along with [sphinx-cookiecutter](https://github.com/jcook3701/sphinx-cookiecutter) template into generated project ```$(PROJECT_ROOT)/docs/```.  
 
 Utilization of [nutri-matic](https://github.com/jcook3701/nutri-matic) is the optimal way of integrating this template in projects.  
 
 ***
 
-## Development Strategy:
-__Note:__ All Makefile commands are used in ci/cd to ensure that if they pass locally they should also pass once pushed to github.  
-### 🐍️ Build environment (.venv)
-``` shell
-$ make install
-```
-### 🧬 Dependency Management (deptry)
-```shell
-$ make dependency-check
-```
-### 🛡️ Security Audit (pip-audit)
-```shell
-$ make security
-```
-### 🎨 Formatting (black)
-```shell
-$ make format-check
-```
-```shell
-$ make format-fix
-```
-### 🔍 Linting (jinja2-cli, ruff, tomllint, & yaml-lint)
-``` shell
-$ make lint-check
-```
-``` shell
-$ make lint-fix
-```
-### 🎓 Spellchecking (codespell)
-```shell
-$ make spellcheck
-```
-### 🧠 Typechecking (mypy)
-``` shell
-$ make typecheck
-```
-### 🧪 Testing (pytest)
-``` shell
-$ make test
-```
-### 🚀 Release (git tag)
-```shell
-$ make release
-```
-### ❓ Build Help
-``` shell
-$ make help
-```
+## Getting Started
+
+* [Requirements]({{ site.github_io_url }}/manual/setup-guide/requirements)
+* [Installation guide]({{ site.github_io_url }}/manual/introduction/installation-guide)  
+
+## Documentation
+
+The {{ site.title }} documentation is available at [docs]({{ site.github_io_url }}).  
+
+## Contributing
+
+If you're interested in contributing to the {{ site.title }} project:  
+* Start by reading the [contributing guide]({{ site.github_io_url }}/manual/developer-resources/contribute).  
+* Learn how to setup your local environment, in our [developer guide]({{ site.github_io_url }}/manual/contribute/developer-guide).  
+* Look through our [style guide]({{ site.github_io_url }}/manual/contribute/style-guides/index).  
 
 ***
 
-### Authors Notes:  
-1. This code currently works with cookiecutter 1.7 from Ubuntu's apt repositories.  
+## Authors Notes
+
+1. This code currently works with cookiecutter (2.6) from PyPi repositories.  
+
+## License
+
+{{ site.copyright }}  
+
+This project is licensed under the **{{ site.license }} License**.
+See the [LICENSE]({{ site.repo_blob }}/LICENSE.md) file for the full license text.  
+
+SPDX-License-Identifier: {{ site.license }}  
