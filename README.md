@@ -20,13 +20,15 @@
 <p><strong>CI/CD Check List:</strong></p>
 
 <!-- [![CLA assistant](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/cla.yml/badge.svg)]() -->
-<p><img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/dependency-check.yml/badge.svg" alt="dependency-check" />
-<img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/format-check.yml/badge.svg" alt="format-check" />
-<img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/lint-check.yml/badge.svg" alt="lint-check" />
-<img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/security-audit.yml/badge.svg" alt="security-audit" />
-<img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/spellcheck.yml/badge.svg" alt="spellcheck" />
-<img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/tests.yml/badge.svg" alt="tests" />
-<img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/typecheck.yml/badge.svg" alt="typecheck" /></p>
+<ul>
+  <li><img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/dependency-check.yml/badge.svg" alt="dependency-check" /></li>
+  <li><img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/format-check.yml/badge.svg" alt="format-check" /></li>
+  <li><img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/lint-check.yml/badge.svg" alt="lint-check" /></li>
+  <li><img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/security-audit.yml/badge.svg" alt="security-audit" /></li>
+  <li><img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/spellcheck.yml/badge.svg" alt="spellcheck" /></li>
+  <li><img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/tests.yml/badge.svg" alt="tests" /></li>
+  <li><img src="https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/typecheck.yml/badge.svg" alt="typecheck" /></li>
+</ul>
 
 <hr />
 

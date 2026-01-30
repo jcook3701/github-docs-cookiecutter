@@ -15,13 +15,13 @@ Template cookiecutter project for Github Pages (Jekyll).  This project can utili
 **CI/CD Check List:**
 
 <!-- [![CLA assistant](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/cla.yml/badge.svg)]() -->
-![dependency-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/dependency-check.yml/badge.svg)
-![format-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/format-check.yml/badge.svg)
-![lint-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/lint-check.yml/badge.svg)
-![security-audit](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/security-audit.yml/badge.svg)
-![spellcheck](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/spellcheck.yml/badge.svg)
-![tests](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/tests.yml/badge.svg)
-![typecheck](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/typecheck.yml/badge.svg)
+* ![dependency-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/dependency-check.yml/badge.svg)
+* ![format-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/format-check.yml/badge.svg)
+* ![lint-check](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/lint-check.yml/badge.svg)
+* ![security-audit](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/security-audit.yml/badge.svg)
+* ![spellcheck](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/spellcheck.yml/badge.svg)
+* ![tests](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/tests.yml/badge.svg)
+* ![typecheck](https://github.com/jcook3701/github-docs-cookiecutter/actions/workflows/typecheck.yml/badge.svg)
 
 ***
 
