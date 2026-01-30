@@ -86,7 +86,7 @@
 
 <p>Copyright (c) 2025-2026, Jared Cook</p>
 
-<p>This project is licensed under the <strong>AGPL-3.0-or-later License</strong>.
+<p>This project is licensed under the <strong>AGPL-3.0-or-later License</strong>.<br />
 See the <a href="https://github.com/jcook3701/github-docs-cookiecutter/blob/master/LICENSE.md">LICENSE</a> file for the full license text.</p>
 
 <p>SPDX-License-Identifier: AGPL-3.0-or-later</p>
