@@ -225,6 +225,7 @@ Feat 020 (#55)
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
+- *(upgrader)* Fix to move project back to cookiecutter template project.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
