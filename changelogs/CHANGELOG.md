@@ -236,6 +236,10 @@ Feat 021 (#57)
 
 - *(template)* Updates to template cookiecutter.json file.
 - *(docs)* Fix for index file to ensure description doesn't mess with page header.
+
+### 🚀 Added
+
+- *(docs)* Fun emojis added to template readme.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
