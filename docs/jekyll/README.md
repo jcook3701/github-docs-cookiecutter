@@ -23,12 +23,12 @@ The **{{ site.title }}** depends on the following repositories for its documenta
 The **{{ site.title }}** is used to maintain documentation for the following projects.  
 
 **Cookiecutter Projects:**
-* **[cookiecutter-cookiecutter](https://github.com/jcook3701/cookiecutter-cookiecutter)
-* **[python3-cookiecutter](https://github.com/jcook3701/python3-cookiecutter)
-* **[ansible-galaxy-cookiecutter](https://github.com/jcook3701/ansible-galaxy-cookiecutter)
+* **[cookiecutter-cookiecutter](https://github.com/jcook3701/cookiecutter-cookiecutter)**
+* **[python3-cookiecutter](https://github.com/jcook3701/python3-cookiecutter)**
+* **[ansible-galaxy-cookiecutter](https://github.com/jcook3701/ansible-galaxy-cookiecutter)**
 
 **Python Projects:**
-* **[Nutri-Matic](https://github.com/jcook3701/nutri-matic)
+* **[Nutri-Matic](https://github.com/jcook3701/nutri-matic)**
 
 **Ansible Projects:**
 * **[jcook3701.docker](https://github.com/jcook3701/jcook3701.docker)** Ansible Galaxy collection used to install docker packages.

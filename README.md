@@ -31,14 +31,14 @@ The <strong>github-docs-cookiecutter</strong> is used to maintain documentation 
 
 <p><strong>Cookiecutter Projects:</strong></p>
 <ul>
-  <li>**<a href="https://github.com/jcook3701/cookiecutter-cookiecutter">cookiecutter-cookiecutter</a></li>
-  <li>**<a href="https://github.com/jcook3701/python3-cookiecutter">python3-cookiecutter</a></li>
-  <li>**<a href="https://github.com/jcook3701/ansible-galaxy-cookiecutter">ansible-galaxy-cookiecutter</a></li>
+  <li><strong><a href="https://github.com/jcook3701/cookiecutter-cookiecutter">cookiecutter-cookiecutter</a></strong></li>
+  <li><strong><a href="https://github.com/jcook3701/python3-cookiecutter">python3-cookiecutter</a></strong></li>
+  <li><strong><a href="https://github.com/jcook3701/ansible-galaxy-cookiecutter">ansible-galaxy-cookiecutter</a></strong></li>
 </ul>
 
 <p><strong>Python Projects:</strong></p>
 <ul>
-  <li>**<a href="https://github.com/jcook3701/nutri-matic">Nutri-Matic</a></li>
+  <li><strong><a href="https://github.com/jcook3701/nutri-matic">Nutri-Matic</a></strong></li>
 </ul>
 
 <p><strong>Ansible Projects:</strong></p>
