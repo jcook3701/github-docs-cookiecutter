@@ -8,7 +8,7 @@
 ## Overview
 {{ site.description }}  
 
-Template cookiecutter project for Github Pages (Jekyll).  This project can utilize a variety of different documentation templates but is focused mainly on a clean implementation of [just the docs](https://github.com/just-the-docs/just-the-docs). Skip the boring boilerplate code and get to the work that matters.
+Template cookiecutter project for **Github Pages** (Jekyll).  This project can utilize a variety of different documentation templates but is focused mainly on a clean implementation of **[just the docs](https://github.com/just-the-docs/just-the-docs)**. Skip the boring **boilerplate code** and get to the work that matters.
 
 ***
 

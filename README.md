@@ -13,7 +13,7 @@
 <h2 id="overview">Overview</h2>
 <p>Github docs cookiecutter template generation.</p>
 
-<p>Template cookiecutter project for Github Pages (Jekyll).  This project can utilize a variety of different documentation templates but is focused mainly on a clean implementation of <a href="https://github.com/just-the-docs/just-the-docs">just the docs</a>. Skip the boring boilerplate code and get to the work that matters.</p>
+<p>Template cookiecutter project for <strong>Github Pages</strong> (Jekyll).  This project can utilize a variety of different documentation templates but is focused mainly on a clean implementation of <strong><a href="https://github.com/just-the-docs/just-the-docs">just the docs</a></strong>. Skip the boring <strong>boilerplate code</strong> and get to the work that matters.</p>
 
 <hr />
 
