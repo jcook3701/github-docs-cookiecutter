@@ -231,20 +231,24 @@ Feat 020 (#55)
 - Merge pull request #58 from jcook3701/develop
 
 Feat 021 (#57)
+- Feat 022 (#59)
+
+* fix(docs): Fix for index file to ensure description doesn't mess with page header.
+
+* feat(docs): Fun emojis added to template readme.
+
+* feat(docs): Main page documentation updates.
+
+* feat(docs): readme updates.
+
+* chore(update): Update template from cookiecutter-cookiecutter
+- Merge pull request #60 from jcook3701/develop
+
+Feat 022 (#59)
 
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
-- *(docs)* Fix for index file to ensure description doesn't mess with page header.
-
-### 🚀 Added
-
-- *(docs)* Fun emojis added to template readme.
-- *(docs)* Main page documentation updates.
-- *(docs)* Readme updates.
-- *(docs)* Readme updates.
-- *(docs)* Readme updates.
-- *(docs)* Readme updates.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous
