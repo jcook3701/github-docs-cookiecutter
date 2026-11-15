@@ -245,10 +245,17 @@ Feat 021 (#57)
 - Merge pull request #60 from jcook3701/develop
 
 Feat 022 (#59)
+- Merge pull request #62 from jcook3701/develop
+
+feat(themes): added new themes to use. (#61)
 
 ### 🐛 Fixed
 
 - *(template)* Updates to template cookiecutter.json file.
+
+### 🚀 Added
+
+- *(themes)* Added new themes to use. (#61)
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous

@@ -23,11 +23,16 @@ from nutrimatic.core import make
 from nutrimatic.hooks.post_gen_logic import (
     generate_docs_templates,
     get_make_cmds,
+    rename_j2_templates,
 )
 
 
 def main() -> None:
     """Cookiecutter Post Generation Scripts"""
+    # Rename rendered Jinja2 files and directories before other initialization.
+    # This must also run in CI, even when documentation generation is skipped.
+    rename_j2_templates()
+
     # Detect CI (e.g. GitHub Actions, GitLab CI, etc.)
     if os.getenv("CI"):
         print("⚙️  Detected CI environment — skipping GitHub Docs generation.")
