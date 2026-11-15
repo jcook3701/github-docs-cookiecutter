@@ -256,6 +256,7 @@ feat(themes): added new themes to use. (#61)
 ### 🚀 Added
 
 - *(themes)* Added new themes to use. (#61)
+- *(jinja)* Hooks for jinja2 template cleanup.
 ## [0.1.0] - 2025-12-05
 
 ### ⚙️  Miscellaneous

@@ -32,7 +32,7 @@
 # Common site metadata and GitHub Pages routing
 # -----------------------------------------------------------------------------
 title: {{ cookiecutter.project_name | tojson }}
-description: {{ cookiecutter.description | tojson }}
+description: {{ cookiecutter.description | tojson | replace('\\u0027', "'") }}
 {% if selected_theme in ['CloudCannon/hydra-jekyll-template', 'poole/lanyon'] %}
 author:
   name: {{ cookiecutter.author | tojson }}
@@ -266,7 +266,7 @@ jekyll-archives:
 # Automatic App Landing Page (full-site template)
 page_title: {{ cookiecutter.project_name | tojson }}
 app_name: {{ cookiecutter.project_name | tojson }}
-app_description: {{ cookiecutter.description | tojson }}
+app_description: {{ cookiecutter.description | tojson | replace('\\u0027', "'") }}
 your_name: {{ cookiecutter.author | tojson }}
 email_address: {{ cookiecutter.email | tojson }}
 enable_smart_app_banner: false
@@ -282,7 +282,7 @@ google_analytics: {{ cookiecutter.ga_tracking | tojson }}
 permalink: "/blog/:year/:title/"
 {% elif selected_theme == 'poole/lanyon' %}
 # Lanyon (full-site template)
-tagline: {{ cookiecutter.description | tojson }}
+tagline: {{ cookiecutter.description | tojson | replace('\\u0027', "'") }}
 paginate: 5
 permalink: pretty
 {% if cookiecutter.ga_tracking %}
@@ -317,4 +317,4 @@ seo:
 {% else %}
   title: {{ cookiecutter.project_name | tojson }}
 {% endif %}
-  description: {{ cookiecutter.description | tojson }}
+  description: {{ cookiecutter.description | tojson | replace('\\u0027', "'") }}
