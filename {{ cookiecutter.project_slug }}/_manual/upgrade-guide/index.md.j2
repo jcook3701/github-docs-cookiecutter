@@ -1,0 +1,10 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Upgrade Guide", "Upgrade the project safely between releases.", cfg.theme.page_layout, nav_order=7, has_children=true) }}
+## {{ cfg.markdown.project_name }} Upgrade Guide
+
+### 🍪 Project Updater (cookiecutter_project_upgrader)
+
+```shell
+$ source .venv/bin/activate && cookiecutter_project_upgrader --context-file ./docs/cookiecutter_input.json --upgrade-branch main
+```

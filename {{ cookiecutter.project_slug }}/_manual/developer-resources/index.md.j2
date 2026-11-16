@@ -1,0 +1,10 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Developer Resources", "Policies and resources for project contributors.", cfg.theme.page_layout, nav_order=5, has_children=true) }}
+## Developer resources
+
+This section of the documentation contains additional resources for developers and contributors.
+
+## Contribute to {{ cfg.markdown.project_name }}
+
+Refer to the [Contribute to {{ cfg.markdown.project_name }}]({% raw %}{% link _manual/developer-resources/contribute.md %}{% endraw %}) guide to learn the various ways you can contribute to {{ cfg.markdown.project_name }}. Read the [{{ cfg.markdown.project_name }} Contributor License Agreement]({% raw %}{% link _manual/developer-resources/cla.md %}{% endraw %}) before making any contribution.

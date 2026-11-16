@@ -1,0 +1,93 @@
+{% raw %}
+{%- comment -%}
+    Collection-aware adaptation of jekyll-theme-rtd v1.4.0's navigation.
+    The upstream theme scans site.pages only; this generator also stores its
+    documentation in the manual and resources collections.
+{%- endcomment -%}
+
+{%- assign sections = "" %}
+{%- assign last_loop_page = false %}
+{%- assign set_next_page = false %}
+{%- assign nav = site.pages | concat: site.manual | concat: site.resources | sort:"nav_order" %}
+
+{%- comment %} Print root pages and collect the first-level sections. {%- endcomment %}
+{%- for nav_item in nav %}
+    {%- if nav_item.title and nav_item.hide != true and nav_item.nav_exclude != true %}
+        {%- if nav_item.collection == "manual" %}
+            {%- assign nav_item_section = nav_item.grand_parent | default: nav_item.parent | default: nav_item.title %}
+        {%- elsif nav_item.collection %}
+            {%- assign nav_item_section = nav_item.collection %}
+        {%- else %}
+            {%- assign path_array = nav_item.dir | split: "/" %}
+            {%- assign nav_item_section = path_array[1] | default: "" %}
+        {%- endif %}
+        {%- if nav_item_section == empty %}
+            {%- if nav_item.url == page.url %}
+                {%- include toc.html html=content sanitize=true h_max=4 item_class="toctree-l%level%" %}
+                {%- assign previous_page = last_loop_page %}
+                {%- assign set_next_page = true %}
+            {%- else %}
+                <ul>
+                    <li class="toctree-l1">
+                        <a class="reference internal" href="{{ nav_item.url | absolute_url }}">{{ nav_item.title }}</a>
+                    </li>
+                </ul>
+                {%- assign last_loop_page = nav_item %}
+                {%- if set_next_page %}
+                    {%- assign next_page = nav_item %}
+                    {%- assign set_next_page = false %}
+                {%- endif %}
+            {%- endif %}
+        {%- else %}
+            {%- assign sections = sections | append: nav_item_section | append: "|" %}
+        {%- endif %}
+    {%- endif %}
+{%- endfor %}
+
+{%- assign sections = sections | split: "|" | uniq | sort %}
+{%- for section in sections %}
+    <p class="caption"><span class="caption-text">{{ section | replace: "-", " " | capitalize }}</span></p>
+    {%- for nav_item in nav %}
+        {%- if nav_item.collection == "manual" %}
+            {%- assign page_section = nav_item.grand_parent | default: nav_item.parent | default: nav_item.title %}
+        {%- elsif nav_item.collection %}
+            {%- assign page_section = nav_item.collection %}
+        {%- else %}
+            {%- assign path_array = nav_item.dir | split: "/" %}
+            {%- assign page_section = path_array[1] | default: "" %}
+        {%- endif %}
+        {%- if page_section == section and nav_item.title and nav_item.hide != true and nav_item.nav_exclude != true %}
+            {%- if nav_item.url == page.url %}
+                {%- include toc.html html=content sanitize=true h_max=4 item_class="toctree-l%level%" %}
+                {%- assign previous_page = last_loop_page %}
+                {%- assign set_next_page = true %}
+            {%- else %}
+                <ul>
+                    <li class="toctree-l1">
+                        <a class="reference internal" href="{{ nav_item.url | absolute_url }}">{{ nav_item.title }}</a>
+                    </li>
+                </ul>
+                {%- assign last_loop_page = nav_item %}
+                {%- if set_next_page %}
+                    {%- assign next_page = nav_item %}
+                    {%- assign set_next_page = false %}
+                {%- endif %}
+            {%- endif %}
+        {%- endif %}
+    {%- endfor %}
+{%- endfor %}
+
+{%- if site.nav_external_links %}
+    {%- for entry in site.nav_external_links %}
+        {%- if entry.section %}
+            <p class="caption"><span class="caption-text">{{ entry.section }}</span></p>
+        {%- elsif entry.title and entry.url %}
+            <ul>
+                <li class="toctree-l1">
+                    <a class="reference external" href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">{{ entry.title }}</a>
+                </li>
+            </ul>
+        {%- endif %}
+    {%- endfor %}
+{%- endif %}
+{% endraw %}

@@ -1,0 +1,6 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page(cfg.values.title, cfg.values.description, cfg.homepage_layout, nav_order=1) }}
+{% if cfg.homepage_mode == "content" %}
+{% include cfg.homepage_template %}
+{% endif %}

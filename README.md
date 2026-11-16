@@ -13,7 +13,102 @@
 <h2 id="overview">Overview</h2>
 <p>Github docs cookiecutter template generation.</p>
 
-<p>Template cookiecutter project for <strong>Github Pages</strong> (Jekyll).  This project can utilize a variety of different documentation templates but is focused mainly on a clean implementation of <strong><a href="https://github.com/just-the-docs/just-the-docs">just the docs</a></strong>. Skip the boring <strong>boilerplate code</strong> and get to the work that matters.</p>
+<p>Cookiecutter generator for documentation, company, blog, portfolio, and landing-page websites on <strong>GitHub Pages</strong> with Jekyll. Shared metadata, URLs, dependencies, front matter, and theme capabilities are managed by one central Jinja configuration.</p>
+
+<h2 id="theme-compatibility">Theme compatibility</h2>
+
+<p>The generator only publishes combinations that have the layouts, dependencies, and supporting files needed to build. Selecting an unimplemented theme or an incompatible website type stops generation with a message explaining the limitation.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Theme selection</th>
+      <th>Compatible website types</th>
+      <th>Integration</th>
+      <th>License</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">just-the-docs/just-the-docs@v0.11.0</code></td>
+      <td>Documentation</td>
+      <td>Pinned remote theme</td>
+      <td>MIT</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pmarsceill/just-the-docs</code></td>
+      <td>Documentation</td>
+      <td>Legacy alias normalized to the pinned canonical theme</td>
+      <td>MIT</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">carlosperate/jekyll-theme-rtd</code></td>
+      <td>Documentation</td>
+      <td>Pinned remote theme plus licensed collection-navigation override</td>
+      <td>BSD-2-Clause</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mmistakes/minimal-mistakes</code></td>
+      <td>Documentation, company, blog, portfolio, landing page</td>
+      <td>Pinned remote theme plus generated site-type navigation</td>
+      <td>MIT</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">raviriley/agency-jekyll-theme</code></td>
+      <td>Company, portfolio, landing page</td>
+      <td>Commit-pinned remote theme plus generated data and Pages-safe resource overrides</td>
+      <td>MIT</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="blocked-full-site-templates">Blocked full-site templates</h3>
+
+<p>The selections below are complete starter repositories rather than interchangeable remote themes. They remain visible for migration compatibility and research, but generation is deliberately blocked until their required source trees, build contracts, and attribution files can be maintained as tested resource packs.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Theme selection</th>
+      <th>Limitation</th>
+      <th>Upstream license or status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alshedivat/al-folio</code></td>
+      <td>Uses <code class="language-plaintext highlighter-rouge">al_folio_core</code> and a large pinned plugin and collection contract.</td>
+      <td>MIT</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">poole/lanyon</code></td>
+      <td>Requires its complete Poole layouts, includes, public assets, and pagination setup.</td>
+      <td>MIT</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">zerostaticthemes/jekyll-serif-theme</code></td>
+      <td>Requires company collections, data, layouts, images, and third-party asset credits.</td>
+      <td>MIT; preserve upstream asset credits</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CloudCannon/hydra-jekyll-template</code></td>
+      <td>Requires its full marketing and blog source tree; upstream marks it legacy and unmaintained.</td>
+      <td>MIT; legacy</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">emilbaehr/automatic-app-landing-page</code></td>
+      <td>Requires device assets and application-store metadata.</td>
+      <td>MIT</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LeNPaul/Millennial</code></td>
+      <td>Requires its blog layouts, data settings, feeds, Sass, and static assets.</td>
+      <td>MIT</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Project Pages receive a repository <code class="language-plaintext highlighter-rouge">baseurl</code>; user or organization Pages use the domain root. A custom domain produces a normalized hostname-only <code class="language-plaintext highlighter-rouge">CNAME</code>, but the domain must also be configured in the repository’s GitHub Pages settings. Agency sites show an email contact action unless a current Formspree form path is explicitly configured.</p>
 
 <hr />
 

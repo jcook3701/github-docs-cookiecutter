@@ -1,0 +1,19 @@
+{% import "vars/main.j2" as cfg with context %}
+---
+en: &DEFAULT_EN
+  nav:
+    - title: "Services"
+      section: services
+    - title: "Portfolio"
+      section: portfolio
+    - title: "About"
+      section: about
+    - title: "Team"
+      section: team
+    - title: "Contact"
+      section: contact
+    - title: "GitHub"
+      url: {{ cfg.yaml.repo_url }}
+
+en-US:
+  <<: *DEFAULT_EN

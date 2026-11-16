@@ -1,0 +1,7 @@
+# Lanyon (full-site template)
+tagline: {{ cfg.yaml.description }}
+paginate: 5
+permalink: pretty
+{% if cfg.values.ga_tracking %}
+google_analytics_id: {{ cfg.yaml.ga_tracking }}
+{% endif %}

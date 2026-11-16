@@ -1,0 +1,19 @@
+{% raw %}
+<!DOCTYPE html>
+<html lang="{{ site.locale | slice: 0, 2 | default: 'en' }}">
+  {% include head.html %}
+  <body id="page-top">
+    {{ content }}
+    {% include footer.html %}
+
+    <script src="{{ '/assets/js/jquery.min.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/bootstrap.bundle.min.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/jquery.easing.min.js' | relative_url }}"></script>
+    {% if site.formspree_form_path %}
+    <script src="{{ '/assets/js/jqBootstrapValidation.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/contact_me.js' | relative_url }}"></script>
+    {% endif %}
+    <script src="{{ '/assets/js/agency.min.js' | relative_url }}"></script>
+  </body>
+</html>
+{% endraw %}

@@ -33,7 +33,7 @@ license = "AGPL-3.0-or-later"
 license-files = ["LICENSE.md"]
 requires-python = ">=3.11"
 dependencies = [
-  "nutri-matic>=0.1",
+  "nutri-matic>=0.1.15",
 ]
 keywords = ["docs", "github-docs", "github-pages", "python3", "cookiecutter", "template", "automation"]
 classifiers = [

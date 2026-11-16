@@ -1,0 +1,7 @@
+{% import "vars/main.j2" as cfg with context %}
+---
+main:
+{% for entry in cfg.selected_site_type.navigation %}
+  - title: {{ cfg.yaml_string(entry.title) }}
+    url: {{ cfg.yaml_string(entry.url) }}
+{% endfor %}

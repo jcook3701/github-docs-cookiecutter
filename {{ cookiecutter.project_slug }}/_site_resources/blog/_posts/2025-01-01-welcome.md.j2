@@ -1,0 +1,8 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Welcome", "Welcome to the new blog.", cfg.theme.post_layout) }}
+# Welcome to {{ cfg.markdown.title }}
+
+This is the first post on {{ cfg.markdown.title }}.
+
+Use this space to share news, lessons, ideas, and stories with your readers. Replace this sample post when you publish your first article.

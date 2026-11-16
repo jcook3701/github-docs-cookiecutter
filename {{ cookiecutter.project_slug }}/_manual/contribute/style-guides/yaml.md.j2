@@ -1,0 +1,4 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("YAML Style Guide", "Follow the project's YAML formatting conventions.", cfg.theme.page_layout, nav_order=3, parent="Style Guide", grand_parent="Contribute") }}
+## YAML Style Guide

@@ -1,297 +1,91 @@
-# {{ cookiecutter.project_name }} Documentation
+{% import "vars/main.j2" as cfg with context %}
+# {{ cfg.values.title }} — generated Jekyll configuration
 ---
-{% set selected_theme = cookiecutter.theme %}
-{% set owner = cookiecutter.github_org or cookiecutter.github_username %}
-{% set project_repo_url = 'https://github.com/' ~ owner ~ '/' ~ cookiecutter.project_slug %}
-{% set site_domain = (cookiecutter.custom_domain or '') | trim %}
-{% if site_domain %}
-{%   if site_domain.startswith('https://') or site_domain.startswith('http://') %}
-{%     set site_url = site_domain.rstrip('/') %}
-{%   else %}
-{%     set site_url = 'https://' ~ site_domain.rstrip('/') %}
-{%   endif %}
-{%   set site_baseurl = '' %}
-{% else %}
-{%   set site_url = 'https://' ~ owner ~ '.github.io' %}
-{%   set site_baseurl = '/' ~ cookiecutter.project_slug if cookiecutter.pages_site_type == 'project' else '' %}
-{% endif %}
-{% set remote_themes = [
-  'just-the-docs/just-the-docs@v0.11.0',
-  'pmarsceill/just-the-docs',
-  'carlosperate/jekyll-theme-rtd',
-  'mmistakes/minimal-mistakes',
-  'raviriley/agency-jekyll-theme'
-] %}
-{% set use_remote_theme = selected_theme in remote_themes %}
-{% set is_just_the_docs = selected_theme in [
-  'just-the-docs/just-the-docs@v0.11.0',
-  'pmarsceill/just-the-docs'
-] %}
 
 # -----------------------------------------------------------------------------
 # Common site metadata and GitHub Pages routing
 # -----------------------------------------------------------------------------
-title: {{ cookiecutter.project_name | tojson }}
-description: {{ cookiecutter.description | tojson | replace('\\u0027', "'") }}
-{% if selected_theme in ['CloudCannon/hydra-jekyll-template', 'poole/lanyon'] %}
+title: {{ cfg.yaml.title }}
+description: {{ cfg.yaml.description }}
+{% if cfg.selection_supported and cfg.theme.get('author_mapping', false) %}
 author:
-  name: {{ cookiecutter.author | tojson }}
-  email: {{ cookiecutter.email | tojson }}
-{% if cookiecutter.twitter_username %}
-  twitter: {{ cookiecutter.twitter_username | tojson }}
+  name: {{ cfg.yaml.author }}
+  email: {{ cfg.yaml.email }}
+{% if cfg.values.twitter_username %}
+  twitter: {{ cfg.yaml.twitter_username }}
 {% endif %}
 {% else %}
-author: {{ cookiecutter.author | tojson }}
+author: {{ cfg.yaml.author }}
 {% endif %}
-email: {{ cookiecutter.email | tojson }}
-version: {{ cookiecutter.version | tojson }}
-license: {{ cookiecutter.license | tojson }}
-copyright: {{ cookiecutter.copyright | tojson }}
-timezone: {{ cookiecutter.timezone | tojson }}
-site_type: {{ cookiecutter.site_type | tojson }}
-url: {{ site_url | tojson }}
-baseurl: {{ site_baseurl | tojson }}
+{% if cfg.values.company %}
+company: {{ cfg.yaml.company }}
+{% endif %}
+email: {{ cfg.yaml.email }}
+version: {{ cfg.yaml.version }}
+license: {{ cfg.yaml.license }}
+copyright: {{ cfg.yaml.copyright }}
+timezone: {{ cfg.yaml.timezone }}
+site_type: {{ cfg.yaml.site_type }}
+url: {{ cfg.yaml.url }}
+baseurl: {{ cfg.yaml.baseurl }}
 
-repository: {{ (owner ~ '/' ~ cookiecutter.project_slug) | tojson }}
-repo_url: {{ project_repo_url | tojson }}
-repo_blob: {{ (project_repo_url ~ '/blob/' ~ cookiecutter._default_branch) | tojson }}
-github_io_url: {{ (site_url ~ site_baseurl) | tojson }}
-github_username: {{ cookiecutter.github_username | tojson }}
-{% if cookiecutter.twitter_username %}
-twitter_username: {{ cookiecutter.twitter_username | tojson }}
+repository: {{ cfg.yaml.repository }}
+repo_url: {{ cfg.yaml.repo_url }}
+repo_blob: {{ cfg.yaml.repo_blob }}
+github_io_url: {{ cfg.yaml.github_io_url }}
+github_username: {{ cfg.yaml.github_username }}
+{% if cfg.values.twitter_username %}
+twitter_username: {{ cfg.yaml.twitter_username }}
 {% endif %}
-{% if cookiecutter.linkedin_usercode %}
-linkedin_usercode: {{ cookiecutter.linkedin_usercode | tojson }}
+{% if cfg.values.linkedin_usercode %}
+linkedin_usercode: {{ cfg.yaml.linkedin_usercode }}
 {% endif %}
-{% if cookiecutter.buymeacoffee_username %}
-buymeacoffee_username: {{ cookiecutter.buymeacoffee_username | tojson }}
+{% if cfg.values.buymeacoffee_username %}
+buymeacoffee_username: {{ cfg.yaml.buymeacoffee_username }}
 {% endif %}
 
 # -----------------------------------------------------------------------------
 # Theme selection
 # -----------------------------------------------------------------------------
-{% if use_remote_theme %}
-remote_theme: {{ selected_theme | tojson }}
+theme_family: {{ cfg.yaml_string(cfg.theme.family) }}
+theme_supported: {{ cfg.theme_supported | tojson }}
+site_type_supported: {{ cfg.site_type_supported | tojson }}
+selection_supported: {{ cfg.selection_supported | tojson }}
+{% if cfg.selection_supported and cfg.theme.integration == 'remote_theme' %}
+remote_theme: {{ cfg.yaml_string(cfg.theme.remote_theme) }}
 {% else %}
-# Full-site theme selected: {{ selected_theme }}
-# The matching layouts, includes, assets, and data files must be included
-# by the Cookiecutter generator. Setting remote_theme alone is insufficient.
+# Requested theme: {{ cfg.values.theme }}
+# {{ cfg.support_message }}
 {% endif %}
 
+{% if cfg.collections %}
 # -----------------------------------------------------------------------------
-# Collections (only those needed by the selected site/theme)
+# Collections
 # -----------------------------------------------------------------------------
-{% if cookiecutter.site_type == 'documentation' or selected_theme in ['raviriley/agency-jekyll-theme', 'zerostaticthemes/jekyll-serif-theme', 'CloudCannon/hydra-jekyll-template', 'emilbaehr/automatic-app-landing-page', 'alshedivat/al-folio'] %}
 collections:
-{% if cookiecutter.site_type == 'documentation' %}
-  manual:
-    output: true
-    permalink: /:collection/:path
-  resources:
-    output: true
-    permalink: /:collection/:path
-{% endif %}
-{% if selected_theme == 'raviriley/agency-jekyll-theme' %}
-  portfolio:
-    output: true
-{% elif selected_theme == 'zerostaticthemes/jekyll-serif-theme' %}
-  services:
-    output: true
-    sort_by: weight
-  team:
-    output: true
-{% elif selected_theme == 'CloudCannon/hydra-jekyll-template' %}
-  staff_members:
-    output: true
-{% elif selected_theme == 'emilbaehr/automatic-app-landing-page' %}
-  pages:
-    output: true
-    permalink: /:path/
-{% elif selected_theme == 'alshedivat/al-folio' %}
-  news:
-    output: true
-    permalink: /:collection/:title/
-  projects:
-    output: true
-    permalink: /:collection/:title/
-{% endif %}
+{% for collection_name, options in cfg.collections.items() %}
+  {{ collection_name }}:
+{% for option_name, option_value in options.items() %}
+    {{ option_name }}: {{ cfg.yaml_string(option_value) }}
+{% endfor %}
+{% endfor %}
 {% endif %}
 
 # -----------------------------------------------------------------------------
-# Jekyll plugins (the Gemfile must match the generated plugin list)
+# Jekyll plugins
 # -----------------------------------------------------------------------------
 plugins:
-{% if use_remote_theme %}
-  - jekyll-remote-theme
-{% endif %}
-  - jekyll-redirect-from
-  - jekyll-seo-tag
-  - jekyll-github-metadata
-  - jekyll-include-cache
-  - jekyll-sitemap
-{% if selected_theme == 'carlosperate/jekyll-theme-rtd' %}
-  - jekyll-relative-links
-{% endif %}
-{% if selected_theme in ['CloudCannon/hydra-jekyll-template', 'poole/lanyon', 'LeNPaul/Millennial'] %}
-  - jekyll-paginate
-{% endif %}
-{% if selected_theme in ['CloudCannon/hydra-jekyll-template', 'LeNPaul/Millennial'] %}
-  - jekyll-feed
-{% endif %}
-{% if selected_theme == 'CloudCannon/hydra-jekyll-template' %}
-  - jekyll-archives
-{% elif selected_theme == 'zerostaticthemes/jekyll-serif-theme' %}
-  - jekyll-environment-variables
-{% endif %}
+{% for plugin_name in cfg.plugin_names %}
+  - {{ plugin_name }}
+{% endfor %}
 
 # -----------------------------------------------------------------------------
 # Theme-specific configuration
 # -----------------------------------------------------------------------------
-{% if is_just_the_docs %}
-# Just the Docs
-{% if cookiecutter.site_type == 'documentation' %}
-just_the_docs:
-  collections:
-    manual:
-      name: Manual
-      nav_fold: true
-      nav_exclude: false
-    resources:
-      name: External Links
-      nav_fold: false
-      nav_exclude: false
-{% endif %}
-{% if cookiecutter.ga_tracking %}
-ga_tracking: {{ cookiecutter.ga_tracking | tojson }}
-{% endif %}
-search_enabled: true
-enable_copy_code_button: true
-mermaid:
-  version: "9.1.6"
-heading_anchors: true
-aux_links:
-  {{ (cookiecutter.project_name ~ ' on GitHub') | tojson }}:
-    - {{ project_repo_url | tojson }}
-aux_links_new_tab: false
-nav_enabled: true
-back_to_top: true
-back_to_top_text: "Back to top"
-footer_content: >-
-  {{ cookiecutter.copyright }}. Distributed under the
-  <a href="{{ project_repo_url }}/blob/{{ cookiecutter._default_branch }}/LICENSE.md">{{ cookiecutter.license }} license</a>.
-last_edit_timestamp: true
-last_edit_time_format: "%b %e %Y at %I:%M %p"
-gh_edit_link: true
-gh_edit_link_text: "Edit this page on GitHub"
-gh_edit_repository: {{ project_repo_url | tojson }}
-gh_edit_branch: {{ cookiecutter._default_branch | tojson }}
-# Pages in this Cookiecutter template are currently stored at repository root.
-# Set gh_edit_source: docs if a generated project uses docs/ as Jekyll source.
-gh_edit_view_mode: "tree"
-callouts_level: quiet
-callouts:
-  highlight:
-    color: yellow
-  important:
-    title: Important
-    color: blue
-  new:
-    title: New
-    color: green
-  note:
-    title: Note
-    color: purple
-  warning:
-    title: Warning
-    color: red
-{% elif selected_theme == 'carlosperate/jekyll-theme-rtd' %}
-# Read the Docs
-site_author: {{ cookiecutter.author | tojson }}
-sticky_navigation: true
-prev_next_buttons_location: both
-search_enabled: true
-edit_on_github: true
-github_branch: {{ cookiecutter._default_branch | tojson }}
-display_version: {{ cookiecutter.version | tojson }}
-{% elif selected_theme == 'mmistakes/minimal-mistakes' %}
-# Minimal Mistakes
-minimal_mistakes_skin: default
-locale: en-US
-search: true
-breadcrumbs: true
-defaults:
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-  - scope:
-      path: ""
-      type: pages
-    values:
-      layout: single
-{% elif selected_theme == 'raviriley/agency-jekyll-theme' %}
-# Agency
-locale: en-US
-analytics:
-  google: {{ (cookiecutter.ga_tracking or '') | tojson }}
-# Agency also requires _data/sitetext.yml, _data/navigation.yml and
-# _data/style.yml, plus portfolio content for a populated homepage.
-{% elif selected_theme == 'zerostaticthemes/jekyll-serif-theme' %}
-# Serif (full-site template)
-permalink: pretty
-home:
-  limit_services: 6
-defaults:
-  - scope:
-      path: ""
-      type: services
-    values:
-      layout: service
-  - scope:
-      path: ""
-      type: team
-    values:
-      layout: team
-{% elif selected_theme == 'CloudCannon/hydra-jekyll-template' %}
-# Hydra (full-site template)
-google_analytics_key: {{ (cookiecutter.ga_tracking or '') | tojson }}
-paginate: 10
-paginate_path: "/blog/:num/"
-permalink: pretty
-jekyll-archives:
-  enabled:
-    - categories
-{% elif selected_theme == 'emilbaehr/automatic-app-landing-page' %}
-# Automatic App Landing Page (full-site template)
-page_title: {{ cookiecutter.project_name | tojson }}
-app_name: {{ cookiecutter.project_name | tojson }}
-app_description: {{ cookiecutter.description | tojson | replace('\\u0027', "'") }}
-your_name: {{ cookiecutter.author | tojson }}
-email_address: {{ cookiecutter.email | tojson }}
-enable_smart_app_banner: false
-# App-specific fields (ios_app_id, screenshots, app links, features, assets)
-# must be provided before publishing an actual app landing page.
-features: []
-{% elif selected_theme == 'alshedivat/al-folio' %}
-# al-folio (full-site template; requires its own build dependencies)
-lang: en
-{% if cookiecutter.ga_tracking %}
-google_analytics: {{ cookiecutter.ga_tracking | tojson }}
-{% endif %}
-permalink: "/blog/:year/:title/"
-{% elif selected_theme == 'poole/lanyon' %}
-# Lanyon (full-site template)
-tagline: {{ cookiecutter.description | tojson | replace('\\u0027', "'") }}
-paginate: 5
-permalink: pretty
-{% if cookiecutter.ga_tracking %}
-google_analytics_id: {{ cookiecutter.ga_tracking | tojson }}
-{% endif %}
-{% elif selected_theme == 'LeNPaul/Millennial' %}
-# Millennial (full-site template)
-paginate: 5
-permalink: "/:title"
+{% if cfg.selection_supported %}
+{% include cfg.theme.config_template %}
+{% else %}
+# No theme-specific configuration is emitted for an unsupported selection.
 {% endif %}
 
 # -----------------------------------------------------------------------------
@@ -305,16 +99,18 @@ include:
 exclude:
   - node_modules
   - .DS_Store
+  - Makefile
   - Gemfile
   - Gemfile.lock
+  - README.md
+  - THIRD_PARTY_NOTICES.md
+  - docs
+  - .cookiecutter-site.json
+  - _site_resources
+  - _theme_resources
   - vendor
 
-# Additional site metadata; Jekyll SEO Tag principally uses the top-level
-# title and description fields above.
+# Additional site metadata. Jekyll SEO Tag principally uses top-level fields.
 seo:
-{% if cookiecutter.site_type == 'documentation' %}
-  title: {{ (cookiecutter.project_name ~ ' Documentation') | tojson }}
-{% else %}
-  title: {{ cookiecutter.project_name | tojson }}
-{% endif %}
-  description: {{ cookiecutter.description | tojson | replace('\\u0027', "'") }}
+  title: {{ cfg.yaml.seo_title }}
+  description: {{ cfg.yaml.description }}

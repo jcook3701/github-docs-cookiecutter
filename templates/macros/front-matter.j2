@@ -1,0 +1,63 @@
+{# Import this macro module with context and render it before page content. #}
+{% import "vars/main.j2" as cfg with context %}
+
+{% macro page(
+  title,
+  description='',
+  layout=none,
+  kind='page',
+  author=none,
+  permalink=none,
+  nav_order=none,
+  parent=none,
+  grand_parent=none,
+  has_children=none,
+  nav_exclude=none,
+  author_profile=true,
+  toc=true,
+  toc_sticky=true
+) -%}
+{% if layout %}
+  {% set resolved_layout = layout %}
+{% elif cfg.selection_supported %}
+  {% set resolved_layout = cfg.theme.get(kind ~ '_layout', cfg.theme.page_layout) %}
+{% else %}
+  {% set resolved_layout = 'default' %}
+{% endif %}
+{% set resolved_author = author if author is not none else cfg.values.author %}
+---
+layout: {{ cfg.yaml_string(resolved_layout) }}
+title: {{ cfg.yaml_string(title) }}
+description: {{ cfg.yaml_string(description) }}
+{% if not (cfg.selection_supported and cfg.theme.family == 'minimal_mistakes') %}
+author: {{ cfg.yaml_string(resolved_author) }}
+{% endif %}
+{% if permalink %}
+permalink: {{ cfg.yaml_string(permalink) }}
+{% endif %}
+{% if cfg.selection_supported and cfg.theme.family in ['just_the_docs', 'read_the_docs'] %}
+{% if nav_order is not none %}
+nav_order: {{ nav_order | tojson }}
+{% endif %}
+{% if nav_exclude is not none %}
+nav_exclude: {{ nav_exclude | tojson }}
+{% endif %}
+{% if parent is not none %}
+parent: {{ cfg.yaml_string(parent) }}
+{% endif %}
+{% if grand_parent is not none %}
+grand_parent: {{ cfg.yaml_string(grand_parent) }}
+{% endif %}
+{% endif %}
+{% if cfg.selection_supported and cfg.theme.family == 'just_the_docs' %}
+{% if has_children is not none %}
+has_children: {{ has_children | tojson }}
+{% endif %}
+{% endif %}
+{% if cfg.selection_supported and cfg.theme.family == 'minimal_mistakes' %}
+author_profile: {{ author_profile | tojson }}
+toc: {{ toc | tojson }}
+toc_sticky: {{ toc_sticky | tojson }}
+{% endif %}
+---
+{% endmacro %}

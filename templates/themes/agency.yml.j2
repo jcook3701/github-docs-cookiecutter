@@ -1,0 +1,11 @@
+# Agency
+locale: en-US
+{% if cfg.values.formspree_form_path %}
+formspree_form_path: {{ cfg.yaml.formspree_form_path }}
+{% endif %}
+{% if cfg.values.ga_tracking %}
+analytics:
+  google: {{ cfg.yaml.ga_tracking }}
+{% endif %}
+# The theme/agency resource pack supplies navigation, site text, style data,
+# portfolio content, and a local placeholder asset.

@@ -8,7 +8,34 @@
 ## Overview
 {{ site.description }}  
 
-Template cookiecutter project for **Github Pages** (Jekyll).  This project can utilize a variety of different documentation templates but is focused mainly on a clean implementation of **[just the docs](https://github.com/just-the-docs/just-the-docs)**. Skip the boring **boilerplate code** and get to the work that matters.
+Cookiecutter generator for documentation, company, blog, portfolio, and landing-page websites on **GitHub Pages** with Jekyll. Shared metadata, URLs, dependencies, front matter, and theme capabilities are managed by one central Jinja configuration.
+
+## Theme compatibility
+
+The generator only publishes combinations that have the layouts, dependencies, and supporting files needed to build. Selecting an unimplemented theme or an incompatible website type stops generation with a message explaining the limitation.
+
+| Theme selection | Compatible website types | Integration | License |
+| --- | --- | --- | --- |
+| `just-the-docs/just-the-docs@v0.11.0` | Documentation | Pinned remote theme | MIT |
+| `pmarsceill/just-the-docs` | Documentation | Legacy alias normalized to the pinned canonical theme | MIT |
+| `carlosperate/jekyll-theme-rtd` | Documentation | Pinned remote theme plus licensed collection-navigation override | BSD-2-Clause |
+| `mmistakes/minimal-mistakes` | Documentation, company, blog, portfolio, landing page | Pinned remote theme plus generated site-type navigation | MIT |
+| `raviriley/agency-jekyll-theme` | Company, portfolio, landing page | Commit-pinned remote theme plus generated data and Pages-safe resource overrides | MIT |
+
+### Blocked full-site templates
+
+The selections below are complete starter repositories rather than interchangeable remote themes. They remain visible for migration compatibility and research, but generation is deliberately blocked until their required source trees, build contracts, and attribution files can be maintained as tested resource packs.
+
+| Theme selection | Limitation | Upstream license or status |
+| --- | --- | --- |
+| `alshedivat/al-folio` | Uses `al_folio_core` and a large pinned plugin and collection contract. | MIT |
+| `poole/lanyon` | Requires its complete Poole layouts, includes, public assets, and pagination setup. | MIT |
+| `zerostaticthemes/jekyll-serif-theme` | Requires company collections, data, layouts, images, and third-party asset credits. | MIT; preserve upstream asset credits |
+| `CloudCannon/hydra-jekyll-template` | Requires its full marketing and blog source tree; upstream marks it legacy and unmaintained. | MIT; legacy |
+| `emilbaehr/automatic-app-landing-page` | Requires device assets and application-store metadata. | MIT |
+| `LeNPaul/Millennial` | Requires its blog layouts, data settings, feeds, Sass, and static assets. | MIT |
+
+Project Pages receive a repository `baseurl`; user or organization Pages use the domain root. A custom domain produces a normalized hostname-only `CNAME`, but the domain must also be configured in the repository's GitHub Pages settings. Agency sites show an email contact action unless a current Formspree form path is explicitly configured.
 
 ***
 

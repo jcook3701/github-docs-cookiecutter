@@ -1,0 +1,6 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Contact", "Take the next step.", cfg.theme.page_layout, nav_order=3, permalink="/contact/") }}
+# Ready to get started?
+
+Contact [{{ cfg.markdown.author }}](mailto:{{ cfg.values.email }}) to learn more, or visit the [project repository]({{ cfg.values.repo_url }}).

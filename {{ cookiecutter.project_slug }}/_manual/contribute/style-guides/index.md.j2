@@ -1,0 +1,8 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Style Guide", "Apply the project's language and configuration standards.", cfg.theme.page_layout, nav_order=6, parent="Contribute", has_children=true) }}
+
+## Style Guides
+* [Python]({% raw %}{% link _manual/contribute/style-guides/python.md %}{% endraw %}) style guide.
+* [Typescript]({% raw %}{% link _manual/contribute/style-guides/typescript.md %}{% endraw %}) style guide.
+* [YAML]({% raw %}{% link _manual/contribute/style-guides/yaml.md %}{% endraw %}) style guide.

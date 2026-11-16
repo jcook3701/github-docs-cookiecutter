@@ -1,0 +1,18 @@
+# {{ cfg.markdown.title }}
+
+{{ cfg.markdown.description }}
+
+## Latest Posts
+
+{% raw %}
+{% for post in site.posts limit: 10 %}
+- [{{ post.title }}]({{ post.url | relative_url }}) — {{ post.date | date: "%B %-d, %Y" }}
+{% else %}
+No posts have been published yet. Check back soon.
+{% endfor %}
+{% endraw %}
+
+## Explore
+
+- [Browse the archive]({% raw %}{{ "/archive/" | relative_url }}{% endraw %})
+- [Explore categories]({% raw %}{{ "/categories/" | relative_url }}{% endraw %})

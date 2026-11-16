@@ -1,0 +1,17 @@
+{%- import "vars/main.j2" as cfg with context -%}
+{
+  "schema_version": 1,
+  "site_type": {{ cfg.values.site_type | tojson }},
+  "selected_theme": {{ cfg.selected_theme | tojson }},
+  "normalized_theme": {{ cfg.normalized_theme | tojson }},
+  "theme_family": {{ cfg.theme.family | tojson }},
+  "theme_supported": {{ cfg.theme_supported | tojson }},
+  "site_type_supported": {{ cfg.site_type_supported | tojson }},
+  "selection_supported": {{ cfg.selection_supported | tojson }},
+  "support_message": {{ cfg.support_message | tojson }},
+  "integration": {{ cfg.theme.integration | tojson }},
+  "source": {{ cfg.theme.source | tojson }},
+  "license": {{ cfg.theme.license | tojson }},
+  "custom_domain": {{ cfg.values.custom_domain | tojson }},
+  "resource_packs": {{ cfg.selected_resource_packs | tojson }}
+}

@@ -1,0 +1,71 @@
+{% import "vars/main.j2" as cfg with context %}
+# {{ cfg.markdown.title }}
+
+[![License](https://img.shields.io/github/license/{{ cfg.values.repository }})]({{ cfg.values.license_url }})
+[![Deploy website]({{ cfg.values.repo_url }}/actions/workflows/pages.yml/badge.svg)]({{ cfg.values.repo_url }}/actions/workflows/pages.yml)
+
+**Author:** {{ cfg.markdown.author }}
+**Version:** {{ cfg.markdown.version }}
+**Website:** [{{ cfg.values.github_io_url }}]({{ cfg.values.github_io_url }})
+
+## Overview
+
+{{ cfg.markdown.description }}
+
+{% if cfg.values.site_type == "documentation" %}
+## Getting started
+
+- [Requirements]({{ cfg.values.github_io_url }}/manual/setup-guide/requirements)
+- [Installation guide]({{ cfg.values.github_io_url }}/manual/introduction/installation-guide)
+
+## Documentation
+
+The complete {{ cfg.markdown.title }} documentation is available on the [project website]({{ cfg.values.github_io_url }}).
+{% elif cfg.values.site_type == "company" %}
+## Company
+
+- [About]({{ cfg.values.github_io_url }}/about/)
+- [Services]({{ cfg.values.github_io_url }}/services/)
+- [Projects]({{ cfg.values.github_io_url }}/projects/)
+- [Team]({{ cfg.values.github_io_url }}/team/)
+- [Contact]({{ cfg.values.github_io_url }}/contact/)
+{% elif cfg.values.site_type == "blog" %}
+## Blog
+
+- [Latest posts]({{ cfg.values.github_io_url }})
+- [Archive]({{ cfg.values.github_io_url }}/archive/)
+- [Categories]({{ cfg.values.github_io_url }}/categories/)
+{% elif cfg.values.site_type == "portfolio" %}
+## Portfolio
+
+See featured projects on the [portfolio website]({{ cfg.values.github_io_url }}) or browse [GitHub]({{ cfg.values.github_profile_url }}).
+{% elif cfg.values.site_type == "landing_page" %}
+## Product
+
+- [Features]({{ cfg.values.github_io_url }}/features/)
+- [Contact]({{ cfg.values.github_io_url }}/contact/)
+{% endif %}
+
+{% if cfg.selection_supported and cfg.theme.family == "agency" %}
+## Agency contact form
+
+{% if cfg.values.formspree_form_path %}
+The homepage contact form submits through Formspree path `{{ cfg.markdown.formspree_form_path }}`.
+{% else %}
+No Formspree form path was configured, so the homepage shows a working email link instead of an inactive form. Add `formspree_form_path: "f/your-form-id"` to `_config.yml` when a Formspree form is ready.
+{% endif %}
+
+The generated `THIRD_PARTY_NOTICES.md` records the pinned Agency theme and its license.
+{% endif %}
+
+## Contributing
+
+Issues and pull requests are welcome in the [GitHub repository]({{ cfg.values.repo_url }}).
+
+## License
+
+{{ cfg.markdown.copyright }}
+
+This project is licensed under the **{{ cfg.markdown.license }} License**. See the [LICENSE]({{ cfg.values.license_url }}) file for the full license text.
+
+SPDX-License-Identifier: {{ cfg.values.license }}
