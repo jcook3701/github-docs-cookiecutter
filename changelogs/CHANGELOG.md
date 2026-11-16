@@ -10,6 +10,7 @@
 - *(jinja)* Hooks for jinja2 template cleanup.
 - *(jinja2)* Jinja2 file replace test.
 - Complete multi-theme GitHub Pages generator
+- Complete multi-theme GitHub Pages generator
 
 ### 🐛 Fixed
 
