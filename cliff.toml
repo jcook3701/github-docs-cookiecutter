@@ -68,6 +68,10 @@ header = """
 # --------------------------------------------------
 
 """
+# Normalize historical commit subjects as well as newly rendered entries.
+postprocessors = [
+    { pattern = '(?m)[ \t]+$', replace = "" },
+]
 # This setting controls how new entries are added
 prepend = true
 
@@ -80,7 +84,7 @@ template = """
 {% for section, commits in sections %}
 ## {{ section | striptags | trim }}
 {% for commit in commits %}
-* {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}]({{ commit.external_link }}))
+* {{ commit.message | trim | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}]({{ commit.external_link }}))
 {% endfor %}
 {% endfor %}
 """

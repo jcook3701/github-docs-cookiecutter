@@ -1,0 +1,4 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("What's New", "Review notable changes in recent releases.", cfg.theme.page_layout, nav_order=8, has_children=true) }}
+## What's new in {{ cfg.markdown.project_name }}

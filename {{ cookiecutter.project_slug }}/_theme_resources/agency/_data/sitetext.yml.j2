@@ -1,0 +1,79 @@
+{% import "vars/main.j2" as cfg with context %}
+---
+en: &DEFAULT_EN
+  header:
+    title: {{ cfg.yaml.description }}
+    text: {{ cfg.yaml.title }}
+    button: "Learn More"
+    buttonlink: "#services"
+
+  services:
+    title: "Services"
+    text: "Practical expertise for ambitious work."
+    section: services
+    list:
+      - title: "Strategy"
+        desc: "Define the audience, opportunity, and path to a useful result."
+        icon: "fas fa-lightbulb"
+      - title: "Delivery"
+        desc: "Build a focused, accessible, and maintainable experience."
+        icon: "fas fa-laptop-code"
+      - title: "Improvement"
+        desc: "Learn from real use and improve what matters most."
+        icon: "fas fa-chart-line"
+
+  portfolio:
+    title: "Portfolio"
+    text: "Selected work and project stories."
+    section: portfolio
+    closebutton: "Close Project"
+
+  about:
+    title: "About"
+    text: {{ cfg.yaml.description }}
+    body: "We combine thoughtful planning, dependable delivery, and open communication."
+    section: about
+
+  team:
+    title: "Team"
+    text: "Meet the people behind the work."
+    section: team
+    people:
+      - name: {{ cfg.yaml.author }}
+        role: "Founder"
+        image: "assets/img/portfolio/featured-project.svg"
+        social:
+          - url: {{ cfg.yaml.github_profile_url }}
+            icon: "fab fa-github"
+
+  contact:
+    title: "Contact"
+    text: "Tell us what you are building and how we can help."
+    section: contact
+    name: "Name"
+    name-validation: "Please enter your name."
+    email: "Email"
+    email-validation: "Please enter a valid email address."
+    phone: "Phone"
+    phone-validation: "Please enter your phone number."
+    message: "Message"
+    message-validation: "Please enter a message."
+    subject: "Website contact"
+    submit: "Send Message"
+
+  footer:
+    legal: "Privacy Policy"
+    social:
+      - url: {{ cfg.yaml.github_profile_url }}
+        icon: "fab fa-github"
+{% if cfg.values.twitter_username %}
+      - url: "https://x.com/{{ cfg.values.twitter_username }}"
+        icon: "fab fa-x-twitter"
+{% endif %}
+{% if cfg.values.linkedin_usercode %}
+      - url: "https://www.linkedin.com/in/{{ cfg.values.linkedin_usercode }}/"
+        icon: "fab fa-linkedin-in"
+{% endif %}
+
+en-US:
+  <<: *DEFAULT_EN

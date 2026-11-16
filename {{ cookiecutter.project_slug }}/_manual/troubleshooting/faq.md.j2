@@ -1,0 +1,5 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("FAQ", "Answers to frequently asked project questions.", cfg.theme.page_layout, nav_order=1, parent="Troubleshooting") }}
+
+## {{ cfg.markdown.project_name }} Frequently Asked Questions

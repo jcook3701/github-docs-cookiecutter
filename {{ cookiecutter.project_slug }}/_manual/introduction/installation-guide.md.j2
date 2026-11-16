@@ -1,0 +1,4 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Installation Guide", "Install the project and its dependencies on Linux.", cfg.theme.page_layout, nav_order=2, parent="Introduction") }}
+## Installation Guide for {{ cfg.markdown.project_name }} (Linux)

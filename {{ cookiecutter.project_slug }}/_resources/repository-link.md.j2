@@ -1,0 +1,7 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page(cfg.values.github_aux_label, "Open the project repository on GitHub.", cfg.theme.page_layout, nav_order=1, permalink="/repository/") }}
+
+<meta http-equiv="refresh" content="0; url={{ cfg.values.repo_url }}">
+
+The project source, issue tracker, and contribution history are available in the [{{ cfg.markdown.project_name }} repository]({{ cfg.values.repo_url }}).

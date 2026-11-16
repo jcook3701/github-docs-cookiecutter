@@ -1,0 +1,14 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("About", "Learn about our purpose, values, and approach.", cfg.theme.page_layout, nav_order=2, permalink="/about/") }}
+# About {{ cfg.markdown.title }}
+
+{{ cfg.markdown.description }}
+
+We combine careful planning, practical engineering, and open communication to create work that lasts.
+
+## Our values
+
+- Solve the right problem before choosing a solution.
+- Communicate clearly and work transparently.
+- Build for the people who will use and maintain the result.

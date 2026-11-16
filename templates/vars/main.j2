@@ -1,0 +1,405 @@
+{#-
+  Central Cookiecutter context for all generated Jekyll projects.
+
+  Import this module with context. Keep input normalization, serialization,
+  site-type behavior, and theme capabilities here so generated templates do
+  not need their own copies of those decisions.
+-#}
+
+{% set inputs = cookiecutter %}
+
+{# -------------------------------------------------------------------------- #}
+{# Format-specific serialization. Raw values remain available through values. #}
+{# -------------------------------------------------------------------------- #}
+{% macro yaml_string(value) -%}
+{{- value | tojson
+    | replace('\\u0027', "'")
+    | replace('\\u003c', '<')
+    | replace('\\u003e', '>')
+    | replace('\\u0026', '&') -}}
+{%- endmacro %}
+
+{% macro html_string(value) -%}
+{{- value | string | e -}}
+{%- endmacro %}
+
+{% macro markdown_string(value) -%}
+{{- value | string
+    | replace('\\', '\\\\')
+    | replace('`', '\\`')
+    | replace('*', '\\*')
+    | replace('_', '\\_')
+    | replace('[', '\\[')
+    | replace(']', '\\]')
+    | replace('<', '\\<')
+    | replace('>', '\\>') -}}
+{%- endmacro %}
+
+{% macro make_shell_string(value) -%}
+'{{- value | string | replace('$', '$$') | replace("'", "'\"'\"'") -}}'
+{%- endmacro %}
+
+{# -------------------------------------------------------------------------- #}
+{# GitHub identity, Pages routing, and public-facing project metadata.        #}
+{# -------------------------------------------------------------------------- #}
+{% set github_owner = inputs.github_org or inputs.github_username %}
+{% set repository = github_owner ~ '/' ~ inputs.project_slug %}
+{% set repo_url = 'https://github.com/' ~ repository %}
+{% set custom_domain = (inputs.custom_domain | default('', true) | trim) %}
+{% if custom_domain %}
+  {# GitHub Pages custom domains are hostnames, never URL subpaths or ports. #}
+  {% set domain_without_scheme = custom_domain.split('://', 1)[1]
+    if '://' in custom_domain else custom_domain %}
+  {% set domain_authority = domain_without_scheme.lstrip('/').split('/', 1)[0]
+    .split('?', 1)[0].split('#', 1)[0] %}
+  {% set custom_domain_hostname = domain_authority.split(':', 1)[0]
+    .rstrip('.').lower() %}
+  {% set site_url = 'https://' ~ custom_domain_hostname %}
+  {% set baseurl = '' %}
+{% else %}
+  {% set custom_domain_hostname = '' %}
+  {% set site_url = 'https://' ~ github_owner ~ '.github.io' %}
+  {% set baseurl = '/' ~ inputs.project_slug if inputs.pages_site_type == 'project' else '' %}
+{% endif %}
+
+{# -------------------------------------------------------------------------- #}
+{# Site types own their content pack and collections.                         #}
+{# -------------------------------------------------------------------------- #}
+{% set site_types = {
+  'documentation': {
+    'label': 'Documentation',
+    'resource_pack': none,
+    'homepage_template': 'homepages/documentation.md.j2',
+    'navigation': [
+      {'title': 'Home', 'url': '/'},
+      {'title': 'Getting Started', 'url': '/manual/introduction/getting-started'},
+      {'title': 'Tutorials', 'url': '/manual/tutorials/index'},
+      {'title': 'Contribute', 'url': '/manual/contribute/index'},
+      {'title': 'Troubleshooting', 'url': '/manual/troubleshooting/index'},
+      {'title': 'Repository', 'url': '/repository/'}
+    ],
+    'collections': {
+      'manual': {'output': true, 'permalink': '/:collection/:path'},
+      'resources': {'output': true, 'permalink': '/:collection/:path'}
+    }
+  },
+  'company': {
+    'label': 'Company',
+    'resource_pack': 'site/company',
+    'homepage_template': 'homepages/company.md.j2',
+    'navigation': [
+      {'title': 'Home', 'url': '/'},
+      {'title': 'About', 'url': '/about/'},
+      {'title': 'Services', 'url': '/services/'},
+      {'title': 'Projects', 'url': '/projects/'},
+      {'title': 'Team', 'url': '/team/'},
+      {'title': 'Contact', 'url': '/contact/'}
+    ],
+    'collections': {}
+  },
+  'blog': {
+    'label': 'Blog',
+    'resource_pack': 'site/blog',
+    'homepage_template': 'homepages/blog.md.j2',
+    'navigation': [
+      {'title': 'Home', 'url': '/'},
+      {'title': 'Categories', 'url': '/categories/'},
+      {'title': 'Archive', 'url': '/archive/'}
+    ],
+    'collections': {}
+  },
+  'portfolio': {
+    'label': 'Portfolio',
+    'resource_pack': 'site/portfolio',
+    'homepage_template': 'homepages/portfolio.md.j2',
+    'navigation': [
+      {'title': 'Home', 'url': '/'},
+      {'title': 'Featured Work', 'url': '/projects/featured/'}
+    ],
+    'collections': {
+      'projects': {'output': true, 'permalink': '/projects/:path/'}
+    }
+  },
+  'landing_page': {
+    'label': 'Landing page',
+    'resource_pack': 'site/landing_page',
+    'homepage_template': 'homepages/landing_page.md.j2',
+    'navigation': [
+      {'title': 'Home', 'url': '/'},
+      {'title': 'Features', 'url': '/features/'},
+      {'title': 'Contact', 'url': '/contact/'}
+    ],
+    'collections': {}
+  }
+} %}
+
+{# -------------------------------------------------------------------------- #}
+{# Theme registry. A false support flag means no incomplete theme is applied. #}
+{# -------------------------------------------------------------------------- #}
+{% set theme_aliases = {
+  'pmarsceill/just-the-docs': 'just-the-docs/just-the-docs@v0.11.0'
+} %}
+
+{# Agency has no Git tags; its remote reference pins the tested master commit. #}
+{% set themes = {
+  'just-the-docs/just-the-docs@v0.11.0': {
+    'family': 'just_the_docs', 'label': 'Just the Docs',
+    'supported': true,
+    'support_note': 'Supported for documentation websites through the pinned remote theme.',
+    'integration': 'remote_theme',
+    'source': 'https://github.com/just-the-docs/just-the-docs', 'license': 'MIT',
+    'site_types': ['documentation'],
+    'remote_theme': 'just-the-docs/just-the-docs@v0.11.0',
+    'jekyll_version': '~> 4.4',
+    'page_layout': 'default', 'post_layout': 'default', 'archive_layout': 'default',
+    'navigation': 'just_the_docs', 'resource_pack': none,
+    'plugins': [], 'gems': [], 'collections': {}, 'home_layout': 'default',
+    'config_template': 'themes/just-the-docs.yml.j2'
+  },
+  'carlosperate/jekyll-theme-rtd': {
+    'family': 'read_the_docs', 'label': 'Jekyll Theme RTD',
+    'supported': true,
+    'support_note': 'Supported for documentation websites through the pinned remote theme.',
+    'integration': 'remote_theme',
+    'source': 'https://github.com/carlosperate/jekyll-theme-rtd', 'license': 'BSD-2-Clause',
+    'site_types': ['documentation'],
+    'remote_theme': 'carlosperate/jekyll-theme-rtd@v1.4.0',
+    'jekyll_version': '~> 4.4',
+    'page_layout': 'default', 'post_layout': 'default', 'archive_layout': 'default',
+    'navigation': 'read_the_docs', 'resource_pack': 'theme/read-the-docs',
+    'plugins': [{'name': 'jekyll-relative-links', 'version': '~> 0.7'}],
+    'gems': [], 'collections': {}, 'home_layout': 'default',
+    'config_template': 'themes/read-the-docs.yml.j2'
+  },
+  'mmistakes/minimal-mistakes': {
+    'family': 'minimal_mistakes', 'label': 'Minimal Mistakes',
+    'supported': true,
+    'support_note': 'Supported for all website types through the pinned remote theme.',
+    'integration': 'remote_theme',
+    'source': 'https://github.com/mmistakes/minimal-mistakes', 'license': 'MIT',
+    'site_types': ['documentation', 'company', 'blog', 'portfolio', 'landing_page'],
+    'remote_theme': 'mmistakes/minimal-mistakes@4.28.1',
+    'jekyll_version': '~> 4.4',
+    'page_layout': 'single', 'post_layout': 'single', 'archive_layout': 'archive',
+    'navigation': 'minimal_mistakes', 'resource_pack': 'theme/minimal-mistakes',
+    'author_mapping': true,
+    'plugins': [],
+    'site_plugins': {
+      'blog': [{'name': 'jekyll-feed', 'version': '~> 0.17'}]
+    },
+    'gems': [], 'collections': {}, 'home_layout': 'single',
+    'home_layouts': {'blog': 'home', 'company': 'splash', 'landing_page': 'splash'},
+    'config_template': 'themes/minimal-mistakes.yml.j2'
+  },
+  'raviriley/agency-jekyll-theme': {
+    'family': 'agency', 'label': 'Agency',
+    'supported': true,
+    'support_note': 'Supported for company, portfolio, and landing-page websites with the Agency data resource pack.',
+    'integration': 'remote_theme',
+    'source': 'https://github.com/raviriley/agency-jekyll-theme', 'license': 'MIT',
+    'site_types': ['company', 'portfolio', 'landing_page'],
+    'remote_theme': 'raviriley/agency-jekyll-theme@d477a171ec9633c980c8ef9098eeac39b60ceba3',
+    'jekyll_version': '~> 4.4.0',
+    'page_layout': 'page', 'post_layout': 'page', 'archive_layout': 'page',
+    'navigation': 'agency_data', 'resource_pack': 'theme/agency',
+    'plugins': [], 'gems': [],
+    'collections': {'portfolio': {'output': true, 'permalink': '/portfolio/:path/'}},
+    'home_layout': 'home', 'homepage_mode': 'theme',
+    'config_template': 'themes/agency.yml.j2'
+  },
+  'alshedivat/al-folio': {
+    'family': 'al_folio', 'label': 'al-folio', 'supported': false,
+    'support_note': 'Not yet integrated: al-folio is a complete application template with its own collections, assets, and build dependencies; those files are not vendored by this generator.',
+    'integration': 'full_site_template', 'source': 'https://github.com/alshedivat/al-folio',
+    'license': 'MIT', 'site_types': ['portfolio', 'blog'], 'remote_theme': none,
+    'jekyll_version': '~> 4.4',
+    'page_layout': 'page', 'post_layout': 'post', 'archive_layout': 'archive',
+    'navigation': 'theme_data', 'resource_pack': none,
+    'plugins': [], 'gems': [], 'collections': {},
+    'config_template': 'themes/al-folio.yml.j2'
+  },
+  'poole/lanyon': {
+    'family': 'lanyon', 'label': 'Lanyon', 'supported': false,
+    'support_note': 'Not yet integrated: Lanyon is a complete Poole site whose layouts and assets must be copied locally; it is not installed by remote_theme alone.',
+    'integration': 'full_site_template', 'source': 'https://github.com/poole/lanyon',
+    'license': 'MIT', 'site_types': ['blog'], 'remote_theme': none,
+    'jekyll_version': '~> 4.4',
+    'page_layout': 'page', 'post_layout': 'post', 'archive_layout': 'default',
+    'navigation': 'sidebar', 'resource_pack': none, 'author_mapping': true,
+    'plugins': [], 'gems': [], 'collections': {},
+    'config_template': 'themes/lanyon.yml.j2'
+  },
+  'zerostaticthemes/jekyll-serif-theme': {
+    'family': 'serif', 'label': 'Jekyll Serif', 'supported': false,
+    'support_note': 'Not yet integrated: Serif is a full website template and its layouts, data, Sass, and assets have not been packaged for generation.',
+    'integration': 'full_site_template',
+    'source': 'https://github.com/zerostaticthemes/jekyll-serif-theme',
+    'license': 'MIT', 'site_types': ['company', 'portfolio'], 'remote_theme': none,
+    'jekyll_version': '~> 4.4',
+    'page_layout': 'page', 'post_layout': 'post', 'archive_layout': 'page',
+    'navigation': 'theme_data', 'resource_pack': none,
+    'plugins': [], 'gems': [], 'collections': {},
+    'config_template': 'themes/serif.yml.j2'
+  },
+  'CloudCannon/hydra-jekyll-template': {
+    'family': 'hydra', 'label': 'Hydra', 'supported': false,
+    'support_note': 'Not yet integrated: Hydra is a complete CloudCannon template requiring local layouts, includes, data, Sass, and assets.',
+    'integration': 'full_site_template',
+    'source': 'https://github.com/CloudCannon/hydra-jekyll-template',
+    'license': 'MIT', 'site_types': ['company', 'blog', 'landing_page'],
+    'remote_theme': none, 'jekyll_version': '~> 4.2.0',
+    'page_layout': 'page', 'post_layout': 'post', 'archive_layout': 'page',
+    'navigation': 'theme_data', 'resource_pack': none, 'author_mapping': true,
+    'plugins': [], 'gems': [], 'collections': {},
+    'config_template': 'themes/hydra.yml.j2'
+  },
+  'emilbaehr/automatic-app-landing-page': {
+    'family': 'automatic_app_landing', 'label': 'Automatic App Landing Page',
+    'supported': false,
+    'support_note': 'Not yet integrated: this full app-landing template requires its layouts, app metadata, screenshots, and asset pipeline.',
+    'integration': 'full_site_template',
+    'source': 'https://github.com/emilbaehr/automatic-app-landing-page',
+    'license': 'MIT', 'site_types': ['landing_page'], 'remote_theme': none,
+    'jekyll_version': '~> 4.4',
+    'page_layout': 'page', 'post_layout': 'post', 'archive_layout': 'page',
+    'navigation': 'theme_native', 'resource_pack': none,
+    'plugins': [], 'gems': [], 'collections': {},
+    'config_template': 'themes/automatic.yml.j2'
+  },
+  'LeNPaul/Millennial': {
+    'family': 'millennial', 'label': 'Millennial', 'supported': false,
+    'support_note': 'Not yet integrated: Millennial is a complete site template whose layouts, includes, and assets are not currently packaged by this generator.',
+    'integration': 'full_site_template', 'source': 'https://github.com/LeNPaul/Millennial',
+    'license': 'MIT', 'site_types': ['blog', 'portfolio'], 'remote_theme': none,
+    'jekyll_version': '~> 4.4',
+    'page_layout': 'page', 'post_layout': 'post', 'archive_layout': 'page',
+    'navigation': 'theme_native', 'resource_pack': none,
+    'plugins': [], 'gems': [], 'collections': {},
+    'config_template': 'themes/millennial.yml.j2'
+  }
+} %}
+
+{% set selected_theme = inputs.theme %}
+{% set normalized_theme_key = theme_aliases.get(selected_theme, selected_theme) %}
+{% set theme = themes[normalized_theme_key] %}
+{% set selected_site_type = site_types[inputs.site_type] %}
+{% set theme_supported = theme.supported %}
+{% set site_type_supported = inputs.site_type in theme.site_types %}
+{% set selection_supported = theme_supported and site_type_supported %}
+{% if not theme_supported %}
+  {% set support_message = theme.support_note %}
+{% elif not site_type_supported %}
+  {% set support_message = theme.label ~ ' supports ' ~ (theme.site_types | join(', ')) ~ ' sites, not ' ~ inputs.site_type ~ '.' %}
+{% else %}
+  {% set support_message = theme.support_note %}
+{% endif %}
+{% set normalized_theme = theme.remote_theme or normalized_theme_key %}
+
+{% set company = inputs.company or '' %}
+{% set site_title = company if inputs.site_type == 'company' and company else inputs.project_name %}
+{% set seo_title = (site_title ~ ' Documentation') if inputs.site_type == 'documentation' else site_title %}
+
+{# Keep data types intact here; serialization belongs in yaml/html/markdown. #}
+{% set values = {
+  'project_name': inputs.project_name, 'project_slug': inputs.project_slug,
+  'company': company, 'title': site_title, 'seo_title': seo_title,
+  'author': inputs.author, 'email': inputs.email,
+  'formspree_form_path': inputs.formspree_form_path,
+  'version': inputs.version,
+  'license': inputs.license, 'copyright': inputs.copyright, 'timezone': inputs.timezone,
+  'description': inputs.description, 'site_type': inputs.site_type,
+  'pages_site_type': inputs.pages_site_type, 'template_type': inputs.template_type,
+  'publication_year': inputs.publication_year, 'current_year': inputs.current_year,
+  'year_range': inputs.__year_range, 'contribution_model': inputs.contribution_model,
+  'github_org': inputs.github_org or '', 'github_username': inputs.github_username,
+  'github_owner': github_owner, 'repository': repository, 'repo_url': repo_url,
+  'github_profile_url': 'https://github.com/' ~ github_owner,
+  'repo_blob': repo_url ~ '/blob/' ~ inputs._default_branch,
+  'license_url': repo_url ~ '/blob/' ~ inputs._default_branch ~ '/LICENSE.md',
+  'github_aux_label': inputs.project_name ~ ' on GitHub',
+  'github_io_url': site_url ~ baseurl, 'github_io': inputs.github_io,
+  'url': site_url, 'baseurl': baseurl, 'custom_domain': custom_domain,
+  'custom_domain_hostname': custom_domain_hostname,
+  'default_branch': inputs._default_branch, 'ga_tracking': inputs.ga_tracking,
+  'twitter_username': inputs.twitter_username,
+  'linkedin_usercode': inputs.linkedin_usercode,
+  'buymeacoffee_username': inputs.buymeacoffee_username,
+  'theme': selected_theme, 'normalized_theme': normalized_theme,
+  'is_sub_template': inputs._is_sub_template
+} %}
+
+{% set yaml = {} %}
+{% set html = {} %}
+{% set markdown = {} %}
+{% set make_shell = {} %}
+{% for key, value in values.items() %}
+  {% do yaml.update({key: yaml_string(value)}) %}
+  {% do html.update({key: html_string(value)}) %}
+  {% do markdown.update({key: markdown_string(value)}) %}
+  {% do make_shell.update({key: make_shell_string(value)}) %}
+{% endfor %}
+
+{# -------------------------------------------------------------------------- #}
+{# Dependencies and plugins are structured, versionable, and de-duplicated.  #}
+{# -------------------------------------------------------------------------- #}
+{% set core_gems = [
+  {'name': 'faraday', 'version': '~> 2.14'},
+  {'name': 'faraday-retry', 'version': '~> 2.3'},
+  {'name': 'bigdecimal', 'version': none},
+  {'name': 'csv', 'version': none},
+  {'name': 'logger', 'version': none},
+  {'name': 'base64', 'version': none},
+  {'name': 'webrick', 'version': none}
+] %}
+{% set base_plugins = [
+  {'name': 'jekyll-redirect-from', 'version': '~> 0.16'},
+  {'name': 'jekyll-seo-tag', 'version': '~> 2.8'},
+  {'name': 'jekyll-github-metadata', 'version': '~> 2.16'},
+  {'name': 'jekyll-include-cache', 'version': '~> 0.2'},
+  {'name': 'jekyll-sitemap', 'version': '~> 1.4'}
+] %}
+{% set remote_theme_plugin = {'name': 'jekyll-remote-theme', 'version': '~> 0.4'} %}
+
+{% set runtime_gems = [] %}
+{% set runtime_gem_names = [] %}
+{% set runtime_candidates = core_gems + (theme.gems if selection_supported else []) %}
+{% for dependency in runtime_candidates %}
+  {% if dependency.name not in runtime_gem_names %}
+    {% do runtime_gems.append(dependency) %}
+    {% do runtime_gem_names.append(dependency.name) %}
+  {% endif %}
+{% endfor %}
+
+{% set theme_plugins = theme.plugins + theme.get('site_plugins', {}).get(values.site_type, []) %}
+{% set plugin_candidates = base_plugins + (theme_plugins if selection_supported else []) %}
+{% if selection_supported and theme.integration == 'remote_theme' %}
+  {% set plugin_candidates = plugin_candidates + [remote_theme_plugin] %}
+{% endif %}
+{% set plugins = [] %}
+{% set plugin_names = [] %}
+{% for plugin in plugin_candidates %}
+  {% if plugin.name not in plugin_names and plugin.name not in runtime_gem_names %}
+    {% do plugins.append(plugin) %}
+    {% do plugin_names.append(plugin.name) %}
+  {% endif %}
+{% endfor %}
+
+{% set collections = {} %}
+{% do collections.update(selected_site_type.collections) %}
+{% if selection_supported %}
+  {% do collections.update(theme.collections) %}
+{% endif %}
+
+{% set selected_resource_packs = [] %}
+{% if selected_site_type.resource_pack %}
+  {% do selected_resource_packs.append(selected_site_type.resource_pack) %}
+{% endif %}
+{% if selection_supported and theme.resource_pack %}
+  {% do selected_resource_packs.append(theme.resource_pack) %}
+{% endif %}
+
+{% set homepage_template = selected_site_type.homepage_template %}
+{% set homepage_layout = theme.get('home_layouts', {}).get(
+  values.site_type, theme.get('home_layout', theme.page_layout)
+) if selection_supported else 'default' %}
+{% set homepage_mode = theme.get('homepage_mode', 'content') if selection_supported else 'content' %}

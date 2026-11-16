@@ -1,0 +1,43 @@
+{% raw %}
+<head>
+  {% if site.analytics.google %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "{{ site.analytics.google }}");
+  </script>
+  {% endif %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="{{ site.description | escape }}">
+  <meta name="author" content="{{ site.author.name | default: site.author | escape }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+
+  <link href="{{ '/assets/css/bootstrap.min.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/assets/css/all.min.css' | relative_url }}" rel="stylesheet" type="text/css">
+  {% if site.data.style.fonts_urls %}
+    {% for font_url in site.data.style.fonts_urls %}
+  <link href="{{ font_url }}" rel="stylesheet" type="text/css">
+    {% endfor %}
+  {% else %}
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css">
+  {% endif %}
+  <link href="{{ '/assets/css/agency.css' | relative_url }}" rel="stylesheet">
+
+  {% if page.layout == "page" %}
+  <style>
+    #pagecontainer { padding-top: 150px; }
+    @media only screen and (max-width: 991px) {
+      #pagecontainer { padding-top: 100px; }
+    }
+  </style>
+  {% endif %}
+</head>
+{% endraw %}

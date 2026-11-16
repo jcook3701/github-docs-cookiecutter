@@ -39,15 +39,15 @@
 
   .image-carousel img {
     width: 100%;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius, 0.5rem);
   }
 
   .image-carousel button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: var(--color-bg-accent);
-    color: var(--color-text-primary);
+    background-color: var(--color-bg-accent, #1f2937);
+    color: var(--color-text-primary, #fff);
     border: none;
     padding: 8px 12px;
     cursor: pointer;

@@ -1,0 +1,116 @@
+{% import "vars/main.j2" as cfg with context %}
+# {{ cfg.values.title }} — generated Jekyll configuration
+---
+
+# -----------------------------------------------------------------------------
+# Common site metadata and GitHub Pages routing
+# -----------------------------------------------------------------------------
+title: {{ cfg.yaml.title }}
+description: {{ cfg.yaml.description }}
+{% if cfg.selection_supported and cfg.theme.get('author_mapping', false) %}
+author:
+  name: {{ cfg.yaml.author }}
+  email: {{ cfg.yaml.email }}
+{% if cfg.values.twitter_username %}
+  twitter: {{ cfg.yaml.twitter_username }}
+{% endif %}
+{% else %}
+author: {{ cfg.yaml.author }}
+{% endif %}
+{% if cfg.values.company %}
+company: {{ cfg.yaml.company }}
+{% endif %}
+email: {{ cfg.yaml.email }}
+version: {{ cfg.yaml.version }}
+license: {{ cfg.yaml.license }}
+copyright: {{ cfg.yaml.copyright }}
+timezone: {{ cfg.yaml.timezone }}
+site_type: {{ cfg.yaml.site_type }}
+url: {{ cfg.yaml.url }}
+baseurl: {{ cfg.yaml.baseurl }}
+
+repository: {{ cfg.yaml.repository }}
+repo_url: {{ cfg.yaml.repo_url }}
+repo_blob: {{ cfg.yaml.repo_blob }}
+github_io_url: {{ cfg.yaml.github_io_url }}
+github_username: {{ cfg.yaml.github_username }}
+{% if cfg.values.twitter_username %}
+twitter_username: {{ cfg.yaml.twitter_username }}
+{% endif %}
+{% if cfg.values.linkedin_usercode %}
+linkedin_usercode: {{ cfg.yaml.linkedin_usercode }}
+{% endif %}
+{% if cfg.values.buymeacoffee_username %}
+buymeacoffee_username: {{ cfg.yaml.buymeacoffee_username }}
+{% endif %}
+
+# -----------------------------------------------------------------------------
+# Theme selection
+# -----------------------------------------------------------------------------
+theme_family: {{ cfg.yaml_string(cfg.theme.family) }}
+theme_supported: {{ cfg.theme_supported | tojson }}
+site_type_supported: {{ cfg.site_type_supported | tojson }}
+selection_supported: {{ cfg.selection_supported | tojson }}
+{% if cfg.selection_supported and cfg.theme.integration == 'remote_theme' %}
+remote_theme: {{ cfg.yaml_string(cfg.theme.remote_theme) }}
+{% else %}
+# Requested theme: {{ cfg.values.theme }}
+# {{ cfg.support_message }}
+{% endif %}
+
+{% if cfg.collections %}
+# -----------------------------------------------------------------------------
+# Collections
+# -----------------------------------------------------------------------------
+collections:
+{% for collection_name, options in cfg.collections.items() %}
+  {{ collection_name }}:
+{% for option_name, option_value in options.items() %}
+    {{ option_name }}: {{ cfg.yaml_string(option_value) }}
+{% endfor %}
+{% endfor %}
+{% endif %}
+
+# -----------------------------------------------------------------------------
+# Jekyll plugins
+# -----------------------------------------------------------------------------
+plugins:
+{% for plugin_name in cfg.plugin_names %}
+  - {{ plugin_name }}
+{% endfor %}
+
+# -----------------------------------------------------------------------------
+# Theme-specific configuration
+# -----------------------------------------------------------------------------
+{% if cfg.selection_supported %}
+{% include cfg.theme.config_template %}
+{% else %}
+# No theme-specific configuration is emitted for an unsupported selection.
+{% endif %}
+
+# -----------------------------------------------------------------------------
+# Shared Jekyll options
+# -----------------------------------------------------------------------------
+markdown: kramdown
+kramdown:
+  auto_ids: true
+include:
+  - .well-known
+exclude:
+  - node_modules
+  - .DS_Store
+  - Makefile
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - THIRD_PARTY_NOTICES.md
+  - docs
+  - .cookiecutter-site.json
+  - _site_resources
+  - _theme_resources
+  - vendor
+
+# Additional site metadata. Jekyll SEO Tag principally uses top-level fields.
+seo:
+  title: {{ cfg.yaml.seo_title }}
+  description: {{ cfg.yaml.description }}

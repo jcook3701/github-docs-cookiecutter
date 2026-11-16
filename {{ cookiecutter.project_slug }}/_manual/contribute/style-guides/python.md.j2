@@ -1,0 +1,4 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Python Style Guide", "Follow the project's Python coding conventions.", cfg.theme.page_layout, nav_order=1, parent="Style Guide", grand_parent="Contribute") }}
+## Python Style Guide

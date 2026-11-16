@@ -1,0 +1,6 @@
+# al-folio (full-site template; requires its own build dependencies)
+lang: en
+{% if cfg.values.ga_tracking %}
+google_analytics: {{ cfg.yaml.ga_tracking }}
+{% endif %}
+permalink: "/blog/:year/:title/"

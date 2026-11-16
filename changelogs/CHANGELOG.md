@@ -4,6 +4,18 @@
 
 ## [unreleased]
 
+### 🚀 Added
+
+- *(themes)* Added new themes to use. (#61)
+- *(jinja)* Hooks for jinja2 template cleanup.
+- *(jinja2)* Jinja2 file replace test.
+- Complete multi-theme GitHub Pages generator
+- Complete multi-theme GitHub Pages generator
+
+### 🐛 Fixed
+
+- *(template)* Updates to template cookiecutter.json file.
+
 ### ⚙️  Miscellaneous
 
 - Feat 03 (#17)
@@ -114,7 +126,7 @@ Feat 012 (#37)
 
 * fix(cla): Fix for CLA fix for master branch.
 
-* chore(template) Update template from cookiecutter-cookiecutter repository. 
+* chore(template) Update template from cookiecutter-cookiecutter repository.
 
 * fix(makefile): Minor fix for documentation emoji.
 - Merge pull request #40 from jcook3701/develop
@@ -245,11 +257,43 @@ Feat 021 (#57)
 - Merge pull request #60 from jcook3701/develop
 
 Feat 022 (#59)
+- Merge pull request #62 from jcook3701/develop
+
+feat(themes): added new themes to use. (#61)
+## [0.1.0] - 2025-12-05
 
 ### 🐛 Fixed
 
-- *(template)* Updates to template cookiecutter.json file.
-## [0.1.0] - 2025-12-05
+- Fixes for repo name change
+
+### 📚 Documentation
+
+- *(readme)* Added extra make commands to documentation.
+
+### 🧪 Tests
+
+- Testing symlink
+- Testing symlink
+- Testing symlink
+- Testing symlink
+- Testing symlink
+- Testing symlink
+- Testing symlink
+- Testing symlink
+- Testing symlink
+- Testing symlink
+- Tests test
+- Tests test
+- Tests test
+- Tests test
+- Tests test
+- Tests test
+
+### 🚫 Removed
+
+- Removed emacs backup
+- Removed tests as they are not going to work with jekyll/liquid syntax .
+- Removed hooks
 
 ### ⚙️  Miscellaneous
 
@@ -466,36 +510,3 @@ Co-authored-by: jcook3701 <jcook3701@gmail.com>
 - Merge pull request #16 from jcook3701/develop
 
 Develop
-
-### 🐛 Fixed
-
-- Fixes for repo name change
-
-### 📚 Documentation
-
-- *(readme)* Added extra make commands to documentation.
-
-### 🚫 Removed
-
-- Removed emacs backup
-- Removed tests as they are not going to work with jekyll/liquid syntax .
-- Removed hooks
-
-### 🧪 Tests
-
-- Testing symlink
-- Testing symlink
-- Testing symlink
-- Testing symlink
-- Testing symlink
-- Testing symlink
-- Testing symlink
-- Testing symlink
-- Testing symlink
-- Testing symlink
-- Tests test
-- Tests test
-- Tests test
-- Tests test
-- Tests test
-- Tests test

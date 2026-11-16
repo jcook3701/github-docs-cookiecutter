@@ -1,0 +1,55 @@
+# Just the Docs
+{% if cfg.values.site_type == 'documentation' %}
+just_the_docs:
+  collections:
+    manual:
+      name: Manual
+      nav_fold: true
+      nav_exclude: false
+    resources:
+      name: External Links
+      nav_fold: false
+      nav_exclude: false
+{% endif %}
+{% if cfg.values.ga_tracking %}
+ga_tracking: {{ cfg.yaml.ga_tracking }}
+{% endif %}
+search_enabled: true
+enable_copy_code_button: true
+mermaid:
+  version: "9.1.6"
+heading_anchors: true
+aux_links:
+  {{ cfg.yaml.github_aux_label }}:
+    - {{ cfg.yaml.repo_url }}
+aux_links_new_tab: false
+nav_enabled: true
+back_to_top: true
+back_to_top_text: "Back to top"
+footer_content: >-
+  {{ cfg.html.copyright }}. Distributed under the
+  <a href="{{ cfg.html.license_url }}">{{ cfg.html.license }} license</a>.
+last_edit_timestamp: true
+last_edit_time_format: "%b %e %Y at %I:%M %p"
+gh_edit_link: true
+gh_edit_link_text: "Edit this page on GitHub"
+gh_edit_repository: {{ cfg.yaml.repo_url }}
+gh_edit_branch: {{ cfg.yaml.default_branch }}
+# Pages are currently stored at the generated repository root.
+gh_edit_view_mode: "tree"
+callouts_level: quiet
+callouts:
+  highlight:
+    color: yellow
+  important:
+    title: Important
+    color: blue
+  new:
+    title: New
+    color: green
+  note:
+    title: Note
+    color: purple
+  warning:
+    title: Warning
+    color: red

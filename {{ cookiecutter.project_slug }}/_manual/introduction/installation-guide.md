@@ -1,7 +1,0 @@
----
-layout: default
-title: "Installation Guide"
-nav_order: 1
-parent: Introduction
----
-## Installation Guide for {{ cookiecutter.project_name }} (Linux)

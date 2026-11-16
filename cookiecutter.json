@@ -1,9 +1,22 @@
 {
   "project_name": "github-docs-cookiecutter",
   "project_slug": "{{ cookiecutter.project_name | slugify }}",
+  "site_type": [
+    "documentation",
+    "company",
+    "blog",
+    "portfolio",
+    "landing_page"
+  ],
+  "pages_site_type": [
+    "project",
+    "user_or_organization"
+  ],
+  "custom_domain": "",
   "company": null,
   "author": "Jared Cook",
   "email": "jcook3701+github@gmail.com",
+  "formspree_form_path": "",
   "version": "0.1.0",
   "timezone": [
     "America/Los_Angeles"
@@ -45,6 +58,8 @@
     "poole/lanyon",
     "zerostaticthemes/jekyll-serif-theme",
     "mmistakes/minimal-mistakes",
+    "raviriley/agency-jekyll-theme",
+    "CloudCannon/hydra-jekyll-template",
     "emilbaehr/automatic-app-landing-page",
     "LeNPaul/Millennial"
   ],
@@ -59,7 +74,6 @@
   "_default_branch": "master",
   "_is_sub_template": true,
   "_copy_without_render": [
-    "README.md",
     "_includes/*"
   ],
   "_extensions": [

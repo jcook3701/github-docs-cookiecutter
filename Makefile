@@ -516,7 +516,7 @@ help:
 	$(AT)echo ""
 	$(AT)echo "Usage:"
 	$(AT)echo "  make venv                   Create python virtual environment (venv)"
-	$(AT)echo "  make install                Install python project dependencies (pip)"
+	$(AT)echo "  make python-install         Install python project dependencies (pip)"
 	$(AT)echo "  make security               Security audit (pip-audit)"
 	$(AT)echo "  make dependency-check       dependency check (deptry)"
 	$(AT)echo "  make black-formatter-check  Run Black python formatter check (black)"

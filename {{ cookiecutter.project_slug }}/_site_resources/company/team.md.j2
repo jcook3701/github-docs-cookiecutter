@@ -1,0 +1,8 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Team", "Meet the people behind our work.", cfg.theme.page_layout, nav_order=5, permalink="/team/") }}
+# Team
+
+## {{ cfg.markdown.author }}
+
+{{ cfg.markdown.author }} leads {{ cfg.markdown.title }} with an emphasis on thoughtful collaboration, dependable delivery, and work that serves its audience.

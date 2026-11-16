@@ -1,0 +1,17 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Archive", "Browse every published post.", cfg.theme.archive_layout, nav_order=3, permalink="/archive/") }}
+# Archive
+
+{% raw %}
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+{% for year in posts_by_year %}
+## {{ year.name }}
+
+{% for post in year.items %}
+- [{{ post.title }}]({{ post.url | relative_url }}) — {{ post.date | date: "%B %-d, %Y" }}
+{% endfor %}
+{% else %}
+No posts have been published yet.
+{% endfor %}
+{% endraw %}

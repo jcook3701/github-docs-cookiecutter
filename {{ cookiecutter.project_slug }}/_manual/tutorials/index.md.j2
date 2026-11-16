@@ -1,0 +1,7 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Tutorials", "Follow practical, task-oriented project tutorials.", cfg.theme.page_layout, nav_order=3, has_children=true) }}
+## {{ cfg.markdown.project_name }} Tutorials
+
+* [Create Virtual Environment]({% raw %}{% link _manual/tutorials/create-virtual-env.md %}{% endraw %})
+* [Nutri-Matic]({% raw %}{% link _manual/tutorials/nutri-matic.md %}{% endraw %})

@@ -1,0 +1,26 @@
+{% import "vars/main.j2" as cfg with context %}
+source "https://rubygems.org"
+
+# -----------------------------------------------------------------------------
+# Core dependencies
+# -----------------------------------------------------------------------------
+gem "jekyll", "{{ cfg.theme.jekyll_version }}"
+{% for dependency in cfg.runtime_gems %}
+{% if dependency.version %}
+gem "{{ dependency.name }}", "{{ dependency.version }}"
+{% else %}
+gem "{{ dependency.name }}"
+{% endif %}
+{% endfor %}
+# -----------------------------------------------------------------------------
+# Jekyll plugins
+# -----------------------------------------------------------------------------
+group :jekyll_plugins do
+{% for plugin in cfg.plugins %}
+{% if plugin.version %}
+  gem "{{ plugin.name }}", "{{ plugin.version }}"
+{% else %}
+  gem "{{ plugin.name }}"
+{% endif %}
+{% endfor %}
+end

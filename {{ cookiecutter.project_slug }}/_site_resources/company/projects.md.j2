@@ -1,0 +1,8 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Projects", "See selected projects and open-source work.", cfg.theme.page_layout, nav_order=4, permalink="/projects/") }}
+# Projects
+
+Our work balances user needs, technical quality, and measurable outcomes.
+
+[Explore {{ cfg.markdown.title }} on GitHub]({{ cfg.values.github_profile_url }}) to see current projects and contributions.

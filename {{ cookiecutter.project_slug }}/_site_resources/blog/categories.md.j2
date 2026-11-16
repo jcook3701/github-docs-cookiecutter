@@ -1,0 +1,16 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Categories", "Browse posts by topic.", cfg.theme.archive_layout, nav_order=2, permalink="/categories/") }}
+# Categories
+
+{% raw %}
+{% for category in site.categories %}
+## {{ category[0] }}
+
+{% for post in category[1] %}
+- [{{ post.title }}]({{ post.url | relative_url }})
+{% endfor %}
+{% else %}
+Categories will appear after posts are assigned to them.
+{% endfor %}
+{% endraw %}

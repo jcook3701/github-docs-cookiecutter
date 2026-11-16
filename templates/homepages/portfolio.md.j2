@@ -1,0 +1,20 @@
+# {{ cfg.markdown.title }}
+
+{{ cfg.markdown.description }}
+
+## Featured work
+
+{% raw %}
+{% assign projects = site.portfolio | default: site.projects %}
+{% for project in projects %}
+- [{{ project.title }}]({{ project.url | relative_url }}){% if project.description %} — {{ project.description }}{% endif %}
+{% else %}
+Project details will be available here soon. In the meantime, visit the GitHub profile below.
+{% endfor %}
+{% endraw %}
+
+[Explore more work on GitHub]({{ cfg.values.github_profile_url }})
+
+## Work together
+
+Have a project in mind? [Get in touch](mailto:{{ cfg.values.email }}).

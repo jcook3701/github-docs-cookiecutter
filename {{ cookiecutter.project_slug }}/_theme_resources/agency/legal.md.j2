@@ -1,0 +1,8 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Privacy Policy", "Privacy information for this website.", cfg.theme.page_layout, permalink="/legal/") }}
+# Privacy policy
+
+Replace this page with the privacy policy that applies to {{ cfg.markdown.title }} before publishing the website.
+
+For privacy questions, contact [{{ cfg.markdown.author }}](mailto:{{ cfg.values.email }}).

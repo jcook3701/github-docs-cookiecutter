@@ -1,0 +1,7 @@
+{% import "vars/main.j2" as cfg with context %}
+{% from "macros/front-matter.j2" import page with context %}
+{{ page("Introduction", "Start here for an overview and the first steps.", cfg.theme.page_layout, nav_order=1, has_children=true) }}
+## Introduction to {{ cfg.markdown.project_name }}
+
+* [Installation Guide]({% raw %}{% link _manual/introduction/installation-guide.md %}{% endraw %})
+* [Getting Started]({% raw %}{% link _manual/introduction/getting-started.md %}{% endraw %})
